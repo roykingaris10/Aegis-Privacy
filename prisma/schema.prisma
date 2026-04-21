@@ -1,0 +1,68 @@
+// Aegis — Prisma schema (Sprint 1)
+// Matches PROJECT_BRIEF.md exactly except for two SQLite-driven changes:
+//   - `User.badges String[]` → `Json` (SQLite has no native array)
+//   - `@db.Text` removed (SQLite has no native type attributes); underlying
+//     String type is unchanged, so there's no data-model difference.
+// Both deviations are documented in SPRINT_1_SUMMARY.md.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String    @id
+  email          String    @unique
+  name           String?
+  level          Int       @default(1)
+  totalXp        Int       @default(0)
+  currentStreak  Int       @default(0)
+  longestStreak  Int       @default(0)
+  lastActiveDate DateTime?
+  skillProgress  Json
+  badges         Json
+
+  completions ScenarioCompletion[]
+  responses   Response[]
+}
+
+model Scenario {
+  id          String @id
+  title       String
+  tier        Int
+  clientId    String
+  skill       String
+  difficulty  String
+  contentPath String
+
+  completions ScenarioCompletion[]
+}
+
+model ScenarioCompletion {
+  id           String   @id @default(cuid())
+  userId       String
+  scenarioId   String
+  score        Int
+  xpEarned     Int
+  timeSpentSec Int
+  completedAt  DateTime @default(now())
+
+  user     User     @relation(fields: [userId], references: [id])
+  scenario Scenario @relation(fields: [scenarioId], references: [id])
+}
+
+model Response {
+  id            String   @id @default(cuid())
+  userId        String
+  scenarioId    String
+  userAnswer    String
+  coachFeedback String
+  rubricScores  Json
+  createdAt     DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+}
