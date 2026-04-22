@@ -4,9 +4,13 @@
 // output, and on hard failure falls back to a placeholder review so the
 // submission still persists cleanly.
 //
-// After the review is in hand it transactionally writes a Response row,
-// a ScenarioCompletion row, and updates the user's XP / level / skill
-// progress using the real overallScore as the quality score.
+// Sprint 3a wiring:
+//   - applies updateStreak() to user.currentStreak / longestStreak /
+//     lastActiveDate inside the same transaction as the completion.
+//   - builds a UserStats snapshot using the post-completion state and
+//     awards any newly-qualified badges to User.badges.
+//   - returns a rich payload so the client can queue toasts for XP /
+//     level-up / skill-level-up / streak-milestone / badge / tier-unlock.
 
 import { NextResponse } from "next/server";
 import type Anthropic from "@anthropic-ai/sdk";
@@ -44,7 +48,13 @@ import {
   getLevelForXp,
   getSkillLevelForXp,
 } from "@/lib/xp";
-import type { SkillKey } from "@/lib/skills";
+import { SKILLS, type SkillKey } from "@/lib/skills";
+import { updateStreak } from "@/lib/streak";
+import {
+  newlyAwardedBadges,
+  type CompletionSummary,
+  type UserStats,
+} from "@/lib/badges";
 import type { Scenario } from "@/lib/scenarios";
 import type { Client as ClientRecord } from "@/lib/clients";
 
@@ -114,29 +124,96 @@ export async function POST(request: Request): Promise<NextResponse> {
   // asks for consistency but we don't trust the model more than we must.
   const overallScore = review.rubricScores.reduce((s, r) => s + r.score, 0);
 
-  const existingCompletion = await prisma.scenarioCompletion.findFirst({
-    where: { userId: user.id, scenarioId: scenario.id },
+  const existingCompletions = await prisma.scenarioCompletion.findMany({
+    where: { userId: user.id },
   });
-  const isFirstTime = !existingCompletion;
+  const isFirstTime = !existingCompletions.some(
+    (c) => c.scenarioId === scenario.id,
+  );
+
+  // ---- Streak ----
+  const now = new Date();
+  const streakUpdate = updateStreak(
+    {
+      currentStreak: user.currentStreak,
+      longestStreak: user.longestStreak,
+      lastActiveDate: user.lastActiveDate ?? null,
+    },
+    now,
+  );
 
   const xp = calculateScenarioXp({
     xpBase: scenario.xpBase,
     qualityScore: overallScore,
-    streak: user.currentStreak,
+    streak: streakUpdate.currentStreak,
     isFirstTime,
   });
 
+  // ---- Skill progression ----
   const skillProgress = coerceSkillProgress(user.skillProgress);
   const skill = scenario.skill as SkillKey;
-  const currentSkill = skillProgress[skill] ?? { level: 0, xp: 0 };
-  const nextSkillXp = currentSkill.xp + xp.total;
-  skillProgress[skill] = {
-    xp: nextSkillXp,
-    level: getSkillLevelForXp(nextSkillXp),
-  };
+  const prevSkill = skillProgress[skill] ?? { level: 0, xp: 0 };
+  const nextSkillXp = prevSkill.xp + xp.total;
+  const nextSkillLevel = getSkillLevelForXp(nextSkillXp);
+  skillProgress[skill] = { xp: nextSkillXp, level: nextSkillLevel };
+  const skillLeveledUp = nextSkillLevel > prevSkill.level;
+
+  // ---- Level ----
   const nextTotalXp = user.totalXp + xp.total;
   const nextLevel = getLevelForXp(nextTotalXp);
+  const leveledUp = nextLevel > user.level;
+  const tierUnlocked =
+    user.level < 6 && nextLevel >= 6
+      ? 2
+      : user.level < 13 && nextLevel >= 13
+        ? 3
+        : null;
 
+  // ---- Badges ----
+  const existingBadges = coerceBadges(user.badges);
+  const priorCompletionSummaries: CompletionSummary[] = existingCompletions.map(
+    (c) => ({
+      scenarioId: c.scenarioId,
+      // tier/skill/difficulty for prior completions are joined from YAML
+      // via the scenarios loader; for ones we already have on file we
+      // look them up.
+      ...summarize(c.scenarioId, c.score),
+    }),
+  );
+  const thisCompletion: CompletionSummary = {
+    scenarioId: scenario.id,
+    tier: scenario.tier,
+    skill,
+    difficulty: scenario.difficulty,
+    score: overallScore,
+    rubric: review.rubricScores.map((r) => ({
+      criterion: r.criterion,
+      score: r.score,
+      maxPoints: r.maxPoints,
+    })),
+  };
+  const allCompletionSummaries = [...priorCompletionSummaries, thisCompletion];
+  const skillsCompleted = new Set<SkillKey>(
+    allCompletionSummaries.map((c) => c.skill),
+  );
+  const skillLevels: Partial<Record<SkillKey, number>> = {};
+  for (const s of SKILLS) {
+    skillLevels[s.key] = skillProgress[s.key]?.level ?? 0;
+  }
+  const stats: UserStats = {
+    level: nextLevel,
+    totalXp: nextTotalXp,
+    currentStreak: streakUpdate.currentStreak,
+    longestStreak: streakUpdate.longestStreak,
+    skillLevels,
+    skillsCompleted,
+    completions: allCompletionSummaries,
+    viewedAnyGuide: false,
+  };
+  const newlyEarned = newlyAwardedBadges(stats, existingBadges);
+  const nextBadges = [...existingBadges, ...newlyEarned.map((b) => b.id)];
+
+  // ---- Persist ----
   await prisma.$transaction([
     prisma.response.create({
       data: {
@@ -161,8 +238,11 @@ export async function POST(request: Request): Promise<NextResponse> {
       data: {
         totalXp: nextTotalXp,
         level: nextLevel,
-        lastActiveDate: new Date(),
+        currentStreak: streakUpdate.currentStreak,
+        longestStreak: streakUpdate.longestStreak,
+        lastActiveDate: streakUpdate.lastActiveDate,
         skillProgress: skillProgress as unknown as object,
+        badges: nextBadges as unknown as object,
       },
     }),
   ]);
@@ -179,7 +259,55 @@ export async function POST(request: Request): Promise<NextResponse> {
     xp,
     nextScenarioId,
     degraded: usedFallback,
+    // Sprint 3a gamification signals for the client toast queue
+    gamification: {
+      leveledUp,
+      newLevel: nextLevel,
+      skillLeveledUp,
+      skillKey: skill,
+      newSkillLevel: nextSkillLevel,
+      streak: streakUpdate.currentStreak,
+      streakMilestone: streakUpdate.milestone,
+      tierUnlocked,
+      newlyAwardedBadges: newlyEarned.map((b) => ({
+        id: b.id,
+        name: b.name,
+        description: b.description,
+        rarity: b.rarity,
+        icon: b.icon,
+      })),
+    },
   });
+}
+
+// Given a prior completion id, build a best-effort CompletionSummary for
+// badge evaluation. We look the scenario up in the YAML loader for tier
+// / skill / difficulty. The rubric isn't persisted per-completion today,
+// so we pass an empty rubric — criteria that require per-rubric-cell
+// inspection (e.g. no_stone_unturned) therefore only fire on the
+// current completion, which is the common case anyway.
+function summarize(
+  scenarioId: string,
+  score: number,
+): Omit<CompletionSummary, "scenarioId"> {
+  const scenarios = getAllScenarios();
+  const s = scenarios.find((x) => x.id === scenarioId);
+  if (!s) {
+    return {
+      tier: 1,
+      skill: "sar_handling",
+      difficulty: "straightforward",
+      score,
+      rubric: [],
+    };
+  }
+  return {
+    tier: s.tier,
+    skill: s.skill as SkillKey,
+    difficulty: s.difficulty,
+    score,
+    rubric: [],
+  };
 }
 
 async function callReviewWithRetry(
@@ -252,6 +380,12 @@ function coerceSkillProgress(
     return raw as Record<string, { level: number; xp: number }>;
   }
   return {};
+}
+
+function coerceBadges(raw: unknown): string[] {
+  return Array.isArray(raw)
+    ? (raw.filter((b) => typeof b === "string") as string[])
+    : [];
 }
 
 async function pickNextScenarioId(
