@@ -1,9 +1,20 @@
-// Aegis — Prisma schema (Sprint 1)
-// Matches PROJECT_BRIEF.md exactly except for two SQLite-driven changes:
+// Aegis — Prisma schema (Sprint 3a)
+//
+// SQLite-driven deviations carried from Sprint 1 (documented there):
 //   - `User.badges String[]` → `Json` (SQLite has no native array)
-//   - `@db.Text` removed (SQLite has no native type attributes); underlying
-//     String type is unchanged, so there's no data-model difference.
-// Both deviations are documented in SPRINT_1_SUMMARY.md.
+//   - `User.goals  String[]` → `Json` (ditto, new in Sprint 3a)
+//   - `@db.Text` attributes not used (SQLite rejects native type hints;
+//     underlying String type is unchanged). Fixed properly at Postgres
+//     deploy time.
+//
+// Sprint 3a additions:
+//   - `emailVerified`, `image`, `specialism`, `goals`, `onboardedAt`
+//     on User
+//   - NextAuth Account / Session / VerificationToken tables for the
+//     Prisma adapter
+//   - `User.id` now defaults to a cuid so magic-link sign-ins create
+//     rows without an externally-supplied id. The seeded test user
+//     still uses the explicit id "user_roy_local".
 
 generator client {
   provider = "prisma-client-js"
@@ -15,20 +26,74 @@ datasource db {
 }
 
 model User {
-  id             String    @id
-  email          String    @unique
-  name           String?
+  id            String    @id @default(cuid())
+  email         String    @unique
+  emailVerified DateTime?
+  name          String?
+  image         String?
+
+  // Aegis app state
   level          Int       @default(1)
   totalXp        Int       @default(0)
   currentStreak  Int       @default(0)
   longestStreak  Int       @default(0)
   lastActiveDate DateTime?
+  // skillProgress / badges / goals are Json fields initialised in
+  // application code (NextAuth adapter createUser override + seed).
+  // SQLite can't hold native JSON defaults, so we don't declare them
+  // here — Postgres migration at deploy time can add proper defaults.
   skillProgress  Json
   badges         Json
 
+  // Onboarding
+  specialism   String?
+  goals        Json
+  onboardedAt  DateTime?
+
+  // NextAuth
+  accounts Account[]
+  sessions Session[]
+
+  // App relations
   completions ScenarioCompletion[]
   responses   Response[]
   coachUsage  CoachUsage[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@unique([identifier, token])
 }
 
 model Scenario {
@@ -54,6 +119,8 @@ model ScenarioCompletion {
 
   user     User     @relation(fields: [userId], references: [id])
   scenario Scenario @relation(fields: [scenarioId], references: [id])
+
+  @@index([userId, completedAt])
 }
 
 model Response {

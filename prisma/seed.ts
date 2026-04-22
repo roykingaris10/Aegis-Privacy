@@ -14,6 +14,11 @@ const TEST_USER: Prisma.UserCreateInput = {
   longestStreak: 0,
   skillProgress: {},
   badges: [],
+  goals: [],
+  // emailVerified set so the seeded user can sign in without the
+  // magic-link flow running against the local SQLite.
+  emailVerified: new Date(),
+  onboardedAt: new Date(),
 };
 
 async function main(): Promise<void> {
