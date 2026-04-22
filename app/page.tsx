@@ -1,4 +1,5 @@
 import * as React from "react";
+import { redirect } from "next/navigation";
 
 import { LevelBanner } from "@/components/dashboard/level-banner";
 import { StreakCounter } from "@/components/dashboard/streak-counter";
@@ -9,12 +10,16 @@ import {
 } from "@/components/dashboard/todays-inbox";
 import { RecentAchievements } from "@/components/dashboard/recent-achievements";
 import { WeeklyChallenge } from "@/components/dashboard/weekly-challenge";
+import { WelcomeConfetti } from "@/components/welcome-confetti";
 
 import { getCurrentUser } from "@/lib/current-user";
 import { prisma } from "@/lib/db";
 import { getAllScenarios } from "@/lib/scenarios";
 import { requireClientById } from "@/lib/clients";
 import { emptySkillProgress, SKILLS, type SkillKey } from "@/lib/skills";
+import { recommendTodaysInbox } from "@/lib/recommendations";
+import { getWeeklyChallenge } from "@/lib/weekly-challenge";
+import { BADGES } from "@/lib/badges";
 
 export const dynamic = "force-dynamic";
 
@@ -57,37 +62,63 @@ function deadlineLabelFor(tier: 1 | 2 | 3): string {
 export default async function DashboardPage(): Promise<React.ReactElement> {
   const user = await getCurrentUser();
 
-  // Scenarios for the "Today's inbox" preview — first 4 from the YAML loader
-  // joined with client data. Completed scenarios are deprioritised.
+  // First-time sign-in → onboarding.
+  if (!user.onboardedAt) redirect("/onboarding");
+
   const completions = await prisma.scenarioCompletion.findMany({
     where: { userId: user.id },
     select: { scenarioId: true },
   });
   const completedIds = new Set(completions.map((c) => c.scenarioId));
 
-  const inbox: InboxScenario[] = getAllScenarios()
-    .filter((s) => !completedIds.has(s.id))
-    .slice(0, 4)
-    .map((s) => {
-      const client = requireClientById(s.client);
-      return {
-        id: s.id,
-        client: client.name,
-        clientInitial: client.logoInitials,
-        subject: s.emailSubject,
-        preview: s.briefing.requestType,
-        tier: s.tier,
-        skillLabel: humanSkill(s.skill),
-        xpReward: s.xpBase,
-        deadlineLabel: deadlineLabelFor(s.tier),
-      };
-    });
-
   const skillProgress = coerceSkillProgress(user.skillProgress);
-  const badges = coerceBadges(user.badges);
+  const skillLevels: Partial<Record<SkillKey, number>> = {};
+  for (const s of SKILLS) {
+    skillLevels[s.key] = skillProgress[s.key]?.level ?? 0;
+  }
+
+  const recommended = recommendTodaysInbox({
+    userLevel: user.level,
+    skillLevels,
+    completionsCount: completions.length,
+    completedIds,
+    scenarios: getAllScenarios(),
+  });
+
+  const inbox: InboxScenario[] = recommended.map((s) => {
+    const client = requireClientById(s.client);
+    return {
+      id: s.id,
+      client: client.name,
+      clientInitial: client.logoInitials,
+      subject: s.emailSubject,
+      preview: s.briefing.requestType,
+      tier: s.tier,
+      skillLabel: humanSkill(s.skill),
+      xpReward: s.xpBase,
+      deadlineLabel: deadlineLabelFor(s.tier),
+    };
+  });
+
+  // Badges for the "Recent achievements" card — sorted by definition
+  // order so rarity-highs surface at the bottom first, and we slice to
+  // the latest three.
+  const ownedBadgeIds = coerceBadges(user.badges);
+  const ownedBadges = BADGES.filter((b) => ownedBadgeIds.includes(b.id));
+  const achievements = ownedBadges.slice(-3).map((b) => ({
+    id: b.id,
+    name: b.name,
+    earnedAtLabel: b.description,
+  }));
+
+  const challenge = getWeeklyChallenge();
 
   return (
     <div className="mx-auto flex max-w-7xl flex-col gap-4">
+      <React.Suspense fallback={null}>
+        <WelcomeConfetti />
+      </React.Suspense>
+
       <LevelBanner totalXp={user.totalXp} level={user.level} />
 
       <div className="grid gap-4 md:grid-cols-3">
@@ -104,19 +135,13 @@ export default async function DashboardPage(): Promise<React.ReactElement> {
         <div className="md:col-span-2">
           <TodaysInbox scenarios={inbox} />
         </div>
-        <RecentAchievements
-          achievements={badges.map((b) => ({
-            id: b,
-            name: b,
-            earnedAtLabel: "",
-          }))}
-        />
+        <RecentAchievements achievements={achievements} />
       </div>
 
       <WeeklyChallenge
-        title="Breach Week"
-        description="Themed week focused on breach triage and 72-hour notification decisions."
-        status="coming_soon"
+        title={challenge.title}
+        description={challenge.description}
+        status="active"
       />
     </div>
   );

@@ -11,6 +11,16 @@ import { CoachPanel } from "./coach-panel";
 import type { ReviewPayload } from "./review-types";
 import type { Scenario } from "@/lib/scenarios";
 import type { Client } from "@/lib/clients";
+import { SKILLS } from "@/lib/skills";
+import {
+  queueToasts,
+  toastBadge,
+  toastLevelUp,
+  toastSkillLevelUp,
+  toastStreakMilestone,
+  toastTierUnlocked,
+  toastXp,
+} from "@/lib/toasts";
 
 type Props = {
   scenario: Scenario;
@@ -74,6 +84,7 @@ export function ScenarioWorkspace({
       }
       const payload = (await res.json()) as ReviewPayload;
       setReview(payload);
+      fireToastQueue(payload);
     } catch (err) {
       setError((err as Error).message);
       setTimerRunning(true);
@@ -139,4 +150,46 @@ export function ScenarioWorkspace({
       />
     </div>
   );
+}
+
+function fireToastQueue(payload: ReviewPayload): void {
+  const g = payload.gamification;
+  const xp = payload.xp;
+  const steps: Array<() => void> = [];
+
+  // 1. XP toast always
+  steps.push(() =>
+    toastXp(
+      xp.total,
+      `base ${xp.base} · quality ×${xp.qualityMultiplier.toFixed(2)}${
+        xp.firstTimeMultiplier > 1 ? " · first-time ×1.25" : ""
+      }${xp.streakMultiplier > 1 ? ` · streak ×${xp.streakMultiplier.toFixed(2)}` : ""}${
+        xp.perfectScoreBonus ? ` · +${xp.perfectScoreBonus} perfect` : ""
+      }`,
+    ),
+  );
+
+  if (!g) return void queueToasts(steps);
+
+  if (g.skillLeveledUp) {
+    const skillLabel =
+      SKILLS.find((s) => s.key === g.skillKey)?.label ?? g.skillKey;
+    steps.push(() => toastSkillLevelUp(skillLabel, g.newSkillLevel));
+  }
+  if (g.leveledUp) {
+    steps.push(() => toastLevelUp(g.newLevel));
+  }
+  if (g.tierUnlocked) {
+    const t = g.tierUnlocked;
+    steps.push(() => toastTierUnlocked(t));
+  }
+  if (g.streakMilestone) {
+    const m = g.streakMilestone;
+    steps.push(() => toastStreakMilestone(m));
+  }
+  for (const b of g.newlyAwardedBadges) {
+    steps.push(() => toastBadge(b));
+  }
+
+  void queueToasts(steps);
 }
