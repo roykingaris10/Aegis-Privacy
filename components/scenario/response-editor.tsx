@@ -17,10 +17,14 @@ import {
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+// Hard client-side cap; the API mirrors this server-side.
+export const MAX_RESPONSE_CHARS = 5000;
+
 type Props = {
   disabled: boolean;
   submitting: boolean;
   onSubmit: (html: string, text: string) => void;
+  onDraftChange?: (text: string) => void;
   userTask: string;
 };
 
@@ -28,8 +32,11 @@ export function ResponseEditor({
   disabled,
   submitting,
   onSubmit,
+  onDraftChange,
   userTask,
 }: Props): React.ReactElement {
+  const [text, setText] = React.useState("");
+
   const editor = useEditor({
     extensions: [StarterKit],
     content: "",
@@ -41,14 +48,21 @@ export function ResponseEditor({
           "prose prose-sm dark:prose-invert max-w-none focus:outline-none min-h-[320px] px-5 py-4",
       },
     },
+    onUpdate: ({ editor: ed }) => {
+      const t = ed.getText();
+      setText(t);
+      onDraftChange?.(t);
+    },
   });
 
   React.useEffect(() => {
     editor?.setEditable(!disabled);
   }, [disabled, editor]);
 
-  const text = editor?.getText() ?? "";
   const wordCount = text.trim() ? text.trim().split(/\s+/).length : 0;
+  const charCount = text.length;
+  const overCharLimit = charCount > MAX_RESPONSE_CHARS;
+  const nearLimit = charCount > MAX_RESPONSE_CHARS * 0.9;
 
   return (
     <div className="flex h-full flex-col overflow-hidden">
@@ -130,12 +144,26 @@ export function ResponseEditor({
       </div>
 
       <footer className="flex items-center justify-between gap-3 border-t bg-background px-4 py-3">
-        <p className="text-xs text-muted-foreground tabular-nums">
-          {wordCount} {wordCount === 1 ? "word" : "words"}
+        <p className="flex items-center gap-3 text-xs tabular-nums text-muted-foreground">
+          <span>
+            {wordCount} {wordCount === 1 ? "word" : "words"}
+          </span>
+          <span
+            className={cn(
+              overCharLimit
+                ? "text-destructive"
+                : nearLimit
+                  ? "text-amber-600"
+                  : undefined,
+            )}
+          >
+            {charCount.toLocaleString()} / {MAX_RESPONSE_CHARS.toLocaleString()}{" "}
+            chars
+          </span>
         </p>
         <Button
           size="sm"
-          disabled={disabled || submitting || wordCount < 5}
+          disabled={disabled || submitting || wordCount < 5 || overCharLimit}
           onClick={() => {
             if (!editor) return;
             onSubmit(editor.getHTML(), editor.getText());

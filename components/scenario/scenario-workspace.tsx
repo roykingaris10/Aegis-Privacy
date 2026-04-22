@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ScenarioHeader } from "./scenario-header";
 import { ScenarioEmail } from "./scenario-email";
-import { ResponseEditor } from "./response-editor";
+import { ResponseEditor, MAX_RESPONSE_CHARS } from "./response-editor";
 import { CoachPanel } from "./coach-panel";
 import type { ReviewPayload } from "./review-types";
 import type { Scenario } from "@/lib/scenarios";
@@ -26,17 +26,29 @@ export function ScenarioWorkspace({
   const [submitting, setSubmitting] = React.useState(false);
   const [review, setReview] = React.useState<ReviewPayload | null>(null);
   const [error, setError] = React.useState<string | null>(null);
+  const draftRef = React.useRef("");
 
   const handleTick = React.useCallback((sec: number) => {
     setElapsedSec(sec);
   }, []);
 
+  const handleDraftChange = React.useCallback((text: string) => {
+    draftRef.current = text;
+  }, []);
+  const getCurrentDraft = React.useCallback(() => draftRef.current, []);
+
   const handleSubmit = async (html: string, text: string) => {
+    if (text.length > MAX_RESPONSE_CHARS) {
+      setError(
+        `Response is over the ${MAX_RESPONSE_CHARS.toLocaleString()}-character limit — trim it down and resubmit.`,
+      );
+      return;
+    }
     setSubmitting(true);
     setError(null);
     setTimerRunning(false);
     try {
-      const res = await fetch("/api/responses", {
+      const res = await fetch("/api/coach/review", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -49,8 +61,16 @@ export function ScenarioWorkspace({
       if (!res.ok) {
         const body = (await res.json().catch(() => ({}))) as {
           error?: string;
+          code?: string;
         };
-        throw new Error(body.error ?? "Submission failed");
+        throw new Error(
+          body.error ??
+            (body.code === "coach_offline"
+              ? "Coach is offline — check your API key."
+              : body.code === "rate_limited"
+                ? "Daily coach limit reached. Try again tomorrow."
+                : "Submission failed"),
+        );
       }
       const payload = (await res.json()) as ReviewPayload;
       setReview(payload);
@@ -87,6 +107,7 @@ export function ScenarioWorkspace({
             submitting={submitting}
             userTask={scenario.userTask}
             onSubmit={handleSubmit}
+            onDraftChange={handleDraftChange}
           />
         </div>
       </div>
@@ -110,7 +131,12 @@ export function ScenarioWorkspace({
         </div>
       ) : null}
 
-      <CoachPanel scenario={scenario} review={review} submitting={submitting} />
+      <CoachPanel
+        scenario={scenario}
+        review={review}
+        submitting={submitting}
+        getCurrentDraft={getCurrentDraft}
+      />
     </div>
   );
 }
