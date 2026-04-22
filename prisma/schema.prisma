@@ -28,6 +28,7 @@ model User {
 
   completions ScenarioCompletion[]
   responses   Response[]
+  coachUsage  CoachUsage[]
 }
 
 model Scenario {
@@ -65,4 +66,19 @@ model Response {
   createdAt     DateTime @default(now())
 
   user User @relation(fields: [userId], references: [id])
+}
+
+// Sprint 2b: daily per-user rate limit for coach API calls.
+// `date` is stored as YYYY-MM-DD in UTC to key the composite unique
+// constraint; simpler than a DateTime range query and collates correctly.
+model CoachUsage {
+  id     String @id @default(cuid())
+  userId String
+  date   String
+  count  Int    @default(0)
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@unique([userId, date])
+  @@index([userId])
 }
