@@ -1,0 +1,16 @@
+id: bramble_lane_primary
+name: Bramble Lane Primary School
+tier: 1
+sector: Primary education (maintained, England)
+description: >-
+  A two-form-entry community primary school of around 420 pupils in a small
+  market town. No in-house data protection resource — relies on Aegis as its
+  DPO-as-a-service. Most data protection questions come from the Business
+  Manager or Headteacher.
+logoInitials: BL
+brandColour: "#3B6BA5"
+regulatoryContext:
+  - UK GDPR
+  - DPA 2018
+  - Education (Pupil Information) (England) Regulations 2005
+  - Keeping Children Safe in Education

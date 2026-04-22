@@ -1,0 +1,20 @@
+id: hartwell_council
+name: Hartwell Borough Council
+tier: 2
+sector: District local authority (England)
+description: >-
+  A district council serving a population of around 130,000. In-house legal
+  and information-governance team handles routine FOI and SAR traffic, but
+  escalates politically sensitive or legally borderline cases to Aegis for
+  a second opinion. Queries typically touch on Schedule 3 exemptions,
+  elected-member correspondence, social services data, and contested FOI
+  decisions.
+logoInitials: HC
+brandColour: "#7B1E3A"
+regulatoryContext:
+  - UK GDPR
+  - DPA 2018 (incl. Schedule 2 & 3)
+  - Freedom of Information Act 2000
+  - Environmental Information Regulations 2004
+  - Local Government Act 1972
+  - Localism Act 2011

@@ -1,0 +1,22 @@
+id: aurelia_biotech
+name: Aurelia Biotech plc
+tier: 3
+sector: Clinical-stage biotechnology (oncology and rare disease)
+description: >-
+  A publicly listed biotech running three Phase II and one Phase III
+  clinical programmes across the UK, EU, and US. A growing in-house privacy
+  team supports the Clinical Operations, Commercial, and R&D functions, but
+  escalates to Aegis on novel matters — AI in candidate screening, pooled
+  international research databases, collaborations with academic medical
+  centres, and regulator (MHRA / EMA / FDA) disclosure obligations.
+logoInitials: AB
+brandColour: "#1F5E5B"
+regulatoryContext:
+  - UK GDPR
+  - DPA 2018
+  - EU GDPR
+  - UK Clinical Trials Regulations (SI 2004/1031)
+  - EU CTR 536/2014
+  - HRA / REC framework
+  - ICH-GCP
+  - MHRA / EMA / FDA good-practice guidance

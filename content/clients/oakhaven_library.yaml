@@ -1,0 +1,17 @@
+id: oakhaven_library
+name: Oakhaven Community Library Trust
+tier: 1
+sector: Community-run charitable library
+description: >-
+  A charitable trust running a single community library after the county
+  council divested its branch network. Four part-time staff and 30 volunteers.
+  Holds membership, loan, and event-attendance data for around 6,000 users.
+  Takes occasional SARs, FOI-style enquiries (even though as a charity it's
+  not a public authority), and retention queries.
+logoInitials: OL
+brandColour: "#B07B3F"
+regulatoryContext:
+  - UK GDPR
+  - DPA 2018
+  - Charities Act 2011
+  - PECR (for newsletter marketing)

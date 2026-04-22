@@ -1,0 +1,20 @@
+id: meridian_capital
+name: Meridian Capital Partners
+tier: 3
+sector: Mid-market private equity and investment management
+description: >-
+  A UK-authorised private equity manager running £4.2 bn across two generalist
+  funds and one growth-stage technology fund. Regulated by the FCA as an
+  AIFM. In-house Head of Compliance handles routine matters; Aegis is
+  retained for complex or novel data protection questions — typically
+  M&A diligence rooms, automated decision-making tooling, SCCs/IDTAs with
+  US service providers, and investor-facing disclosures.
+logoInitials: MC
+brandColour: "#1E3A5F"
+regulatoryContext:
+  - UK GDPR
+  - DPA 2018
+  - FCA Handbook (SYSC, COBS, SUP)
+  - AIFMD (UK)
+  - UK-US Data Bridge / EU-US Data Privacy Framework
+  - Market Abuse Regulation (UK MAR)

@@ -1,0 +1,18 @@
+id: fernwood_dental
+name: Fernwood Dental Practice
+tier: 1
+sector: Mixed NHS / private dental practice
+description: >-
+  A three-surgery dental practice operating under a General Dental Services
+  contract plus private treatment. Approximately 9,000 active patient
+  records. Principal dentist is the de facto Caldicott Guardian. Typical
+  queries involve patient SARs, minor near-miss disclosures, and consent
+  questions for orthodontic treatment involving children.
+logoInitials: FD
+brandColour: "#4FA89A"
+regulatoryContext:
+  - UK GDPR
+  - DPA 2018
+  - Common law duty of confidence
+  - GDC Standards for the Dental Team
+  - NHS Digital IG Toolkit

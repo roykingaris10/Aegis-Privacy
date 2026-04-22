@@ -1,0 +1,303 @@
+id: scenario_002
+tier: 2
+client: hartwell_council
+skill: foi_decisions
+difficulty: complex
+title: FOI request — Council Leader's correspondence with a developer
+timeLimitMinutes: 35
+xpBase: 100
+
+briefing:
+  requestType: >-
+    FOI Act 2000 request for a named elected member's correspondence with a
+    named private individual over an 18-month window. The request engages at
+    least three exemptions — s.40 (third-party personal data, partially
+    absolute), s.41 (information provided in confidence, absolute), and
+    s.36 (prejudice to effective conduct of public affairs, qualified) —
+    and will turn on a careful public-interest test for the qualified
+    exemptions.
+  whatUserNeedsToKnow: >-
+    Elected councillors acting in their public capacity have a reduced
+    reasonable expectation of privacy in official correspondence. Private
+    individuals they correspond with — including developers with live
+    applications before the council — retain more protection, but that
+    protection does not extend to their professional conduct in pursuit
+    of the application. s.40(2) is partially absolute via the first data
+    protection principle; the analysis is whether a UK GDPR Article 6
+    basis supports disclosure (usually Article 6(1)(f) public-interest
+    legitimate interests in transparency). s.41 requires information to
+    have been provided in circumstances importing an obligation of
+    confidence — routine planning correspondence almost never does. s.36
+    is qualified, requires the reasonable opinion of the "Qualified
+    Person" (for a council, normally the Monitoring Officer), and then
+    a specific and concrete public-interest balance.
+  commonPitfalls: |
+    - Treating s.41 as a blanket protection for any non-public
+      correspondence — it requires an enforceable duty of confidence
+      and a common-law public-interest defence.
+    - Skipping the Qualified Person opinion and doing s.36 in the
+      information officer's head.
+    - Applying a generic public interest test ("transparency vs
+      candour") instead of weighing the specific content at issue.
+    - Refusing in full to avoid political fallout when partial
+      disclosure with targeted redactions is the lawful outcome.
+    - Forgetting that, for this scope, the Environmental Information
+      Regulations 2004 may bite if any of the correspondence relates
+      to measures affecting the environment (a planning application
+      very possibly does).
+
+emailSender:
+  name: Rachel Menzies
+  role: Head of Legal and Democratic Services, Hartwell Borough Council
+  email: rmenzies@hartwell.gov.uk
+emailSubject: "FOI-2026-0214 — Whitfield / Aldridge correspondence — advice before response"
+emailBody: |
+  Dear Aegis,
+
+  We have eight working days remaining on FOI-2026-0214 and I would
+  like a second opinion before we respond. The request is from Daniel
+  Parr, the political reporter at the Hartwell Observer. It reads:
+
+  > Please provide copies of all correspondence (email, letters,
+  > messages via any platform) between Councillor James Whitfield,
+  > Leader of the Council, and Mark Aldridge, Director of Aldridge
+  > Developments Ltd, between 1 January 2025 and today's date.
+
+  Contextually relevant: Aldridge Developments submitted a major
+  planning application in September last year for a 220-unit
+  mixed-use development on the former cold storage site off
+  Victoria Road. The application is still live and scheduled for
+  committee in six weeks. Cllr Whitfield chairs the policy
+  committee that has been reviewing the local plan housing targets.
+  There is no suggestion of impropriety at this stage — but the
+  reporter's interest is plainly because the two things overlap in
+  time.
+
+  Our initial search has returned 47 items in scope. I have skimmed
+  them. They break down roughly as:
+
+  - 22 items are clearly ordinary council-leader correspondence:
+    meeting requests, redirections to planning officers, a handful
+    of public-facing statements being copied to Mr Aldridge as a
+    stakeholder.
+  - 14 items are responses from officers copied to the Leader and
+    to Mr Aldridge on specific queries about the application
+    process.
+  - 6 items are more direct exchanges between the Leader and Mr
+    Aldridge discussing the planning process, including two where
+    Mr Aldridge sets out arguments he thinks should persuade the
+    committee.
+  - 3 items are informal: one is a thank-you for dinner at a
+    charity fundraiser hosted by the developer's firm, two are
+    WhatsApp messages about a cricket match.
+  - 2 items contain what looks like genuinely commercially
+    sensitive material — a draft viability assessment that the
+    developer shared with the Leader "in confidence" before the
+    officer-facing viability review was finalised.
+
+  I am minded to:
+
+  - Release categories 1 and 2 in full.
+  - Release category 3 (the more direct exchanges) with the
+    developer's private mobile and personal email address redacted.
+  - Consider category 4 (the informal / social items) under s.40
+    and probably redact in full.
+  - Refuse category 5 (the draft viability) under s.41 and / or s.43.
+
+  I'm reasonably confident on categories 1, 2 and 4. I am less
+  confident on category 3 and category 5. Our Monitoring Officer
+  (James Okuma) has asked whether s.36 realistically adds anything
+  given the Leader will now expect anything he writes to a
+  developer could be released — he's not sure whether the prejudice
+  argument is still credible after the recent IC decisions in the
+  Winchester and North Hertfordshire cases.
+
+  Would you walk me through your analysis — exemption by exemption,
+  with a specific PIT for the qualified ones — and tell me where
+  my instinct is wrong or under-argued? We're due to brief the
+  Chief Executive on Wednesday.
+
+  Many thanks,
+
+  Rachel Menzies
+  Head of Legal and Democratic Services
+  Hartwell Borough Council
+
+supportingDocuments:
+  - name: "FOI-2026-0214 — request and scope summary.pdf"
+    type: pdf
+    excerpt: >-
+      The original request from the reporter, the internal scoping log,
+      and the category breakdown above. The in-scope item counts and
+      categorisation are those the user should treat as given.
+  - name: "Exemption triage working note.pdf"
+    type: document
+    excerpt: >-
+      A one-page officer working note considering s.40, s.41, s.36 and
+      s.43 at a high level. Leaves the public interest test blank.
+
+userTask: >-
+  Draft an advice memo back to Rachel. Take each exemption in turn and set
+  out the test, how it applies to the items on hand, and — for the
+  qualified ones — a concrete public interest test. Give a recommended
+  disposal for each of the five item categories. Flag anything you think
+  she should escalate to the Monitoring Officer or the Chief Executive
+  before responding.
+
+rubric:
+  - criterion: Exemption identification and absolute/qualified classification
+    maxPoints: 15
+    description: >-
+      Lists the exemptions engaged (at minimum s.40, s.41, s.36 — extra
+      credit for flagging s.43 for the viability assessment and EIR for
+      any environmentally-sensitive material) and correctly classifies
+      each as absolute or qualified with the right statutory basis.
+  - criterion: s.40(2) analysis — public-capacity vs. private individual
+    maxPoints: 20
+    description: >-
+      Distinguishes Cllr Whitfield (elected, acting in public capacity,
+      lower reasonable expectation of privacy) from Mr Aldridge (private
+      individual, but whose professional conduct in relation to a live
+      application attracts less protection than his personal contact
+      details). Applies UK GDPR Art 6(1)(f) / first data protection
+      principle correctly.
+  - criterion: s.41 confidence analysis
+    maxPoints: 15
+    description: >-
+      Applies the three-limb test (necessary quality of confidence,
+      obligation of confidence, unauthorised use / detriment) and the
+      common-law public-interest defence. Concludes that routine planning
+      correspondence does not engage s.41; the draft viability may or
+      may not depending on how it was shared and flagged.
+  - criterion: s.36 analysis with Qualified Person opinion
+    maxPoints: 15
+    description: >-
+      Identifies the Monitoring Officer as the Qualified Person, sets
+      out the prejudice test (candour / free and frank exchange), and
+      considers whether the IC's post-Winchester position narrows the
+      realistic scope of the exemption for this factual matrix.
+  - criterion: Public interest test — concrete, not boilerplate
+    maxPoints: 20
+    description: >-
+      Applies a specific PIT weighing the particular items at issue —
+      including the live planning application, the political salience,
+      the reporter's public-interest purpose, and the chilling-effect
+      counter-argument — rather than reciting generic transparency
+      language.
+  - criterion: Practical recommendation and escalation flags
+    maxPoints: 15
+    description: >-
+      Gives a clear per-category disposal (disclose / partially disclose /
+      withhold) and flags items that need sign-off (Monitoring Officer,
+      Chief Executive, political pre-brief) with reasoning for each.
+
+exemplarResponse: |
+  Dear Rachel,
+
+  Below is our analysis — exemption by exemption, then a per-category
+  recommendation. Your instinct on categories 1, 2 and 4 is right; I
+  would push you in a different direction on category 3 and I would
+  test category 5 harder than you have.
+
+  **1. Exemptions in play.** s.40(2) for third-party personal data
+  (partially absolute via the first data protection principle); s.41
+  for information provided in confidence (absolute, subject to the
+  common-law public-interest defence); s.36 for prejudice to effective
+  conduct of public affairs (qualified); s.43 for commercial
+  interests on the draft viability (qualified); and — depending on
+  how specific the correspondence gets about the site — EIR reg.
+  12(5)(f) may apply in place of s.41 for anything that is
+  environmental information. Treat EIR as an overlay, not an
+  alternative; if any items are environmental, the right regime is
+  EIR and the exemption structure shifts.
+
+  **2. s.40(2) — distinguish public capacity from private.** The
+  Information Commissioner's settled position is that councillors
+  acting in their official role have a reduced reasonable expectation
+  of privacy in their official correspondence, particularly on live,
+  contested matters where transparency underpins public confidence in
+  decision-making. Cllr Whitfield's name and official role are
+  plainly disclosable. Mr Aldridge's position is a real-world split:
+  his role as director of Aldridge Developments and his substantive
+  arguments about the application are professional conduct in
+  pursuit of a matter before the council — less protected. His
+  personal mobile, home address and anything about his private life
+  (the cricket, the dinner) are more protected and require redaction
+  or withholding.
+
+  **3. s.41 — narrower than it looks.** The three-limb test
+  (quality of confidence, obligation of confidence, unauthorised use
+  causing detriment) and the common-law PIT defence mean s.41 is
+  rarely available for planning correspondence. Officers routinely
+  tell developers at the outset that submissions form part of the
+  public process. That is the end of s.41 for anything the developer
+  submits through that process. The draft viability is the one live
+  candidate — and only if it was shared before entering the officer
+  viability review, marked as confidential, and received on that
+  basis. Check the cover note on the email that transmitted it. If
+  those conditions are met, s.41 is arguable; otherwise, s.43 is
+  the better fit.
+
+  **4. s.36 — narrower still after Winchester.** James is right to
+  be uneasy. The IC has been increasingly sceptical of s.36 claims
+  built on a generic "candour" argument where the correspondence is
+  between a councillor and a private applicant rather than between
+  internal decision-makers. The Qualified Person's reasonable
+  opinion is still required, and the test remains whether disclosure
+  "would, or would be likely to, prejudice" the free and frank
+  exchange of views. For categories 1, 2 and 3 I would not run s.36
+  at all — the prejudice claim is weak and the IC is unlikely to
+  uphold it. For the informal WhatsApp items (category 4) s.40 is
+  a cleaner route and s.36 adds nothing. If you want s.36 for the
+  draft viability, run it in the alternative to s.41 / s.43, not
+  instead of them.
+
+  **5. Public interest test — the live application is the hinge.**
+  In favour of disclosure: a live major application worth tens of
+  millions, a reporter pursuing a specific line of enquiry about
+  political influence over a planning decision, significant local
+  interest, the principle that elected members are accountable for
+  who they speak to as much as what they decide. In favour of the
+  qualified withholdings: the need for councillors to be able to
+  engage with applicants without every exchange becoming a headline
+  (real, but weakening as the process has known public scrutiny
+  built in); commercial sensitivity of viability inputs before the
+  officer review is complete. On balance, disclosure with targeted
+  redactions serves the public interest substantially better than
+  refusal. Refuse in full only the draft viability until the
+  officer review is finalised (we'd revisit then), and the
+  ancillary personal items.
+
+  **Per-category recommendation**:
+
+  1. **Official correspondence (22 items)** — disclose in full.
+  2. **Officer-copied process correspondence (14 items)** —
+     disclose in full, redacting Mr Aldridge's personal mobile and
+     personal email address where they appear in signature blocks.
+  3. **Direct Leader–Applicant exchanges (6 items)** — disclose in
+     full, redacting the same personal contact details. I would not
+     redact the substantive arguments Mr Aldridge put forward; they
+     go to the heart of what the reporter is asking about.
+  4. **Informal / social items (3 items)** — refuse under s.40(2),
+     with a short explanation that these are personal items
+     unrelated to council business. Do not run s.36 on these.
+  5. **Draft viability (2 items)** — refuse under s.41 if the
+     confidentiality conditions are met on the face of the emails,
+     otherwise s.43 with PIT. Note expressly that the position will
+     be revisited when the officer viability review is published.
+
+  **Escalation**:
+
+  - Monitoring Officer: formal Qualified Person opinion if you retain
+    s.36 anywhere; my advice is not to, but that decision is his.
+  - Chief Executive: political pre-brief before release given the
+    reporter's platform — substance of the decision should not
+    change, but the communications handling should be coordinated.
+  - Cllr Whitfield: should be notified before release that his
+    official correspondence will be disclosed; he has no veto but
+    it is good practice.
+
+  Happy to dial in on Wednesday with the CX if that helps.
+
+  Kind regards,
+  Aegis Privacy Partners

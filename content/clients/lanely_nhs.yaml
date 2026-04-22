@@ -1,0 +1,22 @@
+id: lanely_nhs
+name: Lanely NHS Foundation Trust
+tier: 3
+sector: Acute NHS Foundation Trust
+description: >-
+  A large teaching hospital trust in the north of England covering three
+  hospital sites, around 1.1m patient contacts per year, a busy emergency
+  department, and a substantial clinical-research portfolio. In-house IG,
+  Caldicott Guardian, and Research Office functions exist; Aegis is used
+  for high-stakes scenarios — reportable breaches, court-ordered
+  disclosures, s.251 applications, data-sharing for public-health
+  emergencies, and research-partner agreements.
+logoInitials: LN
+brandColour: "#005EB8"
+regulatoryContext:
+  - UK GDPR
+  - DPA 2018 (incl. Schedule 3 Part 1)
+  - NHS Act 2006 (s.251)
+  - Common law duty of confidence
+  - Caldicott Principles
+  - Human Tissue Act 2004
+  - Health Research Authority / REC framework

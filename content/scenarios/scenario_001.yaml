@@ -1,0 +1,262 @@
+id: scenario_001
+tier: 1
+client: bramble_lane_primary
+skill: sar_handling
+difficulty: straightforward
+title: Parent SAR for child's records — separated parents
+timeLimitMinutes: 25
+xpBase: 50
+
+briefing:
+  requestType: >-
+    A parent is asking for all records the school holds about their child.
+    A parallel statutory right also applies: the Education (Pupil Information)
+    (England) Regulations 2005 give a parent the right to access their child's
+    educational record on a shorter 15-school-day timescale. Both regimes need
+    to be engaged at once.
+  whatUserNeedsToKnow: >-
+    The data subject is the child, not the parent — the parent is exercising
+    rights on the child's behalf. For a primary-age child this is almost
+    always appropriate, but you still need to verify who the requester is and
+    that they hold parental responsibility. Where parents are separated and
+    both hold PR, neither can veto the other's access to education records,
+    but you should consider whether any part of the file engages the
+    safeguarding exemption (DPA 2018 Schedule 3, Part 5) — for example,
+    information about allegations, social-care involvement, or anything a
+    reasonable person would believe could cause serious harm to the child.
+    Third-party personal data (teachers' names in isolation are usually fine;
+    comments about other pupils are not) must be identified and either
+    redacted or justified for disclosure.
+  commonPitfalls: |
+    - Handling it only as a UK GDPR SAR and missing the 15-school-day
+      statutory deadline under the Education (Pupil Information) Regs 2005.
+    - Assuming a parent with parental responsibility has an automatic right
+      to everything, without considering the safeguarding exemption.
+    - Releasing records containing comments about other pupils without
+      redaction, on the basis that "the parent needs the full picture".
+    - Telling the school to consult the other parent before releasing, when
+      there is no legal basis to do so.
+    - Starting the clock from the wrong date — it runs from when the school
+      has enough information to act on the request, not from first contact.
+
+emailSender:
+  name: Linda Harwood
+  role: School Business Manager, Bramble Lane Primary School
+  email: l.harwood@bramblelane.sch.uk
+emailSubject: "Urgent — parent asking for 'everything' about her daughter in Year 3"
+emailBody: |
+  Good morning,
+
+  Sorry to land this on you on a Friday afternoon. We had a phone call
+  from Mrs Caroline Pickering yesterday afternoon asking for "every piece
+  of paper and every email you have about my daughter Sophie". She's
+  followed up with an email this morning (pasted at the bottom) — she
+  wants a response by Monday.
+
+  Some context that's making me nervous:
+
+  Sophie is in Year 3. Her parents separated about fifteen months ago
+  and have been in and out of family court since — they both still hold
+  parental responsibility as far as I'm aware. Caroline is the
+  non-resident parent. The resident parent, Mr Daniel Pickering, has
+  previously asked us in writing not to share pastoral information with
+  his ex-wife. Sophie has had two sessions with the ELSA (our emotional
+  literacy support assistant) in the last term and the ELSA's notes do
+  reference both parents.
+
+  We also have a safeguarding entry on Sophie's record from last
+  September after one of the teachers logged a concern about a bruise
+  — it went to a MASH referral, was closed with no further action, but
+  the CPOMS entry is still there.
+
+  I've pulled together what I think is in scope: her education record
+  on SIMS, safeguarding entries on CPOMS, ELSA session notes, two
+  recent reports, and roughly 80 emails between parents and the school
+  over the last 18 months. It's going to take a lot of work to go
+  through.
+
+  Can you tell me:
+
+  1. Do I have to give Caroline access, given the other parent's
+     written objection?
+  2. What do I do about the ELSA notes and the safeguarding entry?
+  3. What's our actual deadline, and when does the clock start?
+  4. Is there anything I can push back on about the scope of what
+     she's asking for — "everything" feels enormous.
+
+  Any steer by Monday morning would be very gratefully received.
+
+  Many thanks,
+
+  Linda Harwood
+  School Business Manager
+  Bramble Lane Primary School
+
+  ---
+
+  From: caroline.pickering@example.com
+  To: admin@bramblelane.sch.uk
+  Subject: Records request
+
+  To whom it may concern,
+
+  I am Sophie Pickering's mother (Year 3, Mrs Oduya's class). I am
+  writing to ask for copies of every record you hold about her, going
+  back to when she started at the school. This includes but is not
+  limited to her school file, any notes made by teachers or support
+  staff, emails between the school and either me or her father
+  mentioning her, and any safeguarding or welfare records.
+
+  Please confirm receipt and let me know when I can expect the records.
+
+  Caroline Pickering
+
+supportingDocuments:
+  - name: "School data map — pupil records (2024 refresh).pdf"
+    type: document
+    excerpt: >-
+      One-page summary of the categories of pupil data the school holds,
+      where it lives, and the named retention schedule. CPOMS is flagged
+      as a separate system with restricted internal access.
+  - name: "Letter from Mr Pickering (June 2024).pdf"
+    type: pdf
+    excerpt: >-
+      Letter from the father asking the school not to share Sophie's
+      pastoral information with the mother, citing "ongoing family court
+      proceedings". Does not cite a court order.
+
+userTask: >-
+  Draft an advice email back to Linda. Answer her four questions explicitly,
+  set out a clear step-by-step the school can execute without further legal
+  advice, and provide template wording she can send to Mrs Pickering by
+  Monday.
+
+rubric:
+  - criterion: Identity and parental-responsibility verification
+    maxPoints: 20
+    description: >-
+      Advises the school to verify Caroline Pickering's identity and
+      confirms that PR is held — and correctly concludes that the father's
+      written objection does not override the mother's statutory right
+      absent a court order restricting it.
+  - criterion: Dual regime (UK GDPR + Education (Pupil Information) Regs 2005)
+    maxPoints: 20
+    description: >-
+      Identifies both regimes as engaged, applies the shorter 15-school-day
+      deadline to the educational record, and correctly states the clock
+      starts once the school has sufficient information to identify the
+      scope and the requester.
+  - criterion: Third-party data redaction approach
+    maxPoints: 15
+    description: >-
+      Distinguishes staff acting in their professional capacity (generally
+      disclosable) from identifiable third parties including other pupils
+      and non-requesting family members (redact unless disclosure is
+      reasonable), and applies the proportionality test from Durant.
+  - criterion: Safeguarding / serious-harm exemption
+    maxPoints: 15
+    description: >-
+      Considers DPA 2018 Schedule 3 Part 5 for the safeguarding entry and
+      the ELSA notes; concludes on each item whether the "serious harm"
+      test is met and documents the reasoning.
+  - criterion: Scope clarification with proportionate steps
+    maxPoints: 15
+    description: >-
+      Pushes back on "everything" proportionately — not by refusing, but
+      by offering a clarifying dialogue (categories, date range, urgent
+      vs. historic) and being clear the clock may pause only where
+      necessary and in line with ICO guidance.
+  - criterion: Actionable output for the school
+    maxPoints: 15
+    description: >-
+      The advice is structured, numbered, and immediately usable by a
+      non-lawyer. Includes template wording for the acknowledgement
+      letter, a named-owner checklist, and an escalation point if family
+      court proceedings produce a contradicting order.
+
+exemplarResponse: |
+  Dear Linda,
+
+  Thank you for the full picture — it genuinely helps. Short answer to
+  your four questions first, then the checklist and draft wording.
+
+  **1. Yes, you have to respond. The other parent's objection does not
+  block it.** Both Caroline and Daniel Pickering hold parental
+  responsibility for Sophie, so either of them can exercise her data
+  protection rights on her behalf in relation to her school records. A
+  parent's written request that the school withhold pastoral
+  information from the other parent is not, on its own, a legal bar —
+  absent a Family Court order that specifically restricts disclosure.
+  If such an order exists we need sight of it before we proceed;
+  please ask Daniel directly. In its absence, we respond to Caroline.
+
+  **2. Handle the safeguarding entry and ELSA notes individually, not
+  as a block.** For the CPOMS entry about the September concern: apply
+  the DPA 2018 Schedule 3 Part 5 "serious harm" exemption and ask
+  whether disclosure would be likely to cause serious harm to Sophie's
+  physical or mental health. A closed MASH referral with no further
+  action, where the mother is not the subject of the concern, does
+  not usually meet that test — so it is most likely disclosable, with
+  redaction of the reporter's name if they are not a staff member
+  acting in a professional capacity. Document the reasoning on file.
+  For the ELSA notes: the same test; where the notes reference the
+  other parent's conduct, redact identifying detail about him.
+
+  **3. You have two clocks running in parallel.** The UK GDPR gives
+  you one calendar month (extendable by two months for complexity).
+  The Education (Pupil Information) (England) Regulations 2005 give
+  you fifteen school days to provide the educational record — which
+  is the stricter of the two and should govern the pace. Both clocks
+  start when the school has enough information to identify the
+  requester and the scope, which for Caroline's email is today once
+  ID is verified. You will not make 15 school days comfortably without
+  starting now.
+
+  **4. You can narrow the scope — politely.** "Everything" is a
+  legitimate starting point, but the ICO's guidance allows you to ask
+  for clarification where the request covers a very large volume and
+  where clarification will genuinely help you respond. Offer Caroline
+  a short list of record categories (educational record, pastoral /
+  ELSA, safeguarding, parent-school correspondence) and ask her to
+  confirm whether any can be excluded or prioritised. Do not treat
+  non-response as permission to narrow — if she insists on all of it,
+  run all of it. The 15-school-day clock does not pause for
+  clarification.
+
+  **Checklist for the next 72 hours**:
+
+  1. Verify Caroline's identity (photo ID + matched address).
+  2. Send the acknowledgement letter today (draft below).
+  3. Freeze the relevant record set now to avoid edit drift during
+     the search.
+  4. Ask Daniel for sight of any court order restricting disclosure
+     — give him 48 hours.
+  5. Triage the 80 emails by keyword ("Sophie") and reviewer.
+  6. Apply the serious-harm test to CPOMS and ELSA items on a
+     per-item basis; keep written reasoning.
+  7. Redact third-party pupil references; leave staff names visible
+     where they were acting in professional capacity.
+  8. Escalate to me if the safeguarding item surfaces anything we
+     didn't already know, or if Daniel produces an order.
+
+  **Draft acknowledgement wording**:
+
+  > Dear Mrs Pickering,
+  >
+  > Thank you for your email. We acknowledge your request for access
+  > to records the school holds about your daughter Sophie. We will
+  > provide her educational record within fifteen school days (by
+  > [date]) and her wider file within one calendar month of our
+  > receipt of appropriate identification. To help us prepare the
+  > response, please could you confirm whether the request covers all
+  > categories of record or whether specific categories would be most
+  > useful to you first — this does not pause our deadline but helps
+  > us prioritise.
+  >
+  > Yours sincerely, …
+
+  I'm happy to take a look at the draft bundle before it goes, and
+  to join a quick call if anything changes over the weekend.
+
+  Kind regards,
+  Aegis Privacy Partners

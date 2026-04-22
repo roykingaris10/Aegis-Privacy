@@ -1,0 +1,20 @@
+id: silverbrook_care
+name: Silverbrook Care Group
+tier: 2
+sector: Residential care for older adults
+description: >-
+  A mid-sized residential care provider running eleven homes, including three
+  registered for dementia nursing. Around 520 residents. Frequent interaction
+  with families, safeguarding authorities, and CQC inspectors. Typical queries
+  involve SARs from relatives, safeguarding disclosures to local authority
+  adult-social-care teams, Schedule 3 Part 4 exemptions, court orders relating
+  to disputed deputyships, and Mental Capacity Act best-interest decisions.
+logoInitials: SC
+brandColour: "#6F8F6A"
+regulatoryContext:
+  - UK GDPR
+  - DPA 2018 (incl. Schedule 3 Parts 2 & 4)
+  - Care Act 2014
+  - Mental Capacity Act 2005
+  - CQC Fundamental Standards
+  - Common law duty of confidence

@@ -1,0 +1,383 @@
+id: scenario_003
+tier: 3
+client: meridian_capital
+skill: dpia_authoring
+difficulty: contested
+title: AI-driven due-diligence tool — DPIA and transfer posture
+timeLimitMinutes: 50
+xpBase: 200
+
+briefing:
+  requestType: >-
+    Pre-deployment advice on a high-risk AI system. An FCA-regulated
+    investment manager wants to deploy a US-based SaaS that ingests
+    public-source data on individuals (company founders, executives)
+    and produces composite "principal risk scores" used to shape
+    investment-committee papers. Engages Article 35 (DPIA), Article 22
+    (automated decision-making), data minimisation, lawful basis and
+    special category data, transparency, international transfers, and
+    FCA touchpoints on model risk management.
+  whatUserNeedsToKnow: >-
+    This is not a single question — it is a stacked risk assessment.
+    Article 35 is triggered on multiple limbs and a DPIA is mandatory;
+    the substantive question is what the DPIA should actually contain
+    and who should own each section. Article 22 bites if the score is
+    materially determinative of an investment decision notwithstanding
+    nominal human review, and the mitigations required are specific
+    (documented override logs, explainability output, periodic audit
+    of decisions that diverge from the score). "Public" data is not
+    lawful-to-process by default — the purpose, combination, and data
+    subjects' reasonable expectations all matter. Special category
+    data will be ingested from social sources whether or not it is
+    sought; a data-filtering gate is needed before ingestion, not
+    after. For international transfers, test whether Vela is
+    DPF-certified for the UK-US Data Bridge; if not, the fallback is
+    IDTA plus a Transfer Risk Assessment with concrete mitigations.
+    The FCA overlay (SYSC 6.1, SUP 16, model-risk-management
+    expectations) is not separate from the DPIA — it runs alongside
+    and the DPIA should reference it explicitly.
+  commonPitfalls: |
+    - Treating human IC sign-off as automatically defeating Article 22
+      without examining the actual influence of the score on decisions.
+    - Accepting "public source only" as a lawful-basis answer without
+      scrutinising purpose compatibility and data-subject expectations.
+    - Defaulting straight to SCCs / IDTA without checking DPF status
+      and without a documented TRA / TIA.
+    - Writing a DPIA that reads as a compliance artefact rather than
+      a design input — owners not named, mitigations not measurable.
+    - Missing the FCA overlay entirely, or treating it as a separate
+      exercise that runs after the DPIA.
+    - Glossing over special category data ingestion from social-media
+      scraping.
+
+emailSender:
+  name: Catherine Pembroke
+  role: Chief Operating Officer, Meridian Capital Partners
+  email: c.pembroke@meridiancap.co.uk
+emailSubject: "Vela DDX — risk posture ahead of pilot go-live in three weeks"
+emailBody: |
+  Dear Aegis,
+
+  I need your view on a deployment that's on a tight timeline. Tom
+  Rankin (Head of Compliance) and I have been looking at this for
+  six weeks and we want a clean risk posture before the Investment
+  Committee signs off the pilot.
+
+  The tool is Vela DDX, supplied by Vela Analytics Inc., a
+  Delaware-incorporated SaaS vendor based in New York. Two of our
+  peers (one US-headquartered, one European) have had it live for
+  six to twelve months; we have been the laggards and there is real
+  competitive pressure to deploy. The pilot is scheduled for three
+  weeks today.
+
+  What it does: Vela DDX ingests data about named individuals — the
+  founders and senior executives of companies we are considering as
+  investment targets — from public sources. Their documentation
+  lists Companies House, LinkedIn, major-jurisdiction court and
+  litigation records, sanctions lists, news archives, press
+  releases, professional regulator registers, and "selected social
+  media signals". It builds an individual profile per subject and
+  produces a composite "principal risk score" on a 0–100 scale
+  covering financial track record, regulatory exposure, and
+  reputational signal. The score is fed into the front page of
+  every IC deck from Q3 onwards. The IC retains formal decision
+  authority — but I want to be honest: a deal with a red Vela score
+  will be very hard to approve, and a green score will be taken as
+  a positive.
+
+  Commercial context: pilot is free for 90 days, committed pricing
+  thereafter is £340k per annum. We are the only UK-regulated
+  customer at pilot stage; most of their book is US investment
+  banks.
+
+  Tom has three specific concerns:
+
+  1. Whether a DPIA is actually required, or whether our vendor
+     assessment plus the Vela "AI model card" is enough on its own.
+     (My view: it is not enough.)
+  2. Whether Article 22 is a live issue given the IC sign-off.
+  3. Whether we can rely on the UK-US Data Bridge or need to run
+     the IDTA plus a TRA. Vela say they are "covered by the DPF" but
+     Tom has not been able to find their name in the certification
+     list.
+
+  Mine are wider:
+
+  4. I am uncomfortable with the social-media signals piece. I do
+     not want us ingesting political opinions, protected-characteristic
+     data, or health information about founders. What controls
+     should we be asking for?
+  5. How do we square this with FCA SYSC / model-risk-management
+     expectations? The firm-level obligations sit with me and Tom,
+     but the DPIA needs to speak to them.
+  6. What does the DPIA actually need to contain, and who should
+     own each section? I can't chase seven different people.
+
+  I have attached the draft Vendor Assessment questionnaire Vela
+  returned to us last month, and their "AI model card" which is
+  eight pages of colour diagrams. It is not a DPIA.
+
+  We have budget and appetite to do this properly. I want a
+  defensible posture in front of both our DPO (you) and the FCA if
+  they ever ask. Please push back wherever I am being naïve.
+
+  Kind regards,
+
+  Catherine Pembroke
+  Chief Operating Officer
+  Meridian Capital Partners
+
+supportingDocuments:
+  - name: "Vela DDX — Vendor Security & Privacy Assessment responses.pdf"
+    type: pdf
+    excerpt: >-
+      Returned questionnaire. Confirms SOC 2 Type II, ISO 27001,
+      encryption in transit and at rest. Data residency is US-only.
+      The "sub-processors" list includes an Indian annotation provider
+      for "training data enrichment". No DPA attached. No mention of
+      DPF certification in the body; a marketing slide at the end
+      asserts "DPF-ready".
+  - name: "Vela DDX — AI model card v2.pdf"
+    type: document
+    excerpt: >-
+      Eight-page vendor document. Describes sources and weighting in
+      general terms, presents aggregate accuracy claims against an
+      internal benchmark, and contains a one-paragraph fairness
+      statement. No explainability output, no per-subject reasoning,
+      no information on how errors are corrected post-scoring.
+  - name: "Peer use cases (Vela marketing).pdf"
+    type: pdf
+    excerpt: >-
+      Marketing collateral naming three US investment banks as
+      reference customers and referencing "European deployments"
+      without naming them.
+
+userTask: >-
+  Write a structured advice memo to Catherine. Confirm whether a DPIA is
+  required (and, if so, that it is mandatory rather than optional);
+  outline the DPIA's structure and section owners; answer Tom's three
+  specific questions and Catherine's three wider ones; set out the
+  international-transfer posture you recommend; and state clearly
+  whether Meridian should proceed to pilot in three weeks, proceed with
+  conditions, or defer.
+
+rubric:
+  - criterion: Article 35 trigger analysis
+    maxPoints: 10
+    description: >-
+      Identifies multiple Article 35 triggers (systematic profiling with
+      significant effects, innovative technology, large-scale processing,
+      data combination) and confirms a DPIA is mandatory, not
+      discretionary.
+  - criterion: Data minimisation and source scoping
+    maxPoints: 15
+    description: >-
+      Does not accept "public sources" as lawful by default. Requires
+      source-by-source justification tied to purpose (Companies House
+      and regulatory registers strong; social-media signals weak and
+      gated).
+  - criterion: Article 22 analysis and mitigations
+    maxPoints: 15
+    description: >-
+      Examines whether the score is materially determinative of the
+      investment decision despite IC sign-off. Proposes specific
+      mitigations (documented override logs, explainability per
+      subject, periodic audit of divergences).
+  - criterion: Lawful basis and special category data
+    maxPoints: 15
+    description: >-
+      Applies Article 6(1)(f) with a structured LIA; flags the weak
+      reasonable-expectation limb. Addresses inadvertent ingestion of
+      Article 9 data and requires a pre-ingestion filtering gate with
+      explicit scope.
+  - criterion: Transparency analysis
+    maxPoints: 10
+    description: >-
+      Applies Article 14 to indirectly-collected data, considers the
+      disproportionate-effort exemption with the ICO's conditions, and
+      allocates the obligation between vendor and controller.
+  - criterion: International transfer posture
+    maxPoints: 15
+    description: >-
+      Confirms or disproves Vela's DPF status; if DPF-certified, states
+      the Data Bridge basis cleanly; if not, defaults to IDTA plus
+      TRA with concrete mitigations addressing FISA 702 exposure,
+      encryption, and access logging.
+  - criterion: DPIA structure, ownership, and FCA touchpoints
+    maxPoints: 15
+    description: >-
+      Recommends the DPIA sections, names the owner for each, and
+      explicitly cross-references FCA expectations on model risk
+      management (SYSC 6.1, relevant SUP 16 reporting, the PRA's
+      model risk framework where applicable).
+  - criterion: Decision recommendation with residual-risk rating
+    maxPoints: 5
+    description: >-
+      Gives a clear recommendation on the three-week pilot decision —
+      proceed / proceed with conditions / defer — with a concise
+      residual-risk rating and the specific conditions that would
+      change the recommendation.
+
+exemplarResponse: |
+  Dear Catherine,
+
+  The short recommendation is at the bottom of the memo; the analysis
+  supports it. Your instinct that the Vela materials are not a DPIA
+  is correct.
+
+  **Is a DPIA required?** Yes, and it is mandatory rather than
+  optional. Vela DDX engages at least four Article 35 triggers:
+  systematic evaluation of individuals producing effects on them
+  (influence over investment decisions is a "similarly significant"
+  effect even where not formally "legal"); innovative technology
+  (AI-driven scoring combining public sources); matching or
+  combining datasets that individuals did not consent to being
+  combined; and large-scale processing. You will not get a
+  defensible posture without a full DPIA. The vendor's AI model
+  card describes a product; it does not assess Meridian's
+  processing of personal data about named individuals.
+
+  **Article 22 — yes, live.** IC sign-off does not automatically
+  defeat Article 22. The ICO's guidance and the consistent
+  regulator line post-Schrems II is that a decision is "solely
+  automated" where human involvement is nominal — rubber-stamping,
+  box-ticking, or where the human is practically unable to reach a
+  different decision. On your description, a red Vela score will
+  be very hard to approve and a green one will be taken as positive
+  without reassessment. That is the definition of material
+  influence. To defeat Article 22 credibly you need:
+
+  - documented override logs for every deal where the IC's
+    disposition diverges from the score band;
+  - per-subject explainability output accompanying each score,
+    showing the top contributors and the uncertainty;
+  - a quarterly audit of divergences that looks for systematic
+    over-reliance or systematic override, with findings reported
+    to the Risk & Compliance Committee;
+  - a plain-English statement in IC papers that the score is a
+    decision support, not a decision.
+
+  If you cannot commit to all four, assume Article 22 applies and
+  the firm must offer the information, meaningful human review,
+  and contest rights under Article 22(3).
+
+  **Data minimisation and source scope.** "Public data" is not a
+  lawful basis; it is an indicator of likelihood of breach of the
+  first principle. Take the sources one at a time:
+
+  - Companies House, regulatory registers, sanctions lists —
+    strong public-interest and purpose alignment; easy to
+    justify.
+  - Major-jurisdiction court and litigation records — justifiable
+    for risk purposes, with rolling relevance window (ten years
+    is a typical cap).
+  - News archives and press releases — justifiable; time-boxed
+    and source-curated rather than open-ended.
+  - LinkedIn — justifiable for professional history; do not
+    ingest posts, endorsements, or personal network information.
+  - "Selected social media signals" — the weakest. If you cannot
+    get a specific list of sources and signals with purpose
+    justification, do not ingest this category. This is also
+    where the Article 9 risk lives.
+
+  **Article 6 lawful basis and Article 9 special category data.**
+  Article 6(1)(f) legitimate interests is the only plausible
+  route. Run a full LIA; the reasonable-expectation limb is the
+  weak one — named individuals do not expect a US SaaS to be
+  scoring them for a UK investment decision they do not know is
+  being considered. You can still land the LIA but the
+  safeguards you impose are what make it lawful: tight source
+  scope, Article 22 mitigations above, short retention, and
+  audit. For Article 9, social-media ingestion will inevitably
+  surface political opinions, health signals, and in some cases
+  inferred sexual orientation or religious belief. There is no
+  clean Article 9 condition for commercial investment purposes.
+  The control must therefore be a **pre-ingestion filtering
+  gate** with an explicit prohibited-categories list, enforced
+  contractually on Vela and verified by audit. "Post-ingestion
+  filtering" is not an answer — the special category data has
+  already been processed by then.
+
+  **Transparency.** Article 14 applies because the data is not
+  collected from the data subject. The disproportionate-effort
+  exemption is available in principle, but the ICO requires you
+  to demonstrate you have actually balanced the burden against
+  the impact; for up to a few hundred individuals a year the
+  effort is not disproportionate. A layered approach works: a
+  public privacy notice on Meridian's website describing the
+  processing at category level, and a direct notice triggered at
+  the point the individual becomes relevant (for example, if a
+  deal proceeds to offer). Allocate the controller-facing
+  obligation to Meridian; Vela is a processor for this purpose.
+
+  **International transfer posture.** Vela's claim that they
+  are "DPF-ready" is not sufficient. The Data Bridge requires
+  the recipient to be listed as an active participant on the
+  Data Privacy Framework programme by the US Department of
+  Commerce, with active self-certification for HR data and
+  non-HR data as relevant. If Tom cannot find Vela on the
+  certified list, they are not DPF-certified — treat them as
+  not covered. Fallback: the ICO's International Data Transfer
+  Agreement (IDTA) with a Transfer Risk Assessment. The TRA
+  needs to address FISA 702 exposure (Vela is a communications
+  service provider under US law if we look through the
+  definition carefully), encryption in transit and at rest with
+  keys managed in the UK where possible, access logging with
+  Meridian visibility, and a commitment from Vela to challenge
+  any US government access request where lawfully permitted
+  and to notify the firm. The Indian annotation sub-processor
+  requires its own onward-transfer basis — likely an IDTA
+  onward transfer clause.
+
+  **FCA overlay.** This is not a separate workstream. SYSC
+  6.1.1R on systems and controls, SYSC 7.1 on risk management,
+  the regulator's ongoing model-risk-management expectations,
+  and the PRA / FCA joint work on AI in financial services all
+  bear on this deployment. The DPIA should reference these
+  touchpoints explicitly: the Article 22 mitigations listed
+  above double as your SYSC controls, the quarterly divergence
+  audit is the model-risk-management artefact, and the
+  firm-level risk ownership sits with you and Tom jointly.
+
+  **DPIA structure and owners (suggested)**:
+
+  1. Purpose, scope, lawful basis — Data Protection Officer (Aegis).
+  2. Information flows and source-by-source justification — Tom.
+  3. Necessity and proportionality — Aegis with Tom.
+  4. Article 22 analysis and mitigations — Tom with Head of
+     Investment Ops.
+  5. Special category data gate — Aegis.
+  6. International transfer posture and TRA — Aegis.
+  7. FCA controls map — Tom.
+  8. Risks to data subjects — Aegis.
+  9. Mitigations, residual risk, sign-off — Catherine as
+     accountable executive.
+
+  **Recommendation.** Proceed with conditions, not on the
+  current timetable. A three-week pilot go-live is not
+  defensible. Specifically, the pilot should not start until:
+
+  - DPIA is drafted, reviewed, and sign-off recorded at
+    Catherine / Tom level.
+  - Vela's actual DPF certification status is confirmed in
+    writing; if not certified, IDTA and TRA are signed before
+    data flows.
+  - The social-media signals category is either excluded or
+    scoped to a signed list with Article 9 filtering in place.
+  - Vela contract amended to include the Article 22 support
+    (explainability output, override logging) and the Article 14
+    allocation.
+  - The divergence-audit process is agreed and the first
+    reporting cadence scheduled.
+
+  If Vela will not commit to the contractual changes or the
+  DPF position cannot be confirmed, defer rather than proceed.
+  Residual risk: medium at pilot on the recommended posture;
+  high at pilot on the current posture; medium-low at scale
+  with twelve months of audit evidence.
+
+  I'd like a short follow-up call with you and Tom to lock the
+  ownership and the timetable.
+
+  Kind regards,
+  Aegis Privacy Partners
