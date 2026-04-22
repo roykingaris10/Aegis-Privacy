@@ -9,85 +9,108 @@ import {
 } from "@/components/dashboard/todays-inbox";
 import { RecentAchievements } from "@/components/dashboard/recent-achievements";
 import { WeeklyChallenge } from "@/components/dashboard/weekly-challenge";
-import { emptySkillProgress } from "@/lib/skills";
 
-// MOCK DATA — will be replaced with DB reads in Sprint 2.
-const MOCK = {
-  user: { level: 1, totalXp: 0, currentStreak: 0, longestStreak: 0 },
-  skillProgress: emptySkillProgress(),
-  achievements: [] as never[],
-  scenarios: [
-    {
-      id: "scenario_001",
-      client: "Bramble Lane Primary School",
-      clientInitial: "BL",
-      subject: "Parent request for Year 3 pupil records",
-      preview:
-        "A parent has asked for a copy of all information the school holds about their child. Please advise on scope, identity verification, and deadline.",
-      tier: 1,
-      skillLabel: "SAR Handling",
-      xpReward: 50,
-      deadlineLabel: "Due in 28 days",
-    },
-    {
-      id: "scenario_stub_2",
-      client: "Fernwood Dental Practice",
-      clientInitial: "FD",
-      subject: "Email sent to wrong patient",
-      preview:
-        "A clinician emailed treatment details to the wrong patient this morning. Triage whether this is a reportable breach.",
-      tier: 1,
-      skillLabel: "Breach Response",
-      xpReward: 50,
-      deadlineLabel: "72-hour clock",
-    },
-    {
-      id: "scenario_002",
-      client: "Hartwell Borough Council",
-      clientInitial: "HC",
-      subject: "FOI: Highways contract spend 2023–25",
-      preview:
-        "Journalist has requested contract values and supplier names. Consider s.43 commercial interests and the public-interest test.",
-      tier: 2,
-      skillLabel: "FOI Decisions",
-      xpReward: 100,
-      deadlineLabel: "Due in 14 days",
-    },
-    {
-      id: "scenario_003",
-      client: "Meridian Capital Partners",
-      clientInitial: "MC",
-      subject: "US vendor accessing investor KYC records",
-      preview:
-        "Operations want to onboard a US-based analytics vendor. Advise on transfer mechanism post-adequacy, TIA, and SCC module.",
-      tier: 3,
-      skillLabel: "International Transfers",
-      xpReward: 200,
-      deadlineLabel: "Due in 7 days",
-    },
-  ] as const satisfies ReadonlyArray<InboxScenario>,
-};
+import { getCurrentUser } from "@/lib/current-user";
+import { prisma } from "@/lib/db";
+import { getAllScenarios } from "@/lib/scenarios";
+import { requireClientById } from "@/lib/clients";
+import { emptySkillProgress, SKILLS, type SkillKey } from "@/lib/skills";
 
-export default function DashboardPage(): React.ReactElement {
+export const dynamic = "force-dynamic";
+
+function coerceSkillProgress(raw: unknown) {
+  const base = emptySkillProgress();
+  if (!raw || typeof raw !== "object" || Array.isArray(raw)) return base;
+  const map = raw as Record<string, { level?: number; xp?: number }>;
+  for (const skill of SKILLS) {
+    const entry = map[skill.key];
+    if (
+      entry &&
+      typeof entry.level === "number" &&
+      typeof entry.xp === "number"
+    ) {
+      base[skill.key] = { level: entry.level, xp: entry.xp };
+    }
+  }
+  return base;
+}
+
+function coerceBadges(raw: unknown): string[] {
+  return Array.isArray(raw)
+    ? (raw.filter((b) => typeof b === "string") as string[])
+    : [];
+}
+
+function humanSkill(s: SkillKey): string {
+  return s
+    .split("_")
+    .map((w) => w[0].toUpperCase() + w.slice(1))
+    .join(" ");
+}
+
+function deadlineLabelFor(tier: 1 | 2 | 3): string {
+  if (tier === 1) return "Due in 28 days";
+  if (tier === 2) return "Due in 14 days";
+  return "Due in 7 days";
+}
+
+export default async function DashboardPage(): Promise<React.ReactElement> {
+  const user = await getCurrentUser();
+
+  // Scenarios for the "Today's inbox" preview — first 4 from the YAML loader
+  // joined with client data. Completed scenarios are deprioritised.
+  const completions = await prisma.scenarioCompletion.findMany({
+    where: { userId: user.id },
+    select: { scenarioId: true },
+  });
+  const completedIds = new Set(completions.map((c) => c.scenarioId));
+
+  const inbox: InboxScenario[] = getAllScenarios()
+    .filter((s) => !completedIds.has(s.id))
+    .slice(0, 4)
+    .map((s) => {
+      const client = requireClientById(s.client);
+      return {
+        id: s.id,
+        client: client.name,
+        clientInitial: client.logoInitials,
+        subject: s.emailSubject,
+        preview: s.briefing.requestType,
+        tier: s.tier,
+        skillLabel: humanSkill(s.skill),
+        xpReward: s.xpBase,
+        deadlineLabel: deadlineLabelFor(s.tier),
+      };
+    });
+
+  const skillProgress = coerceSkillProgress(user.skillProgress);
+  const badges = coerceBadges(user.badges);
+
   return (
     <div className="mx-auto flex max-w-7xl flex-col gap-4">
-      <LevelBanner totalXp={MOCK.user.totalXp} level={MOCK.user.level} />
+      <LevelBanner totalXp={user.totalXp} level={user.level} />
 
       <div className="grid gap-4 md:grid-cols-3">
         <StreakCounter
-          currentStreak={MOCK.user.currentStreak}
-          longestStreak={MOCK.user.longestStreak}
+          currentStreak={user.currentStreak}
+          longestStreak={user.longestStreak}
         />
         <div className="md:col-span-2">
-          <SkillRadarChart skillProgress={MOCK.skillProgress} />
+          <SkillRadarChart skillProgress={skillProgress} />
         </div>
       </div>
 
       <div className="grid gap-4 md:grid-cols-3">
         <div className="md:col-span-2">
-          <TodaysInbox scenarios={MOCK.scenarios} />
+          <TodaysInbox scenarios={inbox} />
         </div>
-        <RecentAchievements achievements={MOCK.achievements} />
+        <RecentAchievements
+          achievements={badges.map((b) => ({
+            id: b,
+            name: b,
+            earnedAtLabel: "",
+          }))}
+        />
       </div>
 
       <WeeklyChallenge
