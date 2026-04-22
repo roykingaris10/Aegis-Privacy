@@ -1,5 +1,7 @@
 import { PrismaClient, type Prisma } from "@prisma/client";
 
+import { getAllScenarios } from "../lib/scenarios";
+
 const prisma = new PrismaClient();
 
 const TEST_USER: Prisma.UserCreateInput = {
@@ -14,36 +16,6 @@ const TEST_USER: Prisma.UserCreateInput = {
   badges: [],
 };
 
-const STUB_SCENARIOS: Prisma.ScenarioCreateInput[] = [
-  {
-    id: "scenario_001",
-    title: "Parent SAR for pupil records",
-    tier: 1,
-    clientId: "bramble_lane_primary",
-    skill: "sar_handling",
-    difficulty: "straightforward",
-    contentPath: "content/scenarios/scenario_001.yaml",
-  },
-  {
-    id: "scenario_002",
-    title: "FOI request on contract spend",
-    tier: 2,
-    clientId: "hartwell_council",
-    skill: "foi_decisions",
-    difficulty: "complex",
-    contentPath: "content/scenarios/scenario_002.yaml",
-  },
-  {
-    id: "scenario_003",
-    title: "DPIA for M&A due diligence portal",
-    tier: 3,
-    clientId: "meridian_capital",
-    skill: "dpia_authoring",
-    difficulty: "contested",
-    contentPath: "content/scenarios/scenario_003.yaml",
-  },
-];
-
 async function main(): Promise<void> {
   await prisma.user.upsert({
     where: { email: TEST_USER.email },
@@ -51,11 +23,21 @@ async function main(): Promise<void> {
     create: TEST_USER,
   });
 
-  for (const scenario of STUB_SCENARIOS) {
+  const scenarios = getAllScenarios();
+  for (const s of scenarios) {
+    const data: Prisma.ScenarioCreateInput = {
+      id: s.id,
+      title: s.title,
+      tier: s.tier,
+      clientId: s.client,
+      skill: s.skill,
+      difficulty: s.difficulty,
+      contentPath: `content/scenarios/${s.id}.yaml`,
+    };
     await prisma.scenario.upsert({
-      where: { id: scenario.id },
-      update: {},
-      create: scenario,
+      where: { id: s.id },
+      update: data,
+      create: data,
     });
   }
 
