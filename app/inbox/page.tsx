@@ -1,12 +1,21 @@
 import * as React from "react";
-import { PlaceholderPage } from "@/components/placeholder-page";
+
+import { InboxClient } from "@/components/inbox/inbox-client";
+import type { InboxScenario } from "@/components/inbox/inbox-types";
+import { requireClientById } from "@/lib/clients";
+import { getAllScenarios } from "@/lib/scenarios";
 
 export default function InboxPage(): React.ReactElement {
+  const scenarios: ReadonlyArray<InboxScenario> = getAllScenarios().map(
+    (s) => ({
+      ...s,
+      clientRecord: requireClientById(s.client),
+    }),
+  );
+
   return (
-    <PlaceholderPage
-      title="Inbox"
-      sprint="Sprint 2"
-      description="Three-pane inbox with folders, scenario list, and reading pane. Coming in the next sprint."
-    />
+    <div className="mx-auto max-w-7xl">
+      <InboxClient scenarios={scenarios} />
+    </div>
   );
 }
