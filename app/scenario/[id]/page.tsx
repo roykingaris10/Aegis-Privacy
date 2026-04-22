@@ -1,18 +1,19 @@
 import * as React from "react";
-import { PlaceholderPage } from "@/components/placeholder-page";
+import { notFound } from "next/navigation";
 
-type ScenarioPageProps = {
+import { ScenarioWorkspace } from "@/components/scenario/scenario-workspace";
+import { requireClientById } from "@/lib/clients";
+import { getScenarioById } from "@/lib/scenarios";
+
+type Props = {
   params: { id: string };
 };
 
-export default function ScenarioPage({
-  params,
-}: ScenarioPageProps): React.ReactElement {
-  return (
-    <PlaceholderPage
-      title={`Scenario: ${params.id}`}
-      sprint="Sprint 2"
-      description="Scenario workspace with simulated email, response editor, and AI coach panel. Coming in Sprint 2."
-    />
-  );
+export default function ScenarioPage({ params }: Props): React.ReactElement {
+  const scenario = getScenarioById(params.id);
+  if (!scenario) notFound();
+
+  const client = requireClientById(scenario.client);
+
+  return <ScenarioWorkspace scenario={scenario} client={client} />;
 }
