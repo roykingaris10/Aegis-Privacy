@@ -1,0 +1,260 @@
+id: scenario_006
+tier: 1
+client: bramble_lane_primary
+skill: childrens_data
+difficulty: straightforward
+title: Teacher trialling a US learning app without approval — children's data
+timeLimitMinutes: 20
+xpBase: 50
+
+briefing:
+  requestType: >-
+    A teacher has started using a US-based adaptive learning app with
+    primary-age children without going through the school's data
+    protection process. The app collects children's real names and
+    tracks their learning patterns. This engages the ICO's Age
+    Appropriate Design Code, the Digital Use and Access Act 2024
+    (DUAA), lawful basis for processing children's data, international
+    transfers, and a DPIA screening question.
+  whatUserNeedsToKnow: >-
+    Children's data attracts enhanced protection under the UK GDPR and
+    the ICO's Age Appropriate Design Code (AADC). For under-13s,
+    consent must come from a person with parental responsibility
+    (Article 8). The AADC requires services likely to be accessed by
+    children to conform to fifteen standards including data
+    minimisation, default high-privacy settings, and transparency
+    appropriate to the child's age. The DUAA 2024 strengthens these
+    obligations with a statutory footing for age assurance. The school
+    is the controller; the app provider is a processor. An
+    international transfer to a US-based processor requires a transfer
+    mechanism — the UK-US Data Bridge (if the processor is DPF-
+    certified) or an IDTA/UK Addendum. The fact that accounts have
+    already been created means some processing has already occurred
+    without a lawful basis, and remediation is needed.
+  commonPitfalls: |
+    - Treating teacher enthusiasm as a substitute for a data
+      protection assessment — "it's educational" is not a lawful basis.
+    - Assuming parental consent is not required because the school has
+      a "legitimate interest" in education — this is arguable but weak
+      for a third-party US app processing children's data.
+    - Ignoring the international transfer entirely because "it's just
+      an app".
+    - Failing to address the accounts that already exist — the horse
+      has bolted and the advice must include remediation, not just
+      prevention.
+    - Over-reacting by demanding the school never use any edtech — the
+      goal is compliant use, not prohibition.
+
+emailSender:
+  name: Linda Harwood
+  role: School Business Manager, Bramble Lane Primary School
+  email: l.harwood@bramblelane.sch.uk
+emailSubject: "Teacher using a maths app with Year 4 — am I right to be worried?"
+emailBody: |
+  Good morning,
+
+  I hope you don't mind me coming back to you so soon after the
+  SAR business. Something came up in our staff meeting yesterday
+  that I want to get ahead of before it becomes a problem.
+
+  Mrs Oduya (Year 4 teacher, very enthusiastic, very tech-savvy)
+  told the staff meeting she has been trialling an app called
+  SparkMaths with her class for the last three weeks. She found it
+  online, signed up for a free teacher account, and had the children
+  create their own accounts using their first names and class email
+  addresses (which are firstname.surname@bramblelane.sch.uk — so
+  they contain the child's full name). She says it tracks which
+  topics each child struggles with and adapts the questions
+  accordingly.
+
+  I looked at the app's website over lunch. It's run by a company
+  in San Francisco. Their privacy policy mentions "COPPA
+  compliance" (which I think is an American thing?) but says nothing
+  about UK GDPR. It asks for the child's name, school name, age,
+  and year group on sign-up. Mrs Oduya says the children love it
+  and their maths scores have noticeably improved.
+
+  My concerns:
+
+  1. Nobody asked me, the Head, or any parent about this. Mrs Oduya
+     just went ahead. Is that actually a problem legally, or am I
+     being a jobsworth?
+
+  2. The children are 8 and 9 years old. Does the age thing make a
+     difference? I've heard about the "Age Appropriate Design Code"
+     but don't really know what it means for us.
+
+  3. It's an American company. Is there a data transfer issue? I
+     remember from our last training that sending data outside the
+     UK can be complicated.
+
+  4. If there IS a problem, what do I actually do about the
+     accounts that already exist? I can't un-create them.
+
+  5. If we wanted to use the app properly — Mrs Oduya is right
+     that it's a good tool — what would we need to do?
+
+  Thanks as ever for making this stuff comprehensible.
+
+  Linda
+
+supportingDocuments:
+  - name: "SparkMaths privacy policy — key extracts.pdf"
+    type: document
+    excerpt: >-
+      US-focused privacy policy. References COPPA and California
+      CCPA. No mention of UK GDPR, ICO, or international transfers.
+      States data is stored on AWS US-East. Says the company
+      "respects the privacy of children under 13" and obtains
+      "teacher consent on behalf of the school". Sub-processors
+      include a US analytics provider and a "learning insights
+      partner" in India.
+
+userTask: >-
+  Draft an advice email to Linda answering her five questions. Be
+  supportive rather than punitive — the teacher meant well — but be
+  clear about the legal position. Include a practical path to either
+  making the app compliant or winding it down, and template wording
+  for a letter to parents.
+
+rubric:
+  - criterion: DUAA and Age Appropriate Design Code application
+    maxPoints: 20
+    description: >-
+      Identifies that the ICO's Age Appropriate Design Code (with DUAA
+      2024 reinforcement) applies to services likely to be accessed by
+      children, explains what it requires of the service provider
+      (default high privacy, data minimisation, transparency), and
+      notes that the school as controller has a responsibility to
+      assess whether the app meets these standards before deploying it.
+  - criterion: Lawful basis — consent vs legitimate interests for under-13s
+    maxPoints: 20
+    description: >-
+      Analyses the lawful basis question for processing children's
+      data through a third-party app. Explains that consent from a
+      parent/guardian is the expected route for under-13s and that
+      "teacher consent on behalf of the school" does not satisfy
+      Article 8 UK GDPR. Addresses the legitimate interests argument
+      fairly but identifies its weaknesses for this fact pattern.
+  - criterion: International transfer assessment
+    maxPoints: 15
+    description: >-
+      Identifies that children's personal data is being transferred to
+      a US-based processor (and onward to India). Raises the need for
+      a transfer mechanism (UK-US Data Bridge / IDTA) and notes that
+      COPPA compliance does not address UK transfer requirements.
+  - criterion: DPIA screening decision
+    maxPoints: 15
+    description: >-
+      Correctly identifies that processing children's data through an
+      innovative technology with adaptive profiling is likely to
+      require a DPIA under Article 35. Notes that the DPIA should have
+      been done before processing started.
+  - criterion: Remedial steps for existing accounts
+    maxPoints: 15
+    description: >-
+      Provides practical remediation advice for the accounts already
+      created: pause use immediately, request data deletion from the
+      provider, consider whether the processing to date constitutes a
+      notifiable breach (likely not, but document the assessment), and
+      communicate with parents.
+  - criterion: Template parental communication
+    maxPoints: 15
+    description: >-
+      Includes or describes template wording for a parental letter or
+      email that is honest about what happened, explains what data was
+      shared, and either seeks consent for continued use or explains
+      that accounts have been deleted. Appropriately transparent
+      without causing unnecessary alarm.
+
+exemplarResponse: |
+  Dear Linda,
+
+  You are absolutely right to flag this, and no, you are not being a
+  jobsworth. Mrs Oduya clearly meant well and I have no doubt the app
+  is educationally useful, but there are real legal issues here that
+  need sorting. The good news is they are fixable.
+
+  **1. Yes, this is a legal problem — not just a process one.** The
+  school is the data controller for its pupils' personal data. When
+  a teacher signs children up to a third-party app, the school is
+  sharing personal data with an external processor without a lawful
+  basis, without a data processing agreement, and without the
+  assessment that should come first. This is not about paperwork for
+  its own sake — it is about knowing where children's data is going
+  and on what terms.
+
+  **2. Age absolutely makes a difference.** The children are 8 and
+  9 — well under 13. Under Article 8 of the UK GDPR, where consent
+  is the lawful basis for an online service processing a child's
+  data, that consent must come from a parent or guardian, not the
+  teacher. The app's claim that it obtains "teacher consent on behalf
+  of the school" does not satisfy UK law. On top of that, the ICO's
+  Age Appropriate Design Code — now reinforced by the Digital Use and
+  Access Act 2024 — requires services likely to be accessed by
+  children to apply high-privacy defaults, minimise data collection,
+  and provide age-appropriate transparency. From the privacy policy,
+  SparkMaths does not appear to have addressed any of these for the
+  UK market.
+
+  **3. Yes, there is a transfer issue.** Children's personal data is
+  being sent to servers in the US and potentially onward to a sub-
+  processor in India. That requires a valid transfer mechanism — the
+  UK-US Data Bridge (if SparkMaths is DPF-certified) or a signed IDTA.
+  COPPA compliance is a US requirement and has no bearing on UK
+  transfer rules. From the privacy policy, there is no evidence of
+  either mechanism being in place.
+
+  **4. Remediation — the accounts that already exist.**
+  - Ask Mrs Oduya to stop using the app with the class immediately.
+    Frame it positively — we want to make this work properly, not
+    punish her.
+  - Email SparkMaths and request deletion of all data associated with
+    Bramble Lane pupils under Article 17. Their COPPA compliance
+    should mean they have a deletion mechanism.
+  - Document what happened: what data was shared, when, with whom,
+    and what remedial steps you took. This is your breach assessment
+    — I do not think this meets the threshold for ICO notification
+    (no sensitive data exposed to malicious actors, low risk of harm),
+    but the documented assessment is essential.
+  - Write to the parents of the Year 4 class. Template below.
+
+  **5. If you want to use it properly, here is the path:**
+  - Conduct a DPIA — processing children's data through an adaptive
+    learning tool with profiling features triggers Article 35.
+  - Contact SparkMaths and ask whether they have (a) a UK/EU
+    representative, (b) a data processing agreement template, (c) DPF
+    certification or willingness to sign an IDTA, and (d) an AADC
+    conformance statement.
+  - If they can provide those, draft a DPA, obtain parental consent
+    via opt-in letter, and proceed. If they cannot, look for a
+    UK-based alternative that has done the compliance work.
+
+  **Template parental letter:**
+
+  > Dear Parent/Guardian,
+  >
+  > We are writing to let you know that Mrs Oduya's Year 4 class
+  > has been using an online maths tool called SparkMaths for the
+  > past three weeks as part of classroom learning. The app was
+  > trialled with good educational results, but we have identified
+  > that we did not follow our usual process for checking new
+  > technology before it was used. Specifically, we should have
+  > assessed the app's data protection arrangements and sought your
+  > consent before your child's name and school details were shared
+  > with the provider.
+  >
+  > We have paused use of the app and requested that the provider
+  > delete all data relating to our pupils. We are now carrying out
+  > a proper assessment. If we conclude that the app meets our
+  > standards, we will write to you again to explain how it works
+  > and to ask for your consent before re-introducing it.
+  >
+  > We apologise for not getting this right first time. If you have
+  > any questions, please contact the school office.
+
+  I would recommend showing the Head this advice before it goes to
+  parents — the tone should come from the school, not from us.
+
+  Best wishes,
+  Aegis Privacy Partners

@@ -1,0 +1,384 @@
+id: scenario_017
+tier: 3
+client: lanely_nhs
+skill: breach_response
+difficulty: contested
+title: Ransomware attack on hospital systems — major breach response
+timeLimitMinutes: 50
+xpBase: 200
+
+briefing:
+  requestType: >-
+    A major personal data breach involving ransomware across critical
+    clinical systems at an NHS Foundation Trust. Patient administration,
+    radiology, and pathology systems are encrypted. There is evidence
+    of data exfiltration. The Emergency Department is diverting
+    ambulances. This is a multi-strand incident requiring simultaneous
+    management of ICO notification, patient notification, NHS-specific
+    reporting, operational continuity, and public communications.
+  whatUserNeedsToKnow: >-
+    Article 33 requires notification to the ICO within 72 hours of
+    awareness. For a complex, evolving incident, the ICO accepts
+    phased notifications — an initial report within 72 hours followed
+    by updates as the picture becomes clearer. Article 34 requires
+    notification to data subjects where the breach is likely to result
+    in high risk — with ~180,000 records potentially affected and
+    evidence of exfiltration, this threshold is almost certainly met.
+    NHS-specific reporting runs in parallel: the Data Security and
+    Protection Toolkit (DSPT) incident reporting mechanism, NHS
+    England regional notification, and potentially NCSC (National
+    Cyber Security Centre) engagement. Section 251 of the NHS Act
+    2006 may be relevant during downtime if clinical staff need to
+    access or share patient information through non-standard channels
+    for continuity of care — but Section 251 support would need to
+    be sought rapidly from the Secretary of State or CAG. The
+    exfiltration question is critical: if data was extracted before
+    encryption, the risk to patients shifts from "loss of access"
+    (which is itself a breach) to "confidentiality breach" — a
+    fundamentally higher risk level affecting the notification
+    content and urgency. Communication strategy matters: premature
+    public statements can cause panic, but delayed transparency
+    erodes trust. The ICO expects organisations to prioritise
+    containing the incident over notification formalities, but the
+    72-hour clock does not pause.
+  commonPitfalls: |
+    - Treating the 72-hour clock as starting from when the full
+      picture is known rather than from initial awareness.
+    - Waiting for forensic certainty on exfiltration before
+      notifying — you must notify on the basis of what you know,
+      not what you have confirmed.
+    - Focusing entirely on operational recovery and treating data
+      protection as a secondary concern — they run in parallel.
+    - Issuing a public statement that either minimises the incident
+      ("a minor IT issue") or over-states the confirmed impact.
+    - Forgetting that loss of access to patient records is itself a
+      personal data breach under the UK GDPR definition, even if
+      no data leaves the organisation.
+    - Missing the NHS-specific reporting obligations alongside ICO.
+    - Not preserving forensic evidence in the rush to restore
+      systems.
+
+emailSender:
+  name: Dr Fiona Ashworth
+  role: Caldicott Guardian & Medical Director, Lanely NHS Foundation Trust
+  email: fiona.ashworth@lanely-nhs.uk
+emailSubject: "CRITICAL — ransomware incident, systems down, need DP advice NOW"
+emailBody: |
+  Dear Aegis,
+
+  I am writing this from my personal email because our Trust email
+  system is currently inaccessible. It is 6:30am and I have been
+  here since 4am. We have a major incident.
+
+  At approximately 3:15am this morning, our IT on-call team detected
+  that multiple clinical systems had become unresponsive. By 3:45am
+  they confirmed ransomware — a ransom note appeared on the admin
+  console demanding payment in cryptocurrency. The following systems
+  are confirmed encrypted and offline:
+
+  - Patient Administration System (PAS) — all patient demographic
+    and appointment data. Approximately 180,000 active patient
+    records.
+  - Radiology PACS — all imaging. Current and historical.
+  - Pathology results system — lab results for inpatients and
+    outpatients.
+
+  Systems NOT affected (so far): electronic prescribing (EPMA), the
+  ED clinical system (which runs on a separate network segment), and
+  our staff HR system.
+
+  Our IT Director, Marcus Chen, has told me two things that have
+  turned this from bad to very bad:
+
+  1. The network logs suggest data was being exfiltrated to an
+     external IP address for approximately six hours before the
+     encryption triggered — between 9pm last night and 3am. He
+     cannot yet confirm what data was taken, but the traffic volume
+     is "consistent with a large-scale extraction". The forensic
+     team from our cyber insurers arrives at 9am.
+
+  2. Backup restoration is uncertain. The most recent verified
+     clean backup is from 11 days ago. If we restore from that,
+     we lose 11 days of patient data — admissions, discharges,
+     test results, clinic letters. For some patients, that gap
+     could be clinically dangerous.
+
+  Operationally:
+  - ED has diverted ambulances to Westfield General (20 miles
+    away) since 4:30am because we cannot access patient records
+    or radiology.
+  - Elective surgery for today is cancelled (32 procedures).
+  - Inpatient care is continuing on paper — staff are printing
+    what they can from the unaffected EPMA system and relying on
+    memory and paper notes for everything else.
+  - The Chief Executive is briefing the Board Chair at 7am and
+    wants to issue a public statement by 8am.
+
+  I need your guidance on the data protection side. Specifically:
+
+  1. When does the 72-hour clock start and what do I need to tell
+     the ICO in the first notification? I do not have a full
+     picture yet.
+
+  2. Do I need to notify 180,000 patients? How? Our email system
+     is down and many of these patients are elderly and do not use
+     email anyway.
+
+  3. What do I tell NHS England? Is there a separate reporting
+     obligation?
+
+  4. The exfiltration — if their data is out in the wild, is that
+     a different level of notification than "we lost access to it
+     for a few days"?
+
+  5. Marcus wants to pay the ransom. I have told him absolutely
+     not until I have taken advice. Is there a data protection
+     angle on that?
+
+  6. The Chief Executive's 8am statement — what can we say and
+     what should we not say?
+
+  Please call me on my mobile as well as replying to this. I need
+  human beings thinking about this with me.
+
+  Dr Fiona Ashworth
+  Caldicott Guardian & Medical Director
+  Lanely NHS Foundation Trust
+
+supportingDocuments:
+  - name: "IT incident log — first 3 hours (extract).pdf"
+    type: document
+    excerpt: >-
+      Timeline: 03:15 PAS unresponsive. 03:22 Radiology PACS down.
+      03:31 Pathology system encrypted — ransom note displayed. 03:45
+      Ransomware confirmed (LockBit variant). 04:00 Major incident
+      declared. 04:15 Network isolation — affected segments
+      quarantined. 04:30 ED ambulance diversion activated. 05:00
+      Preliminary log review — outbound data transfer detected
+      21:00-03:00, destination IP geolocated to Eastern Europe,
+      estimated 400GB transferred. 05:30 Cyber insurer notified.
+      06:00 Backup assessment — most recent clean backup 11 days old.
+  - name: "Ransomware note (screenshot).pdf"
+    type: image
+    excerpt: >-
+      Standard LockBit ransom demand. Claims to have "downloaded a
+      copy of your most important data" and threatens publication on
+      a leak site within 72 hours if payment is not made. Demands
+      15 Bitcoin (~£600,000 at current rates). Provides a .onion
+      contact address.
+
+userTask: >-
+  Draft an urgent advice memo to Dr Ashworth answering her six
+  questions. This is a crisis response — be direct, prioritised, and
+  practical. Give her a phased action plan covering the first 72 hours.
+  Address the ICO notification, patient notification strategy, NHS
+  reporting, the exfiltration escalation, the ransom question, and
+  the public statement.
+
+rubric:
+  - criterion: 72-hour ICO notification — phased reporting
+    maxPoints: 15
+    description: >-
+      Confirms the 72-hour clock started at 03:45am when ransomware
+      was confirmed. Explains the ICO's phased notification approach
+      for complex incidents — submit an initial notification within
+      72 hours with what is known, mark it as incomplete, and provide
+      updates as forensic analysis progresses. Identifies the key
+      information for the initial report.
+  - criterion: Data subject notification — Article 34 high-risk analysis
+    maxPoints: 15
+    description: >-
+      Concludes that Article 34 notification to patients is required
+      — exfiltration of health data for 180,000 patients meets the
+      "high risk" threshold. Addresses the practical challenge of
+      notification when email is down and the patient population is
+      elderly. Recommends a multi-channel approach (website, media,
+      helpline, post for high-risk subgroups).
+  - criterion: NHS-specific reporting — DSPT and NHS England
+    maxPoints: 15
+    description: >-
+      Identifies the DSPT incident reporting obligation (separate from
+      ICO), NHS England regional team notification, and NCSC engagement
+      for a ransomware attack on critical national infrastructure.
+      Notes that these run in parallel with ICO notification, not
+      sequentially.
+  - criterion: Exfiltration impact on risk level
+    maxPoints: 15
+    description: >-
+      Clearly distinguishes between an availability breach (systems
+      down, data inaccessible) and a confidentiality breach (data
+      exfiltrated). Explains that exfiltration fundamentally changes
+      the risk profile — the threat actor has the data and may publish
+      it regardless of whether the ransom is paid. This affects the
+      urgency and content of every notification.
+  - criterion: Operational continuity vs data protection during downtime
+    maxPoints: 10
+    description: >-
+      Addresses the tension between patient safety during downtime
+      (staff need information to treat patients) and data protection.
+      Notes that patient safety takes precedence but that non-standard
+      information sharing during downtime should be documented and
+      minimised. References Section 251 as a potential route if
+      systematic data sharing outside normal channels is needed.
+  - criterion: Communications strategy — public statement guidance
+    maxPoints: 15
+    description: >-
+      Provides specific guidance for the 8am public statement: what
+      to say (factual, proportionate — "a cyber incident affecting
+      some of our clinical systems"), what not to say (do not
+      minimise as "IT issue", do not confirm exfiltration before
+      forensic verification, do not mention the ransom demand), and
+      the tone (transparent, reassuring about patient safety
+      measures, with a helpline number).
+  - criterion: Ransom payment — data protection and policy angle
+    maxPoints: 15
+    description: >-
+      Addresses the ransom question from a data protection and policy
+      perspective. Notes that paying does not guarantee data deletion
+      or decryption, that the NCSC and ICO advise against payment,
+      that payment may violate sanctions regulations if the threat
+      actor is in a sanctioned jurisdiction, and that payment does
+      not remove the notification obligations. The decision is
+      ultimately the Trust Board's but the data protection advice is
+      clear.
+
+exemplarResponse: |
+  Dr Ashworth,
+
+  I am on my way in. Here is the written advice to back up what we
+  discuss on the phone. I have ordered this by what you need to
+  decide first, not by question number.
+
+  **The 72-hour clock is running.** It started at 03:45am when
+  ransomware was confirmed. You must notify the ICO by 03:45am on
+  Saturday at the latest. For a complex, evolving incident the ICO
+  expects a phased approach: submit an initial notification now
+  with what you know, mark it as incomplete, and commit to updates
+  at defined intervals. The initial notification needs: nature of
+  the breach (ransomware, systems encrypted, suspected
+  exfiltration), categories and approximate number of data subjects
+  (~180,000 patients), categories of data (demographic, clinical,
+  imaging, pathology), likely consequences (loss of access to
+  clinical records, potential confidentiality breach if exfiltration
+  confirmed), and measures taken (network isolation, forensic
+  engagement, ambulance diversion). You do not need forensic
+  certainty to notify — the ICO would rather have an honest
+  incomplete report than a late complete one.
+
+  **Exfiltration changes everything.** Loss of access to patient
+  records is a breach — but it is primarily an availability breach,
+  and the risk recedes as systems are restored. If 400GB of data
+  was exfiltrated to a threat actor in Eastern Europe, this is a
+  confidentiality breach affecting up to 180,000 patients' health
+  records. The threat actor may publish the data regardless of
+  whether you pay. That makes this a fundamentally higher-risk
+  event. Your notifications to the ICO, to patients, and to NHS
+  England must reflect this from the outset, even before forensics
+  confirm exactly what was taken. Say "evidence of data
+  exfiltration under investigation" — do not say "no evidence of
+  data loss" if you cannot stand behind that statement.
+
+  **Patient notification — yes, required, but phased.** Article 34
+  is triggered: health data for 180,000 patients with evidence of
+  exfiltration to a malicious actor is "high risk" by any measure.
+  Practical approach given your email is down:
+
+  - Immediately: public statement (see below) + a dedicated page
+    on the Trust website (if the website is on a separate
+    infrastructure — check with Marcus).
+  - Today: set up a staffed helpline. Patients will call.
+  - This week: identify the highest-risk subgroups (patients whose
+    data includes mental health, sexual health, HIV, or other
+    highly sensitive conditions) and prioritise direct
+    communication to them by post if necessary.
+  - The ICO will not expect you to individually write to 180,000
+    people immediately — they will expect a proportionate,
+    multi-channel approach with direct contact for the highest-risk
+    individuals.
+
+  **NHS reporting — runs in parallel, not after ICO.** Three
+  obligations:
+
+  1. DSPT incident report — submit today via the DSPT portal (if
+     accessible; if not, email NHS England directly).
+  2. NHS England regional team — your regional CISO and the
+     regional incident response team should be notified now if they
+     are not already aware. They will coordinate mutual aid if
+     needed.
+  3. NCSC — for a LockBit attack on NHS infrastructure, NCSC
+     should be engaged. Your cyber insurers' forensic team will
+     likely do this, but confirm.
+
+  **The 8am public statement.** The Chief Executive should say:
+
+  > "In the early hours of this morning, Lanely NHS Foundation
+  > Trust identified a cyber incident affecting some of our clinical
+  > IT systems. We have activated our major incident plan and are
+  > working with national cyber security agencies and specialist
+  > forensic investigators. As a precaution, we have temporarily
+  > diverted emergency ambulances to neighbouring hospitals to
+  > ensure patient safety. Elective procedures scheduled for today
+  > have been postponed and patients will be contacted directly.
+  > Inpatient care continues with additional safety measures in
+  > place. We are taking this incident extremely seriously and will
+  > provide further updates as our investigation progresses. A
+  > helpline for patients with concerns is available on [number]."
+
+  Do not say: "a minor IT issue", "there is no evidence patient
+  data has been compromised" (you cannot stand behind that given
+  the exfiltration evidence), or anything about the ransom demand.
+  The media will ask about ransomware specifically — the line is
+  "we are aware of the nature of the incident and are working
+  with specialist agencies; it would not be appropriate to comment
+  further while the investigation is ongoing."
+
+  **Do not pay the ransom.** The data protection angle reinforces
+  what you already know. Paying does not guarantee decryption —
+  LockBit has a mixed track record. Paying does not guarantee the
+  exfiltrated data will be deleted — there is no enforceable
+  contract with a criminal. The NCSC and ICO both advise against
+  payment. Payment may violate UK sanctions regulations depending
+  on the threat actor's jurisdiction. Payment does not remove any
+  of your notification obligations. And payment signals to the
+  threat actor that NHS trusts will pay, increasing the risk to
+  the wider NHS. The Trust Board may ultimately make a different
+  decision for operational reasons, but the data protection advice
+  is unequivocal: do not pay.
+
+  **Phased action plan — first 72 hours:**
+
+  Hour 0-6 (now):
+  - Preserve forensic evidence — do not wipe or rebuild affected
+    systems until the forensic team has imaged them.
+  - Confirm network isolation is complete.
+  - Issue the 8am public statement.
+  - Stand up the patient helpline.
+
+  Hour 6-24:
+  - Submit initial ICO notification (phased, marked incomplete).
+  - Submit DSPT incident report.
+  - Notify NHS England regional team and confirm NCSC engagement.
+  - Begin forensic assessment of exfiltration scope.
+  - Identify highest-risk patient subgroups for priority
+    notification.
+
+  Hour 24-72:
+  - First ICO update with forensic findings to date.
+  - Begin direct notification to highest-risk patients (by post
+    or telephone if necessary).
+  - Board briefing with data protection and legal position.
+  - Media holding lines updated as picture evolves.
+
+  Post-72 hours:
+  - Continued ICO updates at agreed intervals.
+  - Full patient notification strategy implemented.
+  - Post-incident review scoped (this will be a formal lessons-
+    learned exercise — the ICO will expect it).
+  - Consider whether affected patients need credit monitoring or
+    identity protection services (proportionate if financial or
+    identity data was exfiltrated).
+
+  I am leaving now and will be with you by 8am. We will get
+  through this.
+
+  Aegis Privacy Partners

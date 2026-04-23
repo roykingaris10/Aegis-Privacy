@@ -1,0 +1,381 @@
+id: scenario_020
+tier: 3
+client: lanely_nhs
+skill: regulator_liaison
+difficulty: contested
+title: Section 251 research request — CAG conditions and Caldicott scrutiny
+timeLimitMinutes: 45
+xpBase: 200
+
+briefing:
+  requestType: >-
+    A university research team wants access to identifiable patient
+    data from an NHS trust's cancer registry for a retrospective
+    observational study. They claim CAG (Confidentiality Advisory
+    Group) support under Section 251 of the NHS Act 2006 and
+    Regulation 5 of the Health Service (Control of Patient Information)
+    Regulations 2002. The CAG approval letter has specific conditions
+    that have not all been met. The research team is pushing to start
+    data extraction before the conditions are satisfied.
+  whatUserNeedsToKnow: >-
+    Section 251 of the NHS Act 2006, together with the Health Service
+    (Control of Patient Information) Regulations 2002, allows the
+    Secretary of State (delegated to the CAG) to set aside the common
+    law duty of confidence for specific, approved medical purposes.
+    This is a powerful but narrow tool. Critically, Section 251 does
+    not override the UK GDPR — the data controller still needs a
+    lawful basis under Article 6 (typically Article 6(1)(e) — public
+    task) and an Article 9 condition for health data (typically
+    Article 9(2)(j) — research in the public interest, with Schedule
+    1 Part 1 paragraph 4 of the DPA 2018). The CAG approval letter
+    will contain specific conditions — data minimisation requirements,
+    security standards, time limits, Caldicott Guardian approval at
+    the disclosing organisation — and these are conditions of the
+    approval, not suggestions. If the conditions are not met, the
+    Section 251 support does not apply. The Caldicott Guardian's role
+    is to exercise independent scrutiny of the request — to satisfy
+    themselves that patient-identifiable data is genuinely necessary,
+    that the conditions are met, and that the Caldicott principles
+    are respected. The Caldicott Guardian is not a rubber stamp for
+    CAG approvals.
+  commonPitfalls: |
+    - Treating Section 251 as a complete legal basis on its own —
+      it sets aside the common law duty of confidence but does not
+      address the UK GDPR obligations.
+    - Treating CAG approval as automatic authorisation to disclose
+      without checking whether the conditions are satisfied.
+    - Allowing the research team to start data extraction before
+      all conditions are met because "the approval is in place".
+    - Failing to exercise independent Caldicott Guardian scrutiny
+      because "the CAG has already approved it".
+    - Not challenging the request for identifiable data — the
+      Caldicott principles require that the minimum necessary
+      identifiable information is used.
+    - Ignoring the data sharing agreement requirement — even with
+      Section 251 support, a formal DSA is essential.
+
+emailSender:
+  name: Dr Fiona Ashworth
+  role: Caldicott Guardian & Medical Director, Lanely NHS Foundation Trust
+  email: fiona.ashworth@lanely-nhs.uk
+emailSubject: "University wants cancer registry data — they say CAG has approved it"
+emailBody: |
+  Dear Aegis,
+
+  I need your advice on a research data request that has landed on
+  my desk as Caldicott Guardian. The research lead is putting
+  pressure on me to sign off quickly and I want to make sure I am
+  doing the right thing.
+
+  The request: Professor Sarah Lin from the University of Hartwell's
+  Department of Oncology wants access to our cancer registry data
+  for a retrospective observational study — "Patterns of Late
+  Diagnosis in Colorectal Cancer Across Socioeconomic Quintiles,
+  2018-2025". It is a legitimate and potentially valuable study. She
+  wants patient-level data including:
+
+  - NHS number
+  - Date of birth, gender, ethnicity
+  - Postcode (full, not sector-level)
+  - Cancer type, stage at diagnosis, date of diagnosis
+  - Treatment pathway (surgery, chemotherapy, radiotherapy)
+  - Date and cause of death where applicable
+  - GP practice code
+  - Index of Multiple Deprivation decile
+
+  She says she needs the NHS number and full postcode to link the
+  cancer registry data with national screening data (from the NHS
+  Bowel Cancer Screening Programme) and with ONS mortality data.
+  Her study population is approximately 8,400 patients.
+
+  Professor Lin has provided a CAG approval letter (reference
+  CAG 11-02(b)/2026) granting Section 251 support under Regulation
+  5 for this study. I have read the letter carefully. It authorises
+  the disclosure of patient-identifiable data without consent, but
+  it has the following conditions:
+
+  1. Data must be held in a Secure Research Environment accredited
+     to NHS Digital's standards — Professor Lin says the university
+     is "in the process of accreditation" but it is not yet
+     accredited.
+  2. Only named researchers listed in the application may access
+     the data — the application names Professor Lin and two
+     postdoctoral researchers, but she has told me she also wants
+     a PhD student to have access.
+  3. A formal data sharing agreement must be in place between the
+     Trust and the university before any data is disclosed.
+  4. The Caldicott Guardian at the disclosing organisation must
+     approve the disclosure.
+  5. Data must be destroyed within 12 months of the study's
+     completion or by December 2028, whichever is sooner.
+
+  Condition 4 is why it is on my desk. Professor Lin called me
+  yesterday and said she needs the data within two weeks because
+  her funding runs out in September and the analysis needs to
+  start now. She said the Secure Research Environment "will be
+  accredited by the time the data arrives" and that the PhD
+  student can be added "administratively". She was polite but
+  clearly frustrated when I said I needed to take advice.
+
+  My questions:
+
+  1. Can I approve the disclosure given that conditions 1 and 2
+     are not yet met? Professor Lin seems to think the CAG
+     approval is the authorisation and my role is just to tick
+     a box.
+
+  2. Does Section 251 cover everything, or do I need to worry
+     about GDPR separately?
+
+  3. She wants full postcodes and NHS numbers. Do I have to give
+     her exactly what she asked for, or can I push back? Full
+     postcodes for 8,400 cancer patients with deprivation data
+     and ethnicity feels like a lot.
+
+  4. What should the data sharing agreement contain? We don't
+     have a standard template for this.
+
+  5. Is the two-week timeline realistic? I don't want to obstruct
+     legitimate research, but I also don't want to cut corners.
+
+  I would appreciate a clear steer — I have never exercised my
+  Caldicott Guardian role on a Section 251 request before and I
+  want to get it right.
+
+  Dr Fiona Ashworth
+  Caldicott Guardian & Medical Director
+  Lanely NHS Foundation Trust
+
+supportingDocuments:
+  - name: "CAG approval letter — CAG 11-02(b)/2026 (extract).pdf"
+    type: document
+    excerpt: >-
+      Confidentiality Advisory Group approval under Regulation 5 of
+      the Health Service (Control of Patient Information) Regulations
+      2002 for the study "Patterns of Late Diagnosis in Colorectal
+      Cancer Across Socioeconomic Quintiles, 2018-2025". Sponsor:
+      University of Hartwell. Named researchers: Professor Sarah Lin,
+      Dr Amara Obi, Dr Kai Petersen. Five conditions listed as set
+      out in the email above. Annual review required. Approval valid
+      until December 2028.
+  - name: "Study protocol — summary of data requirements.pdf"
+    type: document
+    excerpt: >-
+      Study protocol extract. Describes the data linkage methodology:
+      NHS number used to link cancer registry data with national
+      screening records (NBCSP) and ONS mortality data. Full postcode
+      used to derive Index of Multiple Deprivation quintile and to
+      conduct geographic analysis of screening uptake by area. Study
+      population: all colorectal cancer diagnoses at Lanely NHS FT
+      2018-2025, estimated 8,400 patients. Retention: data held for
+      duration of study + 12 months for verification.
+
+userTask: >-
+  Draft an advice memo to Dr Ashworth answering her five questions.
+  Explain the Section 251 framework and its limitations, the UK GDPR
+  overlay, the Caldicott Guardian's independent role, the data
+  minimisation challenge, and the data sharing agreement requirements.
+  Give a clear recommendation on whether to approve, approve with
+  conditions, or defer.
+
+rubric:
+  - criterion: Section 251 framework — what it does and does not authorise
+    maxPoints: 20
+    description: >-
+      Explains Section 251 and Regulation 5 clearly: they set aside the
+      common law duty of confidence for approved purposes, but they do
+      not override UK GDPR, do not remove the need for a lawful basis
+      under Article 6 or an Article 9 condition, and do not apply if
+      the CAG conditions are not met. Notes that the CAG conditions are
+      conditions of the approval — if they are not satisfied, the
+      Section 251 support is not operative.
+  - criterion: UK GDPR overlay — Article 6 and Article 9 still apply
+    maxPoints: 15
+    description: >-
+      Identifies the separate UK GDPR requirements: Article 6(1)(e)
+      (public task — the Trust's function includes supporting legitimate
+      health research) as the lawful basis, and Article 9(2)(j)
+      (research in the public interest) with Schedule 1 Part 1
+      paragraph 4 DPA 2018 as the Article 9 condition. Notes that a
+      DPIA may be required for large-scale processing of health data
+      for research.
+  - criterion: CAG conditions — must be satisfied before disclosure
+    maxPoints: 20
+    description: >-
+      Addresses each unsatisfied condition directly. Condition 1
+      (Secure Research Environment): not yet accredited — disclosure
+      cannot proceed until it is. "Will be accredited by the time the
+      data arrives" is not sufficient. Condition 2 (named researchers):
+      the PhD student is not named in the application — either a
+      variation to the CAG approval is needed or the student cannot
+      access the data. Both are non-negotiable prerequisites, not
+      administrative details.
+  - criterion: Caldicott Guardian role — independent scrutiny
+    maxPoints: 15
+    description: >-
+      Affirms Dr Ashworth's independent role. The Caldicott Guardian
+      is not a rubber stamp for CAG approvals. The Guardian must
+      independently assess whether patient-identifiable data is
+      genuinely necessary, whether the conditions are met, and whether
+      the Caldicott principles are respected. Professor Lin's
+      characterisation of the role as "just ticking a box" is wrong,
+      and politely but firmly correcting this expectation is part of
+      the Guardian's function.
+  - criterion: Data minimisation — challenge the request for identifiable data
+    maxPoints: 15
+    description: >-
+      Applies the Caldicott principles to the data request. Challenges
+      the full postcode request — postcode sector (first four
+      characters) is sufficient for IMD derivation and geographic
+      analysis in most cases. Challenges the NHS number request — can
+      the data linkage be conducted by a trusted third party (NHS
+      Digital / NHS England) who returns linked pseudonymised data to
+      the researcher? This is established practice for cancer registry
+      linkage studies. If full identifiers are genuinely needed for
+      linkage, they should be used for linkage only and stripped before
+      analysis.
+  - criterion: Data sharing agreement and practical governance
+    maxPoints: 15
+    description: >-
+      Identifies the DSA as a condition of the CAG approval and a
+      practical necessity. Outlines the key provisions: purpose
+      limitation, data elements, security requirements, named
+      researchers, access controls, retention and destruction
+      obligations, breach notification, audit rights, publication
+      review, and compliance with the CAG conditions. Recommends
+      using the NHS standard DSA template.
+
+exemplarResponse: |
+  Dear Dr Ashworth,
+
+  You are right to take advice, and Professor Lin's frustration
+  does not change the legal position. Your role as Caldicott
+  Guardian is to exercise independent judgement — not to rubber-
+  stamp a CAG approval. Here is the analysis.
+
+  **1. You cannot approve disclosure today.** Two of the five
+  CAG conditions are not met:
+
+  - **Condition 1 (Secure Research Environment):** The university's
+    SRE is not yet accredited. "In the process of accreditation"
+    is not accredited. The CAG approval is conditional on data
+    being held in an accredited SRE — if the SRE is not accredited
+    at the point of disclosure, the Section 251 support is not
+    operative and you would be disclosing patient-identifiable
+    data for 8,400 cancer patients without a legal basis to set
+    aside the duty of confidence. This is not a formality — it is
+    the mechanism that protects patients. Disclosure must wait
+    until accreditation is confirmed in writing.
+
+  - **Condition 2 (named researchers):** The approval names three
+    researchers. The PhD student is not one of them. Adding a
+    researcher is not an administrative act — it requires either a
+    variation to the CAG approval (which CAG handles relatively
+    quickly for minor amendments) or the student must not access
+    the data. Professor Lin should apply for the variation now; it
+    should not delay the overall timeline significantly.
+
+  Until both conditions are satisfied, your answer is: "I support
+  the research and I will approve the disclosure as soon as the
+  conditions are met. I cannot approve it before then."
+
+  **2. Section 251 does not cover everything.** Section 251 and
+  Regulation 5 set aside the common law duty of confidence — that
+  is, they remove the legal barrier that would otherwise prevent
+  the Trust from sharing patient data without consent. But they do
+  not override the UK GDPR. You still need:
+
+  - A **lawful basis under Article 6**: Article 6(1)(e) — the
+    processing is necessary for the performance of a task carried
+    out in the public interest. Supporting legitimate health
+    research is within the Trust's public-interest functions.
+  - An **Article 9 condition for health data**: Article 9(2)(j) —
+    processing is necessary for scientific research purposes in
+    the public interest, subject to the safeguards in Schedule 1
+    Part 1 paragraph 4 of the DPA 2018.
+  - A **DPIA consideration**: large-scale processing of special
+    category data for research may trigger Article 35. Given the
+    volume (8,400 patients) and sensitivity (cancer diagnosis,
+    mortality, ethnicity, deprivation), I would recommend
+    completing a DPIA — it need not be lengthy, but it should
+    be documented.
+  - **Schedule 2 Part 6 research exemption**: this provides
+    exemptions from certain data subject rights (including the
+    right of access and the right to object in certain
+    circumstances) for research processing that meets the
+    safeguard conditions. This does not remove the need for a
+    lawful basis or transfer mechanism — it facilitates the
+    research by removing some operational barriers.
+
+  **3. Challenge the identifiable data request.** The Caldicott
+  principles require you to use the minimum necessary identifiable
+  information. Professor Lin's request is broad. My recommendations:
+
+  - **NHS number:** needed for data linkage, but should be used
+    for linkage only and stripped before the analytical dataset
+    is created. Better still: can the linkage be conducted by
+    NHS England's Data Services (the established trusted third
+    party route for cancer registry linkage studies)? If so,
+    Professor Lin receives a linked, pseudonymised dataset and
+    never sees the NHS number. This is standard practice and
+    should be the default.
+  - **Full postcode:** postcode sector (e.g. "LS12 3") is
+    sufficient for IMD derivation in most methodologies — the
+    English Indices of Deprivation are published at Lower Super
+    Output Area level, which maps to postcode sector, not full
+    postcode. Full postcode for 8,400 cancer patients with
+    ethnicity and diagnosis data creates a real re-identification
+    risk, particularly in rural areas with low population density.
+    Push back and ask Professor Lin to justify why sector-level
+    is not sufficient.
+  - **Date of birth:** year of birth is sufficient for most
+    epidemiological age-stratification. If precise age at
+    diagnosis is needed, it can be derived by Aurelia or NHS
+    England before the data reaches the researcher. Professor Lin
+    does not need to hold the DOB.
+
+  **4. Data sharing agreement.** The DSA is a condition of the CAG
+  approval and must be in place before disclosure. Use the NHS
+  standard research DSA template (available from the Health
+  Research Authority). It should cover:
+
+  - Purpose: limited to the named study, no secondary use.
+  - Data elements: agreed list after minimisation review.
+  - Named researchers: only those listed in the CAG approval.
+  - Security: data held in accredited SRE only, encrypted, no
+    local copies.
+  - Retention: 12 months post-study or December 2028, whichever
+    is sooner — with a certified destruction clause.
+  - Breach notification: within 24 hours.
+  - Audit: Trust retains the right to audit compliance.
+  - Publication review: not a veto, but the Trust is notified
+    before publication and can check for inadvertent re-
+    identification.
+
+  **5. Two-week timeline — not realistic, but four weeks is.**
+
+  - Week 1: Minimisation negotiation with Professor Lin. CAG
+    variation application for the PhD student. DSA drafting.
+  - Week 2: SRE accreditation confirmed (if it is genuinely
+    imminent — get a written date from the university). DSA
+    reviewed and signed.
+  - Week 3: Caldicott Guardian approval (you) once all conditions
+    are confirmed in writing. DPIA completed if not already done.
+  - Week 4: Data extraction and transfer to the accredited SRE.
+
+  If the SRE accreditation is not imminent, the timeline extends
+  accordingly. That is the university's problem to solve, not
+  yours.
+
+  **My recommendation: approve with conditions, not today.**
+  Support the research — it is legitimate and valuable. But do
+  not sign off until: (a) the SRE is accredited, (b) the PhD
+  student is either added to the CAG approval or excluded from
+  access, (c) the data minimisation questions are resolved, and
+  (d) the DSA is signed. Document your reasoning as Caldicott
+  Guardian and share it with Professor Lin. She may be frustrated,
+  but she will have a stronger study and a defensible data
+  governance position for it.
+
+  Kind regards,
+  Aegis Privacy Partners

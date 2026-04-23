@@ -1,0 +1,328 @@
+id: scenario_011
+tier: 2
+client: hartwell_council
+skill: dpia_authoring
+difficulty: complex
+title: CCTV expansion to rough-sleeping hotspots — DPIA and proportionality
+timeLimitMinutes: 35
+xpBase: 100
+
+briefing:
+  requestType: >-
+    A local authority wants to expand its CCTV network to locations
+    identified as rough-sleeping hotspots, framed as "safeguarding".
+    The proposed cameras have facial-recognition capability, though
+    the business case does not explicitly propose activating it. This
+    engages Article 35 on multiple limbs, the ICO's position on live
+    facial recognition in public spaces, equality and human rights
+    considerations, and the tension between political pressure and
+    data protection proportionality.
+  whatUserNeedsToKnow: >-
+    A DPIA is mandatory — Article 35 is triggered by systematic
+    monitoring of publicly accessible areas on a large scale, processing
+    of data relating to vulnerable individuals, and potentially
+    biometric data if facial recognition is enabled. The ICO's
+    Surveillance Camera Commissioner guidance and the Protection of
+    Freedoms Act 2012 apply. The ICO has taken enforcement action
+    against public bodies using live facial recognition without
+    adequate safeguards — the Bridges v South Wales Police case is
+    directly relevant. Even without facial recognition, expanding
+    CCTV specifically to target locations used by homeless people
+    raises serious proportionality and equality concerns. The
+    Equality Act 2010 public sector equality duty requires the council
+    to consider the impact on people sharing protected characteristics
+    — rough sleepers disproportionately include people with
+    disabilities, mental health conditions, and ethnic minorities.
+    "Safeguarding" is a legitimate purpose but does not automatically
+    make surveillance proportionate — less intrusive measures (outreach
+    workers, lighting, emergency call points) must be considered first.
+  commonPitfalls: |
+    - Treating the DPIA as a formality to rubber-stamp a political
+      decision already made.
+    - Accepting "safeguarding" as a purpose without interrogating
+      what the cameras will actually achieve for rough sleepers
+      versus what outreach would achieve.
+    - Ignoring the facial recognition capability on the basis that
+      "we won't turn it on" — the capability itself creates risk
+      and must be addressed in the DPIA.
+    - Failing to conduct an equality impact assessment alongside
+      the DPIA.
+    - Missing the public consultation requirement under Article
+      35(9) or the Surveillance Camera Code of Practice.
+    - Treating this as purely a DP matter when it is also a human
+      rights question under Article 8 ECHR.
+
+emailSender:
+  name: Darren Osei
+  role: Head of Community Safety, Hartwell Borough Council
+  email: d.osei@hartwell.gov.uk
+emailSubject: "CCTV for rough-sleeping hotspots — need your sign-off for committee"
+emailBody: |
+  Dear Aegis,
+
+  I need your data protection input on a proposal that is going to
+  the Community Safety Committee in three weeks. I'll be honest with
+  you — there is political momentum behind this and Councillor
+  Whitfield is keen, but I want to make sure we are doing it
+  properly.
+
+  Background: we have had a significant increase in rough sleeping
+  in the town centre over the last 18 months. Five locations have
+  been identified as persistent hotspots — the underpass by the
+  station, the multi-storey car park stairwells, the churchyard on
+  Park Street, the rear of the leisure centre, and the alley
+  behind the high street Tesco. There have been complaints from
+  businesses and residents, a stabbing in the underpass in January,
+  and a rough sleeper died in the car park stairwell in February
+  from a suspected overdose.
+
+  The proposal: install high-definition CCTV cameras at all five
+  locations, monitored by the existing town-centre CCTV team. The
+  business case framing is "safeguarding rough sleepers" — we want
+  to be able to spot welfare emergencies and dispatch outreach or
+  emergency services quickly. The cameras we are looking at are
+  Hikvision units with built-in facial recognition capability,
+  though the business case does not propose activating the FR
+  function at this stage. Darren O'Brien in procurement got them
+  at a good price.
+
+  The budget is approved (£180k capital, £45k annual monitoring).
+  The committee paper needs to go in ten days. I have attached the
+  draft business case.
+
+  My questions:
+
+  1. Do we need a DPIA for this? I am assuming yes given it is
+     CCTV in public spaces, but the existing town-centre cameras
+     have never had one and nobody has complained.
+
+  2. The facial recognition thing — we are NOT proposing to use
+     it. But the cameras have the capability built in. Does that
+     matter?
+
+  3. Some of the councillors are saying we should use the cameras
+     to identify known rough sleepers so we can proactively offer
+     them support. I can see the good intention but something
+     about it makes me uneasy. Am I right to be uncomfortable?
+
+  4. Is the "safeguarding" framing enough to justify this, or do
+     we need something more?
+
+  5. What do I actually need to have in place before we go to
+     committee?
+
+  I know this might not be a simple "yes, go ahead" and I'd
+  rather hear that now than after we've committed.
+
+  Thanks,
+
+  Darren Osei
+  Head of Community Safety
+  Hartwell Borough Council
+
+supportingDocuments:
+  - name: "Draft business case — CCTV for rough-sleeping hotspots (v2).pdf"
+    type: document
+    excerpt: >-
+      Six-page business case. Purpose stated as "safeguarding and
+      welfare monitoring of vulnerable individuals in known rough-
+      sleeping locations." No privacy impact assessment referenced.
+      No equality impact assessment. Camera specification includes
+      Hikvision DS-2CD7A86G0 units with "Deep Learning" facial
+      recognition. Monitoring proposed 24/7 by existing CCTV
+      operators. Data retention: 31 days. No mention of signage,
+      codes of practice, or public consultation. One paragraph on
+      "expected outcomes" references "reduction in anti-social
+      behaviour incidents" alongside the safeguarding purpose.
+  - name: "ICO enforcement notice — live facial recognition (reference).pdf"
+    type: document
+    excerpt: >-
+      Summary of the ICO's enforcement action against a public body
+      for deploying live facial recognition without adequate
+      safeguards. Key findings: no DPIA, no lawful basis analysis
+      for biometric data, no consideration of less intrusive
+      alternatives, inadequate signage. Fine: £7.5m (reduced on
+      appeal).
+
+userTask: >-
+  Draft an advice memo to Darren. Be direct about the risks without
+  being obstructive — the council has a legitimate interest in safety,
+  but the current proposal has serious gaps. Answer his five questions,
+  flag the proportionality and equality issues, and give him a realistic
+  path to a defensible committee paper.
+
+rubric:
+  - criterion: Article 35 trigger analysis — multiple limbs engaged
+    maxPoints: 15
+    description: >-
+      Identifies multiple Article 35 triggers: systematic monitoring
+      of a publicly accessible area on a large scale, processing data
+      concerning vulnerable individuals, and potentially biometric
+      processing if FR is enabled. Confirms a DPIA is mandatory and
+      notes that the absence of DPIAs for existing town-centre cameras
+      is itself a compliance gap, not a precedent.
+  - criterion: Proportionality and necessity — surveillance of vulnerable people
+    maxPoints: 20
+    description: >-
+      Challenges the assumption that CCTV is proportionate for
+      safeguarding rough sleepers. Requires the DPIA to demonstrate
+      that the cameras will actually achieve the safeguarding purpose
+      better than less intrusive alternatives (outreach teams, mobile
+      patrols, lighting improvements, emergency call points). Notes
+      the dual purpose problem — "safeguarding" and "reducing ASB"
+      are different purposes with different proportionality analyses.
+  - criterion: Facial recognition — ICO position and legal basis
+    maxPoints: 15
+    description: >-
+      Addresses the FR capability directly. Even without activation,
+      the presence of FR-capable hardware creates mission-creep risk
+      and must be addressed in the DPIA. If FR were activated, it
+      would constitute biometric processing requiring an Article 9
+      condition and a substantially higher bar. References the ICO's
+      enforcement history and Bridges v South Wales Police.
+  - criterion: Equality and human rights impact
+    maxPoints: 15
+    description: >-
+      Flags the Equality Act 2010 public sector equality duty. Rough
+      sleepers disproportionately include people with protected
+      characteristics (disability, mental health, race). Targeting
+      surveillance specifically at locations used by homeless people
+      requires an equality impact assessment. Also flags Article 8
+      ECHR — surveillance of people in their de facto living spaces
+      engages privacy rights even in public areas.
+  - criterion: Alternative less-intrusive measures
+    maxPoints: 10
+    description: >-
+      Requires the DPIA to document what alternative measures were
+      considered and why they were rejected. Lists concrete
+      alternatives: additional outreach worker shifts, improved
+      lighting, panic buttons / emergency call points, mobile CCTV
+      for specific incidents rather than permanent installation.
+  - criterion: Practical DPIA recommendation and political management
+    maxPoints: 15
+    description: >-
+      Gives a clear recommendation: do not take the proposal to
+      committee without a completed DPIA, an equality impact
+      assessment, and a public consultation plan. Suggests a realistic
+      timeline. Addresses the political management sensitively — the
+      DPO's role is to advise, not to veto, but the committee should
+      see the DPIA and understand the residual risk before deciding.
+  - criterion: Public consultation requirement
+    maxPoints: 10
+    description: >-
+      Identifies the Article 35(9) requirement to seek the views of
+      data subjects where appropriate, and the Surveillance Camera
+      Code of Practice requirement for public consultation on
+      significant CCTV deployments. Notes that consulting rough
+      sleepers specifically is both legally required and practically
+      important for the safeguarding framing.
+
+exemplarResponse: |
+  Dear Darren,
+
+  I appreciate you bringing this to me before it goes to committee.
+  The short answer is that the proposal is not ready — but it can
+  be made ready with the right work. I would rather you hear this
+  now than discover it after a FOI request, an ICO complaint, or a
+  judicial review.
+
+  **1. Yes, a DPIA is mandatory.** Article 35 is triggered on at
+  least three limbs: systematic monitoring of publicly accessible
+  areas on a large scale, processing relating to vulnerable
+  individuals, and the deployment of innovative technology (the
+  facial recognition capability, even dormant). The fact that your
+  existing town-centre cameras have never had a DPIA is a
+  compliance gap, not a precedent — it means you should do one for
+  those too, but that is a separate conversation. For this proposal,
+  the DPIA is not optional and must be completed before the cameras
+  are installed, not retrospectively.
+
+  **2. The FR capability matters even if you do not switch it on.**
+  Three reasons. First, the DPIA must assess the full capability of
+  the technology, not just the initial use case — the ICO will ask
+  what prevents FR from being activated later and what governance
+  would apply if it were. Second, if FR were activated, the cameras
+  would be processing biometric data under Article 9, which requires
+  a specific legal basis beyond Article 6 — and for a local
+  authority using FR in public spaces, the legal basis is
+  vanishingly difficult to establish. The ICO has issued enforcement
+  notices, and the Court of Appeal in Bridges v South Wales Police
+  found the police's use of live FR unlawful on multiple grounds.
+  Third, the Hikvision brand specifically has been the subject of
+  parliamentary and media scrutiny over Chinese state links — that
+  is a procurement and reputational risk, not a data protection one,
+  but Darren O'Brien should be aware of it.
+
+  My strong recommendation: if FR is not proposed, specify cameras
+  without FR capability. If the budget is already committed to the
+  Hikvision units, disable the FR function at firmware level,
+  document the disablement, and include a policy commitment that FR
+  will not be activated without a fresh DPIA, Article 9 analysis,
+  and committee approval.
+
+  **3. Yes, you are right to be uncomfortable.** Using cameras to
+  "identify known rough sleepers" — even with the best intentions
+  — is systematic surveillance of named vulnerable individuals. It
+  moves the purpose from "spot a welfare emergency and send help"
+  to "track specific people across locations and over time". That is
+  a fundamentally different proposition with a fundamentally
+  different proportionality analysis. The first is defensible; the
+  second is unlikely to be. It would almost certainly require FR
+  activation (how else do you identify individuals remotely?), and
+  I have already explained why that is a non-starter. Push back on
+  this — if the council wants to identify and support known rough
+  sleepers, outreach workers do it better, cheaper, and without
+  the legal risk.
+
+  **4. "Safeguarding" is necessary but not sufficient.** The purpose
+  must be specific, documented, and the surveillance must be a
+  proportionate means of achieving it. The current business case has
+  a dual-purpose problem: paragraph 3 says "safeguarding and welfare
+  monitoring" but paragraph 7 references "reduction in anti-social
+  behaviour incidents". Those are different purposes with different
+  proportionality analyses. If the cameras are for safeguarding,
+  the question is whether cameras actually safeguard rough sleepers
+  better than alternatives. If they are also for ASB reduction, you
+  are using surveillance of vulnerable people's living spaces to
+  manage complaints from businesses — which is a much harder
+  proportionality argument and will not survive public scrutiny.
+  Pick one purpose, justify it properly, and design the deployment
+  around it.
+
+  **5. What you need before committee.** The paper should not go in
+  ten days. I would aim for the following committee cycle and use
+  the intervening period to produce:
+
+  - A completed DPIA — I can draft the structure and work through
+    it with you.
+  - An equality impact assessment — consult your equalities lead.
+    Rough sleepers disproportionately include people with
+    disabilities, mental health conditions, and from ethnic
+    minority backgrounds. The PSED requires you to have due regard
+    to these impacts.
+  - A record of alternative measures considered and why they were
+    rejected (or adopted alongside CCTV). At minimum: additional
+    outreach shifts, improved lighting, emergency call points.
+  - A public consultation plan. Article 35(9) requires you to seek
+    the views of data subjects where appropriate. The Surveillance
+    Camera Code of Practice expects public consultation for
+    significant new deployments. For a proposal specifically
+    targeting rough sleepers, consulting with rough sleepers and
+    homelessness organisations is both legally expected and
+    practically essential.
+  - Updated signage specifications for all five locations.
+  - A data retention and access policy for the footage.
+
+  **For the committee paper itself:** present the DPIA findings,
+  the equality assessment, and the residual risk honestly. The
+  committee should be making an informed decision, not ratifying a
+  fait accompli. If Councillor Whitfield wants to understand why
+  the timeline has moved, I am happy to brief him directly — the
+  message is "we want to do this in a way that survives a legal
+  challenge", which is in his interest.
+
+  Let me know when you want to start on the DPIA — I can block out
+  a half-day session to get the structure right.
+
+  Kind regards,
+  Aegis Privacy Partners

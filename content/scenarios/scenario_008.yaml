@@ -1,0 +1,280 @@
+id: scenario_008
+tier: 1
+client: fernwood_dental
+skill: sar_handling
+difficulty: straightforward
+title: Angry patient SAR after treatment dispute — motive is irrelevant
+timeLimitMinutes: 20
+xpBase: 50
+
+briefing:
+  requestType: >-
+    A subject access request from a patient who is clearly angry about
+    a treatment outcome and has posted a negative online review. The
+    core lesson is that the motive behind a SAR is irrelevant — the
+    right is absolute and does not depend on the requester's reasons.
+    The practical complexity is in handling third-party data within
+    clinical records and managing the practice's emotional response.
+  whatUserNeedsToKnow: >-
+    A data subject's right of access under Article 15 UK GDPR is not
+    conditional on their reason for making the request. An angry
+    patient, a litigious patient, and a curious patient all have the
+    same right. The practice cannot refuse a SAR because it suspects
+    the data will be used for a complaint or litigation — that is one
+    of the legitimate purposes of the right. Clinical records
+    (including dentists' notes, treatment plans, X-rays) are the
+    patient's personal data and must be disclosed. Third-party data
+    within clinical records requires care: the dentist's professional
+    opinions about the patient are the patient's data; internal emails
+    between staff about the patient are the patient's data; but
+    information that identifies other patients (e.g. shared waiting
+    lists or cross-referenced notes) must be redacted. The Google
+    review is public and has no bearing on the SAR — do not conflate
+    the two issues.
+  commonPitfalls: |
+    - Trying to refuse or delay the SAR because the patient is angry
+      or because the data might be used for litigation.
+    - Treating the Google review as relevant to the SAR process.
+    - Withholding clinical notes because "they're the dentist's
+      notes, not the patient's data" — they are the patient's data.
+    - Failing to search all systems: the practice management system,
+      email, paper files, X-ray archives, and any personal notebooks.
+    - Applying the "manifestly unfounded or excessive" bar too
+      readily — a standard first-time SAR from an identifiable
+      patient is neither.
+
+emailSender:
+  name: Dr Anil Kapoor
+  role: Practice Principal, Fernwood Dental Practice
+  email: anil.kapoor@fernwooddental.co.uk
+emailSubject: "Patient demanding all her records — I think she's going to sue us"
+emailBody: |
+  Dear Aegis,
+
+  I could do without this today. One of our patients, Mrs Diane
+  Foley, came in for a crown fitting three weeks ago. There was a
+  problem with the fit — Dr Hanson (one of our associates) assessed
+  that the prep needed reworking and rebooked her. Mrs Foley was
+  not happy. She left a one-star Google review naming Dr Hanson
+  specifically, saying he "botched the job and tried to cover it
+  up".
+
+  Yesterday she emailed us (see below) demanding "every record you
+  have on me". I showed the email to Dr Hanson and he's furious —
+  he says she's building a complaint file and he doesn't want his
+  clinical notes handed over because they contain his professional
+  assessment of what went wrong, and that's "his intellectual
+  property, not hers". Our receptionist thinks we should ignore the
+  email because Mrs Foley "is just being difficult".
+
+  I have never dealt with one of these before. My questions:
+
+  1. Do we actually have to give her everything? She's obviously
+     doing this to cause trouble, not because she genuinely wants
+     to see her dental records.
+
+  2. Can I refuse because I think she's going to use the records to
+     sue us or complain to the GDC?
+
+  3. Dr Hanson's clinical notes include comments like "patient
+     presented with a poorly executed temporary — likely patient
+     non-compliance with after-care instructions". Does Mrs Foley
+     have a right to see those opinions?
+
+  4. We also have internal emails between Dr Hanson and me about
+     the complaint, including Dr Hanson saying he thinks the
+     original treatment plan was wrong and he's worried about a
+     negligence claim. Does she get to see those?
+
+  5. What's the timeline? She says she wants everything "within
+     seven days" — can she set our deadline for us?
+
+  I'd appreciate a clear answer I can share with Dr Hanson
+  before he does something unhelpful.
+
+  Thank you,
+
+  Dr Anil Kapoor
+
+  ---
+
+  From: diane.foley@example.com
+  To: reception@fernwooddental.co.uk
+  Subject: Formal records request
+
+  To the Practice Manager,
+
+  Under the Data Protection Act I am requesting a copy of every
+  record you hold about me, Diane Foley (DOB 14 March 1978,
+  patient since 2019). This includes but is not limited to all
+  clinical notes, treatment plans, correspondence, X-rays, and
+  any internal communications about me or my treatment.
+
+  Please confirm receipt and provide the records within seven days.
+
+  Diane Foley
+
+supportingDocuments:
+  - name: "Google review screenshot.pdf"
+    type: image
+    excerpt: >-
+      One-star review posted two weeks ago by "Diane F." naming
+      Dr Hanson and alleging a "botched crown" and a "cover-up".
+      The practice has not responded publicly.
+
+userTask: >-
+  Draft an advice email to Dr Kapoor answering his five questions.
+  Be clear that the SAR must be handled regardless of motive, address
+  the clinical-notes and internal-emails questions specifically, and
+  give a practical step-by-step plan for responding. Separate the SAR
+  from the Google review — they are different issues requiring different
+  responses.
+
+rubric:
+  - criterion: Confirms SAR validity regardless of motive
+    maxPoints: 20
+    description: >-
+      Clearly states that the right of access under Article 15 is not
+      conditional on the requester's motive, purpose, or emotional
+      state. A SAR cannot be refused because the data might be used
+      for litigation or a regulatory complaint. Directly addresses
+      Dr Hanson's and the receptionist's instincts and explains why
+      they are wrong.
+  - criterion: Scope and search obligations
+    maxPoints: 15
+    description: >-
+      Identifies all systems that must be searched: practice management
+      system, email, paper records, X-ray archives, and any personal
+      notes or devices. Notes that Mrs Foley's request is broad but
+      not "manifestly excessive" — it is a standard first SAR.
+  - criterion: Third-party data — clinical notes vs internal emails
+    maxPoints: 20
+    description: >-
+      Distinguishes between clinical notes (the dentist's professional
+      opinions about the patient are the patient's personal data and
+      must be disclosed) and internal staff emails (the patient's
+      personal data within them must be disclosed, but opinions about
+      the dentist's own liability are more nuanced — consider legal
+      professional privilege if solicitors are already involved).
+  - criterion: Exemptions consideration — legal professional privilege
+    maxPoints: 15
+    description: >-
+      Correctly identifies that Schedule 2 Part 1 paragraph 19
+      (legal professional privilege) could exempt communications with
+      a solicitor if the practice has sought legal advice about the
+      treatment dispute, but that internal emails between staff
+      discussing their own concerns about liability are not privileged
+      unless made for the dominant purpose of obtaining legal advice.
+  - criterion: Timeline and verification requirements
+    maxPoints: 15
+    description: >-
+      States the correct deadline (one calendar month from receipt of
+      the request, not the seven days Mrs Foley demanded), notes that
+      the clock starts on verification of identity, and explains the
+      extension option for complex requests. Confirms that the
+      requester cannot unilaterally set the deadline.
+  - criterion: Google review is separate — do not conflate
+    maxPoints: 15
+    description: >-
+      Explicitly separates the SAR from the Google review. The review
+      is a reputational/clinical-governance issue, not a data
+      protection issue. Advises against mentioning the review in the
+      SAR response or using it as a reason to delay or limit
+      disclosure.
+
+exemplarResponse: |
+  Dear Dr Kapoor,
+
+  I understand this is stressful, but the legal position is clear
+  and I want to make sure Dr Hanson hears it before he acts on
+  instinct. Taking your five questions in order.
+
+  **1. Yes, you have to respond — and her motive is irrelevant.**
+  The right of access under Article 15 of the UK GDPR is not
+  conditional on why the patient wants the data. Whether she is
+  building a complaint, preparing litigation, or just wants to see
+  her records out of curiosity, the right is the same. The ICO has
+  been explicit on this point: organisations cannot question the
+  purpose of a SAR or use the requester's perceived motive as a
+  reason to refuse. "She's just being difficult" is not a lawful
+  ground for non-compliance — and ignoring a SAR is a fast route
+  to an ICO complaint that you would lose.
+
+  **2. No, you cannot refuse because she might sue you.** The fact
+  that a patient may use their records to bring a clinical negligence
+  claim or a GDC complaint is not a basis for refusal. That is, in
+  fact, one of the purposes the right of access exists to serve —
+  enabling individuals to understand how their data has been used and
+  to enforce their rights. The only route to refusal is "manifestly
+  unfounded or excessive" under Article 12(5), and a standard first
+  SAR from an identifiable patient is neither.
+
+  **3. Yes, she gets to see Dr Hanson's clinical opinions.** His
+  clinical notes — including professional assessments like "patient
+  non-compliance with after-care instructions" — are Mrs Foley's
+  personal data. They are information about her, recorded in the
+  context of her treatment. The fact that they contain a clinician's
+  professional judgement does not make them the clinician's property.
+  This is settled law and consistent ICO guidance: clinical records
+  are the patient's data. Dr Hanson should know that any competent
+  solicitor reviewing the records would expect to see clinical notes
+  of exactly this kind.
+
+  **4. Internal emails — mostly yes, with one possible exception.**
+  Emails between you and Dr Hanson discussing Mrs Foley's treatment
+  are her personal data insofar as they contain information about
+  her. The fact that Dr Hanson expresses concern about negligence
+  liability does not, on its own, make those emails exempt. However,
+  if the practice has instructed a solicitor about this matter (or
+  is about to), then communications made for the dominant purpose of
+  obtaining legal advice could attract legal professional privilege
+  under Schedule 2 Part 1 paragraph 19 of the DPA 2018. Internal
+  emails between staff worrying about being sued are not privileged
+  — only communications with an actual lawyer for the purpose of
+  legal advice are. If you have not instructed a solicitor, this
+  exemption does not arise and the emails should be disclosed with
+  third-party data redacted as needed.
+
+  **5. The deadline is one calendar month, not seven days.** Mrs
+  Foley cannot set your deadline — the statutory period under
+  Article 12(3) is one calendar month from the point at which you
+  have verified her identity and have enough information to act.
+  You are entitled to verify her identity (match her name and date
+  of birth against your patient record). You may also extend by a
+  further two months if the request is complex, but you must tell
+  her within the first month if you are doing so. A request covering
+  clinical records, emails, and X-rays for a seven-year patient
+  relationship may justify the extension.
+
+  **The Google review is a separate matter.** Do not mention the
+  review in your SAR response. Do not use it as a reason to delay.
+  If you want to respond to the review publicly, take separate
+  advice on that — but be careful not to disclose any clinical
+  information about Mrs Foley in a public response, as that would
+  itself be a data protection breach.
+
+  **Action plan:**
+
+  1. Acknowledge the SAR today by email. Confirm identity (you
+     already hold her DOB and contact details as a patient).
+  2. Begin a search across all systems: practice management
+     software, clinical notes (paper and digital), X-rays, email
+     (search for her name across all staff mailboxes), and any
+     paper correspondence.
+  3. Collate and review. Redact third-party data (other patients
+     mentioned in shared notes). Leave clinical opinions and
+     staff names in — they are disclosable.
+  4. If you instruct a solicitor about the treatment dispute, let
+     me know — we may need to reconsider the privilege exemption
+     for specific documents. If you have not, disclose the
+     internal emails.
+  5. Provide the response within one calendar month. Use a cover
+     letter explaining what you searched, what you found, and any
+     exemptions applied.
+
+  I would suggest sharing this advice with Dr Hanson directly.
+  He will not enjoy reading it, but it is far better that he hears
+  it from you now than from the ICO later.
+
+  Kind regards,
+  Aegis Privacy Partners

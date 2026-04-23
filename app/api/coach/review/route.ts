@@ -200,6 +200,31 @@ export async function POST(request: Request): Promise<NextResponse> {
   for (const s of SKILLS) {
     skillLevels[s.key] = skillProgress[s.key]?.level ?? 0;
   }
+  // Pull guide-progress stats for badge criteria (Sprint 3b).
+  const guideProgressRows = await prisma.guideProgress.findMany({
+    where: { userId: user.id },
+    select: { guideSlug: true, quizScore: true },
+  });
+  const { getGuideBySlug, getGuidesByTrack } = await import("@/lib/guides");
+  const guideSkills = new Set<SkillKey>();
+  let perfectQuiz = false;
+  for (const row of guideProgressRows) {
+    const g = getGuideBySlug(row.guideSlug);
+    if (g) {
+      guideSkills.add(g.skill);
+      const totalQuestions = Math.round(g.quizXp / 10);
+      if (row.quizScore != null && row.quizScore >= totalQuestions) {
+        perfectQuiz = true;
+      }
+    }
+  }
+  const completedSlugs = new Set(guideProgressRows.map((r) => r.guideSlug));
+  const tracks = ["bcs", "cippe", "cippuk"] as const;
+  const completedAnyTrack = tracks.some((t) => {
+    const gs = getGuidesByTrack(t);
+    return gs.length > 0 && gs.every((g) => completedSlugs.has(g.slug));
+  });
+
   const stats: UserStats = {
     level: nextLevel,
     totalXp: nextTotalXp,
@@ -208,7 +233,11 @@ export async function POST(request: Request): Promise<NextResponse> {
     skillLevels,
     skillsCompleted,
     completions: allCompletionSummaries,
-    viewedAnyGuide: false,
+    viewedAnyGuide: guideProgressRows.length > 0,
+    guidesCompleted: guideProgressRows.length,
+    guideSkills,
+    perfectQuiz,
+    completedAnyTrack,
   };
   const newlyEarned = newlyAwardedBadges(stats, existingBadges);
   const nextBadges = [...existingBadges, ...newlyEarned.map((b) => b.id)];

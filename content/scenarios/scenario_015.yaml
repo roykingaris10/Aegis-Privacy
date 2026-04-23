@@ -1,0 +1,325 @@
+id: scenario_015
+tier: 2
+client: silverbrook_care
+skill: regulator_liaison
+difficulty: complex
+title: Police request for CCTV footage — after-the-fact disclosure review
+timeLimitMinutes: 30
+xpBase: 100
+
+briefing:
+  requestType: >-
+    Two police officers visited a care home unannounced and requested
+    CCTV footage showing a named resident leaving the building. Staff
+    provided the footage on a USB stick without a written request,
+    without a data protection assessment, and without management
+    authorisation. The manager discovered the disclosure after the fact.
+    This is a retrospective review of a law enforcement disclosure
+    under DPA 2018 Schedule 2 Part 1 paragraph 2 (crime and taxation
+    exemption), combined with policy-building to prevent recurrence.
+  whatUserNeedsToKnow: >-
+    The DPA 2018 Schedule 2 Part 1 paragraph 2 provides an exemption
+    from certain data protection provisions where non-compliance would
+    be likely to prejudice the prevention or detection of crime. This
+    is the gateway for most police requests. However, the exemption
+    requires a case-by-case assessment — it is not a blanket
+    obligation to hand over whatever the police ask for. The data
+    controller must satisfy itself that disclosure is necessary and
+    proportionate, and must document the assessment. Best practice
+    (and ICO guidance) is to require a written request from the police,
+    ideally using a standardised data protection request form (many
+    forces use these), which sets out the legal basis, the specific
+    data requested, and the purpose. Verbal requests and on-the-spot
+    handovers bypass this assessment entirely. The CCTV footage is
+    the data subject's personal data — handing it to the police
+    without proper assessment is a disclosure without a lawful basis
+    unless the exemption conditions are met and documented. The care
+    home context adds complexity: the resident is likely a vulnerable
+    adult, and CQC safeguarding considerations may apply depending
+    on the nature of the investigation.
+  commonPitfalls: |
+    - Assuming the police always have an automatic right to personal
+      data — they do not; the controller must make the assessment.
+    - Refusing to cooperate with the police entirely because "GDPR
+      says we can't" — the exemption exists precisely for this
+      purpose, but must be used properly.
+    - Failing to document the disclosure, the reasoning, and what
+      was shared.
+    - Sharing more data than was requested or necessary — the
+      footage should be limited to the specific time window and
+      camera relevant to the request.
+    - Not training staff on the correct procedure — if the policy
+      only exists in a folder that front-line staff never read, it
+      will not prevent recurrence.
+    - Ignoring the safeguarding angle — if the police investigation
+      involves the resident, the care home may have CQC notification
+      obligations.
+
+emailSender:
+  name: Karen Whittle
+  role: Registered Manager, Silverbrook Care Group — Meadow House
+  email: k.whittle@silverbrookcare.co.uk
+emailSubject: "Police took CCTV footage yesterday — I only found out this morning"
+emailBody: |
+  Dear Aegis,
+
+  I am quite shaken up and I need to know where I stand legally.
+
+  Yesterday afternoon — I was off-site at a managers' conference —
+  two police officers came to Meadow House and asked to speak to
+  whoever was in charge. My deputy, Shaun, was on duty. They told
+  him they were investigating a "criminal matter" and needed to see
+  our CCTV footage of the front entrance from last Tuesday between
+  2pm and 4pm. They specifically mentioned one of our residents,
+  Mr Brian Kelleher, and said they wanted to confirm what time he
+  left the building.
+
+  Shaun asked what it was about. They said they couldn't give
+  details but it was "important" and they needed the footage "now,
+  not in a week's time". Shaun panicked — he's never dealt with
+  the police before — and asked our maintenance man, Terry, to
+  pull the footage. Terry copied the two-hour window from the
+  front-entrance camera onto a USB stick and gave it to the
+  officers. They left a business card with a DC's name and mobile
+  number. No paperwork. No signatures. No receipt.
+
+  I found out this morning when Shaun mentioned it in passing
+  during handover. I asked him what data protection checks he did
+  and he looked at me blankly. He said he assumed the police
+  had the right to take whatever they needed.
+
+  My questions:
+
+  1. Did we do something wrong? Or is this just how it works with
+     the police?
+
+  2. The footage isn't just of Mr Kelleher — it's a wide-angle
+     camera that covers the whole entrance. Other residents,
+     visitors, and staff are all visible. Does that matter?
+
+  3. Mr Kelleher has early-stage vascular dementia. Does that
+     change anything? I'm also worried about what the police are
+     investigating — he's a vulnerable adult and if he's involved
+     in something, we may have safeguarding obligations.
+
+  4. What do I need to document now, after the fact? I'm aware
+     this horse has well and truly bolted but I want to get
+     whatever paperwork I can in place.
+
+  5. How do I make sure this never happens again? Shaun is a good
+     deputy but he didn't know what to do, which means my policies
+     aren't working.
+
+  Please advise.
+
+  Karen Whittle
+  Registered Manager
+  Silverbrook Care Group — Meadow House
+
+supportingDocuments:
+  - name: "DC business card details.pdf"
+    type: document
+    excerpt: >-
+      Business card for DC Emma Rowe, Hartwell Police Station,
+      Criminal Investigations Department. Mobile number and
+      emma.rowe@hartwell.police.uk. No collar number on the card.
+      No reference number for the investigation.
+
+userTask: >-
+  Draft an advice email to Karen. Address her five questions directly,
+  explain the legal framework for police data requests, set out what
+  retrospective documentation she should create, and provide a practical
+  policy and training framework to prevent recurrence.
+
+rubric:
+  - criterion: Legal gateway — Schedule 2 Part 1 paragraph 2
+    maxPoints: 20
+    description: >-
+      Explains the DPA 2018 Schedule 2 Part 1 paragraph 2 (crime and
+      taxation) exemption clearly. Notes that it is an exemption the
+      data controller applies, not a police power of seizure — the
+      controller must satisfy itself that non-disclosure would be
+      likely to prejudice the prevention or detection of crime.
+      Distinguishes this from a court order or warrant, which would
+      compel disclosure.
+  - criterion: Written request requirement and verification
+    maxPoints: 15
+    description: >-
+      States that best practice and ICO guidance is to require a
+      written request from the police, ideally on a standardised data
+      protection request form, setting out the legal basis, specific
+      data requested, and purpose. Notes that many forces have these
+      forms. Explains that a verbal request with no documentation
+      fails to provide the evidence base for the controller's
+      assessment.
+  - criterion: Proportionality assessment — minimum necessary disclosure
+    maxPoints: 15
+    description: >-
+      Identifies that the two-hour footage window captured other
+      residents, visitors, and staff — all of whose personal data was
+      disclosed without assessment. Notes that the proportionate
+      response would have been to review the footage first and provide
+      only the specific clips showing Mr Kelleher (or the specific
+      timeframe relevant to the request), redacting or excluding other
+      individuals where possible.
+  - criterion: What went wrong — critique of the staff response
+    maxPoints: 15
+    description: >-
+      Fairly assesses what Shaun and Terry did wrong without being
+      punitive. Notes: no identity verification of the officers, no
+      written request obtained, no data protection assessment, no
+      management authorisation, no record of what was disclosed, no
+      proportionality check on the footage scope. Frames these as
+      systemic failures (lack of training and policy) rather than
+      individual blame.
+  - criterion: Retrospective documentation requirements
+    maxPoints: 15
+    description: >-
+      Provides a specific list of what Karen should document now:
+      date and time of the visit, names/warrant numbers of the
+      officers, what was requested and why (as far as known), what
+      was actually disclosed (the full two-hour footage from the
+      front-entrance camera), the lawful basis relied upon (Schedule
+      2 Part 1 para 2), and the gap analysis of what should have been
+      done differently. Notes that she should contact DC Rowe to
+      obtain a retrospective written request.
+  - criterion: Policy and training recommendations
+    maxPoints: 20
+    description: >-
+      Provides a practical, implementable policy framework: designated
+      decision-maker (manager or deputy with training), written
+      request requirement, data protection assessment template,
+      proportionality check before disclosure, record-keeping
+      requirements, escalation to DPO for complex requests. Addresses
+      training specifically — front-line staff need a simple,
+      memorable protocol they can follow under pressure. The policy
+      must cover out-of-hours and manager-absent scenarios.
+
+exemplarResponse: |
+  Dear Karen,
+
+  I understand the concern. Let me be direct: what happened was not
+  best practice, but it is recoverable. And Shaun's instinct to
+  cooperate with the police was not wrong — the execution was.
+
+  **1. Yes, the process was wrong — but not catastrophically.** The
+  police do not have an automatic right to personal data just by
+  asking. What they have is a request. What Silverbrook has is a
+  legal gateway — DPA 2018, Schedule 2, Part 1, paragraph 2 —
+  which exempts you from certain data protection restrictions where
+  non-disclosure would be "likely to prejudice the prevention or
+  detection of crime". But that exemption is yours to apply, not
+  the police's to claim. You — the data controller — must satisfy
+  yourself on a case-by-case basis that the conditions are met and
+  document the reasoning. Shaun did not do this. He assumed the
+  police had an automatic right, handed over the footage without
+  assessment, and kept no record.
+
+  That said, this is distinct from a situation where the police
+  have a warrant or court order, which would compel disclosure.
+  A verbal request from officers who "can't give details" is the
+  weakest form of request and should have been escalated.
+
+  **2. The wide-angle footage is a problem.** The CCTV footage does
+  not just contain Mr Kelleher's personal data — it contains the
+  personal data of every resident, visitor, and staff member who
+  walked through the entrance during that two-hour window. All of
+  that data was disclosed to the police without any of those
+  individuals' knowledge. The proportionate response would have
+  been to review the footage before disclosure and provide only the
+  specific clips relevant to the request — or at minimum, the
+  narrowest possible time window. Handing over two hours of
+  wide-angle footage was more than was necessary or proportionate.
+
+  **3. Mr Kelleher's vulnerability and safeguarding.** Early-stage
+  vascular dementia means Mr Kelleher is a vulnerable adult. Two
+  considerations:
+
+  - If the criminal investigation involves Mr Kelleher as a
+    suspect: his capacity to participate in a police interview may
+    be in question, and Silverbrook may have a duty to raise this
+    with the police and consider whether an appropriate adult is
+    needed. This is not strictly a data protection issue but it is
+    a safeguarding one.
+  - If he is a victim or a witness: the same capacity concerns
+    apply.
+  - Either way: if the investigation reveals or suggests a risk to
+    Mr Kelleher or another vulnerable adult, you may have a CQC
+    notification obligation and a local authority safeguarding
+    referral duty under the Care Act 2014. You need to find out
+    what the investigation is about. Contact DC Rowe and ask.
+
+  **4. Retrospective documentation — do this today.** You cannot
+  undo the disclosure, but you can and must create a proper record:
+
+  > **Date of disclosure:** [date]
+  > **Requesting officers:** Two officers from Hartwell CID. DC
+  > Emma Rowe (business card retained). Second officer: name
+  > unknown — ask Shaun.
+  > **Warrant / collar numbers:** Not recorded — ask DC Rowe.
+  > **Investigation reference:** Not provided — request from
+  > DC Rowe.
+  > **What was requested:** CCTV footage, front entrance, last
+  > Tuesday 14:00-16:00, specifically showing Mr Brian Kelleher.
+  > **What was disclosed:** Full two-hour footage from front
+  > entrance camera, provided on USB stick. Includes footage of
+  > other residents, visitors, and staff.
+  > **Legal basis relied upon:** DPA 2018 Schedule 2 Part 1
+  > paragraph 2 (crime and taxation exemption) — applied
+  > retrospectively.
+  > **Assessment at time of disclosure:** None conducted. Staff
+  > assumed police had automatic right. No written request
+  > obtained. No management authorisation.
+  > **Proportionality:** Disclosure was broader than necessary.
+  > Full two-hour footage provided without review or redaction.
+  > **Remedial actions:** [list from section 5 below].
+
+  Contact DC Rowe today. Ask for (a) a retrospective written
+  request on the force's standard data protection request form,
+  (b) the investigation reference number, and (c) confirmation of
+  both officers' names and collar numbers. Most forces will
+  provide this retrospectively without difficulty.
+
+  **5. Making sure it never happens again.** The problem is not
+  Shaun — it is that he had no training and no procedure to follow.
+  Here is what you need:
+
+  **Policy — "Police and Law Enforcement Data Requests":**
+
+  - All requests for personal data from law enforcement must be
+    made in writing, using the force's standard data protection
+    form. Verbal requests are not accepted except in genuine
+    emergencies (immediate risk to life) — in which case, the
+    officer must provide a written follow-up within 24 hours.
+  - A designated decision-maker must approve every disclosure.
+    That is you or, in your absence, a named deputy who has
+    received specific training. Not the maintenance man.
+  - Before disclosing, the decision-maker must complete a brief
+    data protection assessment: what is being requested, what is
+    the legal gateway, is the request necessary and proportionate,
+    can the disclosure be narrowed?
+  - The minimum necessary data should be disclosed. For CCTV, this
+    means reviewing the footage and clipping to the specific
+    individual or time window relevant to the request.
+  - Every disclosure is logged: date, officers, reference number,
+    what was requested, what was disclosed, legal basis, and
+    assessment reasoning.
+
+  **Training:**
+
+  - All staff who might answer the door to police (which in a care
+    home is everyone) need a simple, memorable three-step rule:
+    (1) Ask for written identification and a written request.
+    (2) Explain politely that you need to check with the manager
+    before disclosing any data. (3) Call the manager or deputy.
+  - Run a 30-minute training session with all staff. Frame it
+    positively: "We want to cooperate with the police, but we need
+    to do it properly to protect our residents."
+  - Pin a one-page flowchart by the front desk.
+
+  I can draft the policy and the flowchart for you. Let me know
+  when you want to schedule the staff training — I would recommend
+  doing it within the next two weeks while this incident is fresh.
+
+  Kind regards,
+  Aegis Privacy Partners

@@ -1,0 +1,374 @@
+id: scenario_019
+tier: 3
+client: aurelia_biotech
+skill: international_transfers
+difficulty: contested
+title: Clinical trial data sharing with US partner — multi-jurisdictional transfer
+timeLimitMinutes: 50
+xpBase: 200
+
+briefing:
+  requestType: >-
+    A Phase III clinical trial data-sharing arrangement between a UK
+    pharmaceutical company and a US academic medical centre. The US
+    partner wants identifiable patient data for safety signal
+    verification. The UK processing has Section 251 support from the
+    Confidentiality Advisory Group, but the question is whether that
+    support extends to international transfers. The trial runs across
+    UK and EU sites, so the EU Clinical Trials Regulation also applies.
+  whatUserNeedsToKnow: >-
+    This is a multi-layered transfer problem. Layer 1: the transfer
+    mechanism. The US does not have a UK adequacy decision for general
+    transfers — the UK-US Data Bridge applies only to DPF-certified
+    recipients. An academic medical centre is unlikely to be DPF-
+    certified (the DPF applies to commercial organisations regulated
+    by the FTC or DOT). The fallback is an IDTA or UK Addendum to
+    EU SCCs, plus a Transfer Risk Assessment. Layer 2: Section 251
+    support. Section 251 of the NHS Act 2006 and the Health Service
+    (Control of Patient Information) Regulations 2002 provide a legal
+    basis to set aside the common law duty of confidence — but they
+    do not authorise international transfers. The CAG approval letter
+    is specific to the processing it describes; if it does not
+    explicitly authorise transfer to a US recipient, the transfer
+    needs a separate basis. Layer 3: UK GDPR research exemptions.
+    Schedule 2 Part 6 provides exemptions for research processing
+    (from certain data subject rights) but does not override
+    Chapter V transfer restrictions. Layer 4: EU Clinical Trials
+    Regulation (CTR) 536/2014 applies because the trial runs across
+    EU sites and the UK has committed to regulatory alignment on
+    clinical trials. The CTR has its own data-sharing and
+    transparency requirements. Layer 5: Caldicott principles require
+    that patient-identifiable data is shared only when strictly
+    necessary and that the minimum necessary identifiable information
+    is used. The US partner's request for identifiable data must be
+    challenged on proportionality grounds.
+  commonPitfalls: |
+    - Treating Section 251 as a blanket authorisation for everything,
+      including international transfers — it is not.
+    - Assuming an academic medical centre is DPF-certified — US
+      academic institutions are generally not commercial entities
+      subject to FTC jurisdiction.
+    - Accepting the US partner's claim that they need identifiable
+      data for safety signal verification without challenging
+      whether pseudonymised data with a re-linkage key held in the
+      UK would suffice.
+    - Ignoring the EU CTR overlay because the company is UK-based
+      — the trial runs across EU sites and the regulation applies.
+    - Writing a TRA that does not address HIPAA's limitations as a
+      UK GDPR equivalent (HIPAA covers "covered entities" in
+      healthcare, not research data held by academic institutions
+      unless they are also healthcare providers).
+    - Forgetting that the Caldicott Guardian at the NHS sites
+      supplying the data has an independent scrutiny role.
+
+emailSender:
+  name: Professor James Hargreaves
+  role: VP Clinical Development, Aurelia Biotech plc
+  email: j.hargreaves@aureliabio.com
+emailSubject: "BEACON-3 data sharing with Johns Hopkins — transfer mechanism needed"
+emailBody: |
+  Dear Aegis,
+
+  I need your advice on a data-sharing arrangement that is becoming
+  time-critical. The BEACON-3 Phase III trial is our most important
+  programme and I do not want the data protection tail wagging the
+  clinical dog — but I also do not want to get this wrong.
+
+  Context: BEACON-3 is a multi-site Phase III trial for our lead
+  oncology compound (AB-7184) across 22 sites in the UK, Germany,
+  France, and the Netherlands. In the UK, we have four NHS trust
+  sites contributing patient data. We hold Section 251 support from
+  the CAG for the use of patient-identifiable data without consent
+  for the UK arm of the trial — the CAG application was specific to
+  Aurelia as sponsor and the four named NHS sites.
+
+  The new element: we have entered a research collaboration with
+  Johns Hopkins University School of Medicine in Baltimore. They are
+  providing the independent Data Safety Monitoring Board (DSMB)
+  function for the trial and will conduct the interim safety
+  analyses. Their statisticians need access to the patient-level
+  data to conduct safety signal verification — specifically, they
+  want:
+
+  - Patient identifiers (pseudonymised trial ID + date of birth +
+    gender + ethnicity)
+  - Full adverse event records including serious adverse events
+  - Concomitant medication records
+  - Tumour response data
+  - Date and cause of death where applicable
+
+  Our clinical operations director says they need identifiable data
+  (DOB, gender, ethnicity) rather than just the trial ID because
+  their safety analysis methodology requires demographic
+  stratification and they need to be able to cross-reference with
+  the FDA's adverse event reporting database (FAERS), which uses
+  demographic identifiers.
+
+  My concerns:
+
+  1. Does our Section 251 support cover sharing this data with
+     Johns Hopkins? The CAG application named Aurelia and the four
+     NHS sites — it did not mention a US academic partner.
+
+  2. What transfer mechanism do we need? Johns Hopkins is a
+     university, not a commercial company — does the Data Bridge
+     thing apply?
+
+  3. The trial also runs across EU sites. Does the EU have
+     different rules for this kind of transfer? We're using EU
+     SCCs for the EU data — can we use the same mechanism for the
+     UK data?
+
+  4. Can we justify sending identifiable data rather than
+     pseudonymised data? I understand the clinical argument for
+     identifiers but I also know the regulators will ask why we
+     didn't pseudonymise.
+
+  5. We need this in place within four weeks — the interim safety
+     analysis is scheduled and the MHRA is expecting results by
+     the end of Q2. What is the fastest defensible path?
+
+  James Hargreaves
+  VP Clinical Development
+  Aurelia Biotech plc
+
+supportingDocuments:
+  - name: "CAG approval letter — BEACON-3 (extract).pdf"
+    type: document
+    excerpt: >-
+      CAG reference CAG 10-05(a)/2025. Approval under Regulation 5
+      of the Health Service (Control of Patient Information)
+      Regulations 2002 for the processing of patient-identifiable
+      data without consent for the BEACON-3 trial. Named parties:
+      Aurelia Biotech plc (sponsor), Lanely NHS Foundation Trust,
+      Royal Marsden NHS Foundation Trust, University Hospitals
+      Birmingham NHS FT, Manchester University NHS FT. Conditions
+      include: data minimisation, annual review, Caldicott Guardian
+      approval at each site, and a requirement that "data flows are
+      limited to those described in the application". The application
+      described data flows between the NHS sites and Aurelia. No
+      mention of international transfers or a US academic partner.
+  - name: "Johns Hopkins DSMB agreement — data requirements (draft).pdf"
+    type: document
+    excerpt: >-
+      Draft agreement listing data elements required for the DSMB
+      function. Specifies patient-level data with DOB, gender,
+      ethnicity, full adverse event records, and survival data.
+      Notes that Johns Hopkins operates under HIPAA but that the
+      DSMB function is conducted by the Bloomberg School of Public
+      Health (a research unit, not a covered entity under HIPAA).
+      Data will be stored on Johns Hopkins' institutional servers
+      in Baltimore. No mention of UK GDPR, IDTA, or international
+      transfer mechanisms.
+
+userTask: >-
+  Draft an advice memo to Professor Hargreaves answering his five
+  questions. Navigate the multi-layered transfer problem — Section 251
+  scope, transfer mechanism, EU CTR overlay, pseudonymisation challenge,
+  and timeline. Give a realistic fastest-defensible-path plan.
+
+rubric:
+  - criterion: Transfer mechanism — IDTA + TRA for health research data
+    maxPoints: 15
+    description: >-
+      Correctly identifies that the UK-US Data Bridge is unavailable
+      for Johns Hopkins (academic institution, not FTC-regulated
+      commercial entity, unlikely to be DPF-certified). Recommends
+      the IDTA as the transfer mechanism with a TRA addressing the
+      specific risks of transferring clinical trial data to a US
+      academic institution. Notes that HIPAA coverage is uncertain
+      for the Bloomberg School of Public Health.
+  - criterion: Section 251 scope — does it authorise international disclosure?
+    maxPoints: 20
+    description: >-
+      Correctly analyses the CAG approval letter and concludes that
+      the current Section 251 support does not cover transfer to
+      Johns Hopkins — the application described data flows between
+      the NHS sites and Aurelia only, and the CAG condition requires
+      data flows to be "limited to those described". Advises that
+      either a variation to the CAG approval or a fresh application
+      is needed, or alternatively that the transfer is structured
+      so that Aurelia (already covered) transfers to Johns Hopkins
+      under a separate legal basis.
+  - criterion: Research exemption — Schedule 2 Part 6
+    maxPoints: 10
+    description: >-
+      Notes that the UK GDPR research exemptions in Schedule 2 Part 6
+      provide exemptions from certain data subject rights (including
+      the right of access in certain circumstances) but do not override
+      Chapter V transfer restrictions. The research purpose does not
+      create a transfer exemption.
+  - criterion: Pseudonymisation vs identifiable — proportionality challenge
+    maxPoints: 20
+    description: >-
+      Challenges the request for identifiable data (DOB, gender,
+      ethnicity) directly. Applies the Caldicott principles and data
+      minimisation under Article 5(1)(c). Proposes a pseudonymisation
+      model where the trial ID is the primary identifier, demographic
+      variables are banded rather than precise (year of birth, not
+      DOB), and the re-linkage key is held by Aurelia in the UK.
+      Addresses the clinical argument for FAERS cross-referencing
+      and proposes an alternative that satisfies the safety objective
+      with less identifiable data.
+  - criterion: EU CTR overlay and dual-jurisdiction coordination
+    maxPoints: 15
+    description: >-
+      Identifies that the EU Clinical Trials Regulation applies
+      because the trial runs across EU sites. Notes that EU SCCs
+      cannot be used for UK-to-US transfers (different legal regime —
+      the IDTA is the UK mechanism). Addresses the coordination
+      challenge: the EU sites will use EU SCCs for their data; the
+      UK sites will use the IDTA. Both need TRAs. The data sharing
+      agreement with Johns Hopkins must accommodate both regimes.
+  - criterion: Practical safeguards and data sharing agreement
+    maxPoints: 10
+    description: >-
+      Recommends a comprehensive data sharing agreement covering:
+      purpose limitation, retention (delete after DSMB function
+      concludes), security measures, breach notification, audit
+      rights, and sub-processing restrictions. Notes that the DSMB
+      agreement draft contains none of these provisions.
+  - criterion: Caldicott principles applied
+    maxPoints: 10
+    description: >-
+      Applies the Caldicott principles to the transfer decision:
+      justify the purpose, only use identifiable data where absolutely
+      necessary, use the minimum necessary, access on a need-to-know
+      basis, and everyone must understand their responsibilities.
+      Notes that the NHS site Caldicott Guardians must approve the
+      extended data flow.
+
+exemplarResponse: |
+  Dear James,
+
+  I understand the timeline pressure and I will give you the fastest
+  defensible path — but I need to be clear that "fastest" is not
+  "instant", and cutting corners on a multi-site clinical trial
+  involving NHS patient data and international transfers would be
+  both unlawful and reputationally catastrophic.
+
+  **1. Section 251 does not cover the Johns Hopkins transfer.**
+  Your CAG approval is specific to data flows between the four
+  named NHS sites and Aurelia as sponsor. The condition states that
+  "data flows are limited to those described in the application" —
+  and the application did not describe a transfer to a US academic
+  partner. Section 251 sets aside the common law duty of confidence
+  for the specific processing described in the application; it does
+  not provide a general research exemption, and it does not address
+  international transfers.
+
+  You have two routes:
+
+  - **Route A (preferred):** Aurelia, as the existing Section 251
+    beneficiary, receives the patient data from the NHS sites (as
+    already authorised) and transfers it to Johns Hopkins under
+    Aurelia's own controllership. The transfer is then Aurelia-to-
+    Johns Hopkins, not NHS-to-Johns Hopkins. Section 251 is not
+    needed for this leg — the legal basis is Aurelia's legitimate
+    interest in conducting the trial safely (Article 6(1)(f)) and
+    the Article 9(2)(j) research condition. But you need a transfer
+    mechanism for the international leg (see below).
+  - **Route B:** Apply for a variation to the CAG approval adding
+    Johns Hopkins as a named recipient. This takes 6-8 weeks
+    through the CAG review process and I do not think you have the
+    time.
+
+  Route A is defensible and faster. The NHS site Caldicott Guardians
+  must be informed of the extended data flow and must approve it
+  under their independent scrutiny role. Do not bypass this step.
+
+  **2. Transfer mechanism — IDTA, not Data Bridge.** Johns Hopkins
+  University is an academic institution. It is not a commercial
+  entity regulated by the FTC and is almost certainly not self-
+  certified under the Data Privacy Framework. The UK-US Data Bridge
+  is therefore unavailable. The mechanism is the ICO's International
+  Data Transfer Agreement (IDTA), signed between Aurelia (UK
+  exporter) and Johns Hopkins (US importer).
+
+  A Transfer Risk Assessment is required alongside the IDTA. Key
+  considerations:
+
+  - HIPAA: the DSMB function is conducted by the Bloomberg School
+    of Public Health, which may not be a "covered entity" under
+    HIPAA. If not, HIPAA's protections do not apply to the data
+    once it reaches Johns Hopkins. This must be documented in the
+    TRA and mitigated through contractual security obligations.
+  - FISA 702 / EO 12333: an academic institution is less likely to
+    be a direct target for national security access requests than
+    a commercial communications provider, but the risk is not zero.
+    Supplementary measures: encryption at rest and in transit with
+    UK-held keys, access restricted to named DSMB members, no
+    onward transfer.
+  - Johns Hopkins' institutional data governance: they have strong
+    IRB (Institutional Review Board) processes. Leverage these in
+    the TRA as supplementary safeguards.
+
+  **3. EU CTR and dual-jurisdiction coordination.** The EU sites
+  will need their own transfer mechanism for data flowing to Johns
+  Hopkins — EU Standard Contractual Clauses under the EU GDPR. You
+  cannot use EU SCCs for the UK data or the IDTA for the EU data.
+  The data sharing agreement with Johns Hopkins must be structured
+  to accommodate both regimes — typically a single agreement with
+  UK and EU transfer annexes. The EU Clinical Trials Regulation
+  adds a transparency layer: the trial protocol and data sharing
+  arrangements must be documented in the EU Clinical Trials
+  Information System (CTIS).
+
+  **4. Pseudonymisation — push back on identifiable data.** The
+  Caldicott principles require you to use the minimum necessary
+  identifiable information. Johns Hopkins says they need DOB,
+  gender, and ethnicity for demographic stratification and FAERS
+  cross-referencing. Challenge this:
+
+  - Year of birth (not full DOB) is sufficient for demographic
+    stratification in most safety analysis methodologies.
+  - Gender and ethnicity can be provided as categorical variables
+    without additional identifiers.
+  - FAERS cross-referencing can be conducted by Aurelia in the UK
+    (where the identifiable data sits) with results shared with
+    the DSMB in de-identified form.
+  - The re-linkage key (trial ID to patient identity) must be
+    held by Aurelia in the UK, not by Johns Hopkins.
+
+  The data transferred should be: trial ID, year of birth, gender,
+  ethnicity (categorical), adverse event records, concomitant
+  medications, tumour response, survival data. Not: full DOB, NHS
+  number, name, or any direct identifier.
+
+  **5. Fastest defensible path — four-week plan:**
+
+  Week 1:
+  - Finalise the pseudonymisation model with the clinical
+    operations team. Get Johns Hopkins' agreement that the reduced
+    identifier set is workable for the safety analysis.
+  - Notify the four NHS site Caldicott Guardians of the extended
+    data flow and obtain approval.
+  - Begin drafting the IDTA and TRA.
+
+  Week 2:
+  - IDTA and TRA drafted and sent to Johns Hopkins for review.
+  - Draft the data sharing agreement (covering purpose, retention,
+    security, breach notification, audit rights, destruction on
+    completion).
+  - Begin EU SCC process for the EU sites in parallel.
+
+  Week 3:
+  - IDTA, TRA, and DSA signed by all parties.
+  - Johns Hopkins confirms security measures in place (encrypted
+    storage, named-access-only, no onward transfer).
+  - Caldicott Guardian approvals documented.
+
+  Week 4:
+  - Data transfer begins under the signed agreements.
+  - Interim safety analysis proceeds on schedule.
+
+  This is tight but achievable if Johns Hopkins engages promptly on
+  the IDTA. If they push back on the pseudonymisation model or the
+  contractual terms, the timeline slips — and the right answer is
+  to slip the timeline, not to transfer identifiable data without
+  safeguards.
+
+  I can start on the IDTA and TRA today if you confirm Route A.
+
+  Kind regards,
+  Aegis Privacy Partners

@@ -1,0 +1,385 @@
+id: scenario_018
+tier: 3
+client: meridian_capital
+skill: regulator_liaison
+difficulty: contested
+title: ICO enquiry about AI due-diligence tool — regulatory response
+timeLimitMinutes: 45
+xpBase: 200
+
+briefing:
+  requestType: >-
+    The ICO has written to the firm following a complaint from an
+    individual who was scored by the AI due-diligence tool without
+    their knowledge. This is an ICO enquiry — not yet a formal
+    investigation — but the quality of the response will determine
+    whether it escalates. The scenario directly follows scenario_003
+    (the Vela DDX DPIA) and tests whether the user can translate
+    compliance planning into a defensible regulatory response.
+  whatUserNeedsToKnow: >-
+    An ICO enquiry letter is an information-gathering exercise under
+    the ICO's assessment and investigation powers. The firm is not
+    under formal investigation at this stage, but the response will
+    be scrutinised carefully. The ICO is asking for specific
+    documents and explanations: the DPIA, the lawful basis analysis,
+    Article 14 compliance evidence, and international transfer
+    mechanism documentation. The tone should be cooperative,
+    transparent, and professionally precise — neither defensive nor
+    apologetic. The response must demonstrate that the firm has
+    actually done the compliance work, not just assert that it has.
+    If there are gaps (and there may be, depending on how thoroughly
+    the user addressed scenario_003), the response should acknowledge
+    them with a remediation plan rather than trying to paper over
+    them. The FCA angle adds pressure — if the ICO shares concerns
+    with the FCA (they can and do), the firm faces dual regulatory
+    scrutiny.
+  commonPitfalls: |
+    - Treating the enquiry as adversarial and adopting a defensive
+      or legalistic tone — cooperation is the best strategy.
+    - Asserting compliance without evidence — "we have a DPIA" is
+      not sufficient; the ICO wants to see it.
+    - Trying to hide gaps — if Article 14 notice was not given, it
+      is better to acknowledge this and present a remediation plan
+      than to construct a retrospective justification.
+    - Ignoring the complainant's specific concern — the ICO will
+      have shared the complaint with the firm, and the response
+      should address it directly.
+    - Failing to consider the FCA notification angle — depending
+      on the firm's relationship with the FCA, a data protection
+      issue involving their investment process may trigger a SUP 15
+      notification obligation.
+    - Over-promising remedial actions that the firm cannot deliver
+      on the stated timeline.
+
+emailSender:
+  name: Tom Rankin
+  role: Head of Compliance, Meridian Capital Partners
+  email: t.rankin@meridiancap.co.uk
+emailSubject: "ICO letter about Vela — they want our DPIA and lawful basis by the 14th"
+emailBody: |
+  Dear Aegis,
+
+  We have a problem. I received a letter from the ICO yesterday
+  marked "Assessment — Formal Enquiry" and I need your help
+  drafting our response. The deadline is 14 calendar days from
+  receipt — so we have 12 days left.
+
+  Background you already know: Vela DDX, the AI due-diligence
+  scoring tool. You advised us on the DPIA and transfer posture
+  six months ago. We proceeded with the pilot on the conditions
+  you set out — DPIA completed, IDTA signed (Vela was not
+  DPF-certified), social media signals excluded, Article 22
+  mitigations in place (override logs, explainability output,
+  quarterly divergence audit).
+
+  What has happened: a company founder — Mr Stefan Novak, CEO of
+  a Series B fintech we were considering as a target — has
+  discovered that Meridian scored him using Vela DDX. He found out
+  because a friend at another fund mentioned it casually at a
+  conference. He has complained to the ICO that:
+
+  - He was never informed his personal data was being processed
+    (Article 14 breach).
+  - He was profiled and scored by an automated system without his
+    consent (Article 22 complaint).
+  - His data was transferred to the US without adequate safeguards.
+
+  The ICO's letter asks us to provide, within 14 days:
+
+  1. A copy of our Data Protection Impact Assessment for the use
+     of Vela DDX.
+  2. Our lawful basis analysis, including the Legitimate Interest
+     Assessment.
+  3. Evidence of how we have complied with Article 14 (information
+     to the data subject where data was not obtained directly from
+     them).
+  4. Our position on Article 22 and the safeguards in place.
+  5. Details of the international transfer mechanism and any
+     Transfer Risk Assessment.
+  6. Any other information we consider relevant to the complaint.
+
+  The letter is signed by an assessment team manager and says the
+  ICO is "considering whether to open a formal investigation".
+
+  My honest assessment of where we stand:
+
+  - DPIA: done, comprehensive, follows your structure. I am
+    confident in this.
+  - LIA: done as part of the DPIA. Reasonable.
+  - Article 14: this is our weak spot. We drafted a privacy notice
+    for the website but we never implemented the direct notice to
+    individuals at the point they became relevant. Mr Novak was
+    never contacted. We discussed this six months ago and Catherine
+    decided it was "disproportionate effort" — but I am not sure
+    that defence holds for fewer than 200 individuals scored per
+    year.
+  - Article 22: mitigations are in place and documented. Override
+    logs exist. Quarterly audit was done once (Q4) — Q1 is
+    overdue.
+  - Transfer: IDTA and TRA in place. Solid.
+
+  I need a draft response that is honest about the Article 14 gap
+  without inviting enforcement, presents our strengths confidently,
+  and gives the ICO a reason to close this at the assessment stage
+  rather than escalating.
+
+  How quickly can you turn this around?
+
+  Tom
+
+supportingDocuments:
+  - name: "ICO Assessment Letter — Meridian / Vela DDX.pdf"
+    type: document
+    excerpt: >-
+      Formal enquiry letter from the ICO Assessment Team. References
+      complaint ref ICO-2026-04892 from Mr Stefan Novak. Lists the
+      six items requested. Notes that "the Commissioner is considering
+      whether to open a formal investigation under section 149 of the
+      Data Protection Act 2018" and that the response will be used to
+      "determine whether there are reasonable grounds to suspect a
+      contravention". Cooperative tone but clear authority.
+  - name: "Meridian privacy notice — Vela DDX section (website).pdf"
+    type: document
+    excerpt: >-
+      One paragraph on the Meridian website privacy notice: "We may
+      use third-party tools to conduct due diligence on individuals
+      associated with potential investment targets. This processing
+      is carried out on the basis of our legitimate interests in
+      assessing investment risk." No mention of Article 14 individual
+      notification, no details of the tool, scoring methodology, or
+      data subjects' rights regarding automated decision-making.
+  - name: "Q4 divergence audit — summary.pdf"
+    type: document
+    excerpt: >-
+      One-page summary. 47 individuals scored in Q4. IC overrode the
+      Vela score band in 3 cases (6.4%). Two overrides were upward
+      (green score, IC proceeded with enhanced scrutiny), one
+      downward (amber score, IC declined the deal). No systematic
+      over-reliance detected. Q1 audit not yet conducted.
+
+userTask: >-
+  Draft the response letter to the ICO on Meridian's behalf. Address
+  each of the six items they have requested. Be cooperative and
+  transparent — particularly about the Article 14 gap — while
+  presenting the firm's compliance strengths. Include a concrete
+  remediation plan for the identified weaknesses. The goal is to
+  give the ICO a reason to close the assessment without escalating
+  to investigation.
+
+rubric:
+  - criterion: Tone and structure of ICO response
+    maxPoints: 15
+    description: >-
+      Strikes the right tone: cooperative, transparent, professionally
+      precise. Not defensive, not grovelling. Structured clearly
+      against the six items the ICO has requested. Acknowledges the
+      complainant's concern directly rather than treating Mr Novak as
+      an adversary.
+  - criterion: DPIA presentation — demonstrating compliance
+    maxPoints: 15
+    description: >-
+      Presents the DPIA confidently — summarises its scope, structure,
+      findings, and mitigations rather than just attaching it. Shows
+      that the DPIA was a genuine design input, not a retrospective
+      compliance artefact.
+  - criterion: Lawful basis defence — Article 6(1)(f) LIA
+    maxPoints: 15
+    description: >-
+      Presents the legitimate interest assessment with the three-part
+      test: purpose (legitimate interest in investment risk assessment),
+      necessity (no less intrusive means of assessing principal risk at
+      this scale), and balancing (data subjects' reasonable expectations
+      are low for professional conduct data but higher for personal
+      data — safeguards address the balance). Honest about the weak
+      points.
+  - criterion: Article 14 transparency — honest about the gap
+    maxPoints: 20
+    description: >-
+      Acknowledges that direct Article 14 notification to scored
+      individuals was planned but not implemented. Does not try to
+      hide behind the disproportionate-effort exemption for fewer than
+      200 individuals per year. Presents a concrete remediation plan
+      with timeline: individual notification within 30 days for all
+      previously scored individuals, prospective notification at
+      point of relevance for future subjects, updated privacy notice.
+  - criterion: Transfer mechanism documentation
+    maxPoints: 15
+    description: >-
+      Presents the IDTA and TRA as evidence of a structured approach
+      to international transfers. Summarises the TRA findings (FISA 702
+      risk, supplementary measures in place) and notes the ongoing
+      monitoring commitment.
+  - criterion: Remedial actions and undertakings
+    maxPoints: 20
+    description: >-
+      Offers specific, time-bound remedial undertakings: Article 14
+      direct notification to all scored individuals within 30 days,
+      completion of the overdue Q1 divergence audit within 14 days,
+      updated website privacy notice within 7 days, and commitment to
+      prospective Article 14 compliance. The undertakings must be
+      realistic and deliverable — over-promising undermines
+      credibility.
+
+exemplarResponse: |
+  Dear [ICO Assessment Team Manager],
+
+  Re: Complaint ref ICO-2026-04892 — Mr Stefan Novak
+  Response to formal enquiry dated [date]
+
+  Thank you for your letter. Meridian Capital Partners takes this
+  complaint seriously and welcomes the opportunity to set out its
+  position. We have endeavoured to be transparent in this response,
+  including where our practice has fallen short of what we would
+  wish.
+
+  **1. Data Protection Impact Assessment.**
+
+  A full DPIA was conducted before the Vela DDX pilot commenced, in
+  accordance with Article 35 UK GDPR. The DPIA was completed with
+  the assistance of our external DPO (Aegis Privacy Partners) and
+  signed off by our Chief Operating Officer as accountable executive.
+  A copy is enclosed at Annex A.
+
+  The DPIA identifies the following Article 35 triggers: systematic
+  evaluation of individuals producing effects on them, innovative
+  technology, matching or combining datasets, and large-scale
+  processing. It assesses risks to data subjects across six
+  dimensions and sets out mitigations for each, including the
+  Article 22 safeguards, transfer mechanism, and source-scoping
+  controls described below. The DPIA was a genuine design input —
+  it resulted in the exclusion of social media signals from the
+  ingestion scope, the implementation of override logging, and the
+  quarterly divergence audit.
+
+  **2. Lawful basis analysis.**
+
+  Our lawful basis for the processing is Article 6(1)(f) — legitimate
+  interests. The Legitimate Interest Assessment, enclosed at Annex B
+  as part of the DPIA, applies the three-part test:
+
+  - Purpose: Meridian has a legitimate interest in assessing the
+    risk profile of principals associated with potential investment
+    targets. This is a core function of the due diligence process
+    for an FCA-regulated investment manager.
+  - Necessity: there is no less intrusive means of systematically
+    assessing principal risk across publicly available information
+    at the scale required for Meridian's pipeline.
+  - Balancing: the data subjects are company founders and senior
+    executives whose professional conduct is a matter of legitimate
+    scrutiny in the context of an investment decision. Their
+    reasonable expectation of privacy in professional data (company
+    filings, regulatory records, court records) is lower than for
+    personal data. Safeguards in place include: source restrictions
+    (no social media), data minimisation, retention limits, the
+    Article 22 mitigations below, and the right to object.
+
+  We acknowledge that the reasonable-expectation limb is the weakest
+  element of the balancing test. The safeguards are what make the
+  balance lawful, and we are committed to maintaining them.
+
+  **3. Article 14 compliance.**
+
+  We must be candid on this point. When the DPIA was completed, we
+  committed to a two-layer transparency approach: a website privacy
+  notice describing the processing at category level, and a direct
+  individual notice at the point a data subject became relevant to
+  an active investment consideration. The website privacy notice was
+  published (enclosed at Annex C). The direct individual notice was
+  designed but was not implemented. Mr Novak was not contacted.
+
+  We considered the disproportionate-effort exemption under Article
+  14(5)(b). On reflection, this exemption is difficult to sustain
+  for a population of fewer than 200 individuals scored per year,
+  all of whom are identifiable and contactable. We do not seek to
+  rely on it.
+
+  **Remediation:** we have committed to the following actions:
+
+  - Within 30 days of this response: direct Article 14 notification
+    to all individuals scored by Vela DDX to date (including Mr
+    Novak), by letter, providing the information required by
+    Article 14(1) and (2).
+  - Prospectively: individual notice will be issued within one
+    month of a data subject becoming relevant to an active
+    consideration, in accordance with Article 14(3)(a).
+  - Within 7 days: updated website privacy notice with full
+    detail of the Vela DDX processing, data subjects' rights, and
+    the right to object.
+
+  **4. Article 22 — automated decision-making.**
+
+  We have treated Article 22 as engaged on a precautionary basis.
+  The Vela DDX score is a decision-support input, not a decision.
+  The Investment Committee retains formal decision authority and the
+  following safeguards are in place:
+
+  - Documented override logs for every deal where the IC's
+    disposition diverges from the Vela score band. In Q4, the IC
+    overrode the score band in 3 of 47 cases (6.4%).
+  - Per-subject explainability output accompanying each score,
+    showing the top contributing factors and uncertainty level.
+  - Quarterly divergence audit assessing whether the IC is
+    exercising genuine independent judgement or systematically
+    following the score. The Q4 audit is enclosed at Annex D.
+
+  We note that the Q1 divergence audit is overdue and commit to
+  completing it within 14 days of this response.
+
+  In respect of Mr Novak specifically: we can confirm that his
+  Vela DDX score was reviewed by the IC as part of its assessment
+  of [Company Name]. The IC's decision on the investment [was/was
+  not] consistent with the score band. Mr Novak's right to obtain
+  human intervention, to express his point of view, and to contest
+  the decision under Article 22(3) will be communicated to him as
+  part of the Article 14 notification referenced above.
+
+  **5. International transfer mechanism.**
+
+  Vela Analytics Inc. is a US-based processor. At the time of
+  deployment, Vela was not certified under the Data Privacy
+  Framework and therefore did not qualify for the UK-US Data Bridge.
+  We entered into the ICO's International Data Transfer Agreement
+  (IDTA) with Vela, enclosed at Annex E.
+
+  A Transfer Risk Assessment was conducted alongside the IDTA,
+  enclosed at Annex F. The TRA addresses FISA Section 702 exposure,
+  encryption in transit and at rest, access logging, Vela's
+  contractual commitment to challenge government access requests,
+  and notification obligations. The TRA concludes that the residual
+  risk is manageable with the supplementary measures in place.
+
+  **6. Additional information.**
+
+  We wish to note the following:
+
+  - The processing was designed with external DPO input from the
+    outset. The compliance posture was not retrospective.
+  - Social media signals were excluded from the ingestion scope
+    specifically to avoid Article 9 special category data risks.
+  - Meridian is FCA-regulated and the Vela DDX deployment is
+    subject to the firm's model risk management framework under
+    SYSC 6.1.
+  - We have self-assessed the Article 14 gap as a compliance
+    failure, not a systemic disregard for data subjects' rights,
+    and have taken immediate remedial action.
+
+  We would welcome the opportunity to discuss this response with
+  the Assessment Team if any clarification is needed. We are
+  committed to full cooperation and to the remediation actions
+  set out above.
+
+  Yours faithfully,
+
+  Tom Rankin
+  Head of Compliance
+  Meridian Capital Partners
+
+  On behalf of Aegis Privacy Partners (external DPO)
+
+  Annexes:
+  A — Data Protection Impact Assessment (Vela DDX)
+  B — Legitimate Interest Assessment (within DPIA)
+  C — Website privacy notice (current version)
+  D — Q4 Divergence Audit Report
+  E — International Data Transfer Agreement (Meridian / Vela)
+  F — Transfer Risk Assessment

@@ -1,0 +1,275 @@
+id: scenario_005
+tier: 1
+client: fernwood_dental
+skill: breach_response
+difficulty: straightforward
+title: Stolen laptop with patient data — breach risk assessment
+timeLimitMinutes: 20
+xpBase: 50
+
+briefing:
+  requestType: >-
+    A personal data breach involving a stolen laptop. The core question
+    is whether this breach requires notification to the ICO under
+    Article 33 and/or to the affected patients under Article 34. The
+    answer depends on whether the device encryption was active at the
+    time of theft — which is genuinely uncertain.
+  whatUserNeedsToKnow: >-
+    Article 33 requires notification to the ICO within 72 hours of
+    becoming aware of a breach, unless the breach is unlikely to result
+    in a risk to individuals' rights and freedoms. Article 34 requires
+    notification to data subjects where the breach is likely to result
+    in a high risk. Encryption is a key mitigating factor recognised by
+    the ICO and the EDPB — if the device was encrypted and locked at
+    the time of theft, the data is effectively inaccessible and the
+    risk may fall below the Article 33 threshold. But "encrypted at
+    rest" is not the same as "locked" — a laptop that was open or in
+    sleep mode with an active session may not have engaged full-disk
+    encryption. The locum's uncertainty about the lock state is the
+    hinge fact. Treatment codes without clinical notes are low
+    sensitivity; names and appointment dates are identifiable but not
+    special category. The practice must log the breach regardless of
+    whether it notifies.
+  commonPitfalls: |
+    - Treating BitLocker encryption as an automatic safe harbour
+      without considering whether the device was locked at the time.
+    - Deciding not to notify and not documenting the reasoning — the
+      ICO expects a documented risk assessment for every breach,
+      including those below the notification threshold.
+    - Panicking and notifying the ICO immediately without first
+      establishing the facts (you have 72 hours, not 72 minutes).
+    - Forgetting that the locum's employment status (not a direct
+      employee) may affect who is the controller for the data.
+    - Overlooking the need to report to NHS England if the practice
+      holds an NHS contract (DSPT obligations).
+
+emailSender:
+  name: Dr Anil Kapoor
+  role: Practice Principal, Fernwood Dental Practice
+  email: anil.kapoor@fernwooddental.co.uk
+emailSubject: "URGENT — laptop stolen from locum's car, patient data on it"
+emailBody: |
+  Dear Aegis,
+
+  I've just had a very unpleasant phone call and I need to know what
+  we're legally required to do. I'm writing this at 9pm on a
+  Wednesday so apologies if it's a bit frantic.
+
+  Dr Priya Sharma has been covering for us as a locum two days a
+  week since January. She called me an hour ago to say her car was
+  broken into in the Tesco car park this afternoon and her laptop
+  bag was taken from the back seat. The laptop is her personal one,
+  not practice-issued, but she had a spreadsheet on it that she
+  exported from our patient management system last month. She says
+  it contains the names, appointment dates, and treatment codes for
+  roughly 120 patients she has seen since she started — she was
+  using it to track her CPD cases.
+
+  I've asked her the obvious questions:
+
+  - The laptop has BitLocker turned on (it's a work-grade Dell,
+    not ancient). She thinks it would have been locked because she
+    hadn't used it since the morning, but she isn't 100% certain —
+    she sometimes leaves it on sleep mode rather than shutting it
+    down.
+  - The spreadsheet was just on the desktop, not password-protected
+    separately.
+  - No clinical notes, no addresses, no NHS numbers. Just names,
+    dates, and the treatment codes (things like "1101" for an exam,
+    "1341" for a filling — meaningless unless you know the NHS
+    coding system).
+  - She has not reported it to the police yet. I told her to do
+    that tonight.
+
+  My questions:
+
+  1. Do I need to report this to the ICO? The 72-hour thing is
+     ringing in my head but I don't know if encryption changes that.
+  2. Do I need to tell the 120 patients? I really don't want to
+     alarm them over a spreadsheet of appointment dates if I don't
+     have to.
+  3. Who is actually responsible here — us or the locum? She's not
+     on our payroll; she invoices us through an agency.
+  4. What do I need to do RIGHT NOW versus what can wait until
+     tomorrow?
+
+  I would be very grateful for a clear, prioritised answer.
+
+  Thank you,
+
+  Dr Anil Kapoor
+  Practice Principal
+  Fernwood Dental Practice
+
+supportingDocuments:
+  - name: "Locum agreement — Dr Sharma (excerpt).pdf"
+    type: document
+    excerpt: >-
+      Standard dental locum agreement via MediStaff Agency Ltd. Clause
+      8.3 states that patient data accessed during the engagement
+      remains under the practice's control and may not be copied to
+      personal devices without written authorisation. No written
+      authorisation was given for the spreadsheet export. Clause 9.1
+      references the practice's data protection policy but does not
+      impose processor-level obligations on the locum.
+
+userTask: >-
+  Draft a reply to Dr Kapoor. Answer his four questions in order, walk
+  him through a risk assessment, and give him a clear tonight/tomorrow/
+  this-week action plan. Include template wording for the breach log
+  entry he needs to create regardless of the notification decision.
+
+rubric:
+  - criterion: Risk assessment framework — structured analysis
+    maxPoints: 20
+    description: >-
+      Applies a structured risk assessment considering likelihood of
+      access (encryption status, lock state uncertainty), severity of
+      harm (data types, identifiability, sensitivity), volume (120
+      records), and vulnerability of data subjects. Arrives at a
+      reasoned conclusion rather than a binary yes/no.
+  - criterion: Encryption as conditional mitigation
+    maxPoints: 20
+    description: >-
+      Correctly treats BitLocker as a strong mitigating factor IF the
+      device was locked, but identifies the locum's uncertainty about
+      sleep-vs-locked as the critical unknown. Does not treat "has
+      BitLocker" as automatically safe. Recommends establishing the
+      lock state as the first investigative step.
+  - criterion: ICO notification threshold — Article 33
+    maxPoints: 15
+    description: >-
+      Applies the Article 33 test (risk to rights and freedoms) and
+      concludes that if the device was confirmed locked, notification
+      is likely not required; if the lock state cannot be confirmed,
+      notification is advisable as a precaution. Notes the 72-hour
+      clock starts from awareness, which is now.
+  - criterion: Patient notification decision — Article 34
+    maxPoints: 15
+    description: >-
+      Correctly applies the higher "high risk" threshold for Article 34
+      and concludes that patient notification is unlikely to be required
+      given the data types involved (no clinical notes, no financial
+      data, no NHS numbers), unless the device is confirmed unlocked.
+  - criterion: Controller responsibility and locum status
+    maxPoints: 15
+    description: >-
+      Identifies Fernwood as the data controller regardless of the
+      locum's employment status. Notes the unauthorised export is a
+      separate compliance issue (breach of the locum agreement and the
+      practice's data protection policy) but does not shift controller
+      liability.
+  - criterion: Prioritised action plan — tonight/tomorrow/this week
+    maxPoints: 15
+    description: >-
+      Provides a time-phased action plan: immediate steps (confirm lock
+      state, police report, preserve evidence), next day (formal breach
+      log, ICO decision, agency notification), this week (review locum
+      data-handling policy, consider DSPT reporting if NHS contract).
+      Practical and proportionate for a small practice.
+
+exemplarResponse: |
+  Dear Dr Kapoor,
+
+  Understood — let's get this under control. Taking your four
+  questions in order, then a prioritised action plan.
+
+  **1. ICO notification — probably not, but conditional.** The test
+  under Article 33 is whether the breach is "unlikely to result in
+  a risk to the rights and freedoms" of the 120 patients. The
+  critical fact is whether the laptop was locked. If BitLocker was
+  engaged (i.e. the laptop was shut down or locked, not just in
+  sleep mode with an active session), the data on disk is encrypted
+  with AES-256 and is effectively inaccessible to a thief. In that
+  case, the risk is very low and you would not need to notify the
+  ICO — but you must still log the breach internally with your
+  reasoning. If Dr Sharma cannot confirm the device was locked, the
+  prudent course is to notify the ICO within 72 hours as a
+  precaution. You can notify and explain the encryption position;
+  the ICO will not penalise a small practice for being transparent.
+  The 72-hour clock started when you became aware — that is tonight.
+
+  **2. Patient notification — almost certainly not.** Article 34
+  requires notification to individuals only where the breach is
+  likely to result in a "high risk". The data involved — names,
+  appointment dates, and NHS treatment codes — is identifiable but
+  low sensitivity. Treatment codes are meaningless without the NHS
+  coding manual, and there are no clinical notes, addresses,
+  financial details, or NHS numbers. Even in the worst case
+  (laptop unlocked), the realistic harm to patients is very
+  limited. I would not recommend notifying patients unless something
+  changes — for example, evidence that the data has been accessed
+  or published.
+
+  **3. Responsibility sits with Fernwood.** You are the data
+  controller for all patient data processed by the practice,
+  regardless of whether Dr Sharma is employed directly or engaged
+  through an agency. The fact that she exported data to a personal
+  device without authorisation is a compliance matter between you,
+  her, and the agency — but it does not shift the controller
+  obligation. The breach is yours to manage and yours to report if
+  reporting is required.
+
+  **4. What to do right now vs. tomorrow vs. this week.**
+
+  **Tonight:**
+  - Call Dr Sharma back. Ask her to think carefully: did she shut
+    the laptop down after using it this morning, or close the lid
+    (sleep mode)? If sleep mode, was a PIN or password required to
+    resume? This is the single most important fact.
+  - Confirm she has reported the theft to the police and get the
+    crime reference number.
+  - Do not email or call any patients tonight.
+
+  **Tomorrow (Thursday):**
+  - Create a formal breach log entry. Even if you do not notify the
+    ICO, you are legally required to document the breach, your risk
+    assessment, and the decision you reached. Template below.
+  - If the lock state is confirmed (device was locked/shut down):
+    log the breach as below-threshold, no ICO notification, no
+    patient notification. File and move on.
+  - If the lock state cannot be confirmed: notify the ICO via the
+    online reporting tool. You can submit a preliminary report and
+    update it later. The ICO's form takes about 20 minutes.
+  - Notify MediStaff Agency in writing that a data incident has
+    occurred involving their locum. Reference clause 8.3 of the
+    agreement — the export was unauthorised.
+
+  **This week:**
+  - Review your data protection policy on portable devices and
+    personal equipment. A one-paragraph addition prohibiting export
+    to personal devices without written sign-off would prevent a
+    repeat.
+  - If you hold an NHS contract, check your Data Security and
+    Protection Toolkit (DSPT) obligations — some incidents require
+    a separate report through the DSPT.
+  - Ask Dr Sharma to confirm in writing that no other patient data
+    exists on personal devices.
+
+  **Breach log template:**
+
+  > **Date of breach:** [today's date]
+  > **Date practice became aware:** [today's date, time of call]
+  > **Nature of breach:** Theft of personal laptop containing an
+  > unauthorised export of patient data (names, appointment dates,
+  > treatment codes, ~120 records).
+  > **Data subjects affected:** ~120 patients seen by locum dentist
+  > since January 2026.
+  > **Categories of data:** Names, appointment dates, NHS treatment
+  > codes. No clinical notes, NHS numbers, or financial data.
+  > **Mitigating factors:** Device encrypted (BitLocker). Lock state
+  > at time of theft: [confirmed locked / unconfirmed].
+  > **Risk assessment:** [Low if locked / Medium-low if unconfirmed].
+  > **ICO notification:** [Not required — below threshold / Submitted
+  > on [date], reference [number]].
+  > **Patient notification:** Not required — data types do not meet
+  > the "high risk" threshold under Article 34.
+  > **Remedial actions:** [list as above].
+  > **Assessed by:** Aegis Privacy Partners on behalf of Fernwood
+  > Dental Practice.
+
+  Ring me in the morning once you've spoken to Dr Sharma about
+  the lock state and we'll finalise the position.
+
+  Kind regards,
+  Aegis Privacy Partners

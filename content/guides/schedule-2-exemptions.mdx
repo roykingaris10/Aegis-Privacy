@@ -1,0 +1,294 @@
+---
+title: "Schedule 2 Exemptions Deep Dive"
+description: "Every Schedule 2 exemption with practitioner commentary, worked examples, and the partial-exemption subtlety."
+skill: "sar_handling"
+readingTimeMinutes: 12
+quizXp: 80
+relatedScenarios: ["scenario_001", "scenario_010"]
+studyTracks: ["bcs", "cippe", "cippuk"]
+order: 2
+---
+
+## Why Schedule 2 Matters
+
+If you handle Subject Access Requests, Schedule 2 of the Data Protection Act 2018 will become the most dog-eared section of legislation on your desk. It is the primary mechanism through which controllers can lawfully withhold personal data that would otherwise need to be disclosed under Article 15 UK GDPR.
+
+<Callout type="info" title="Schedule 2 vs Section 45">
+Do not confuse Schedule 2 (which carves out exemptions from the UK GDPR rights) with Section 45 of the DPA 2018, which governs law-enforcement processing under Part 3. Schedule 2 applies to controllers processing under Part 2 — i.e., the standard UK GDPR regime that covers the vast majority of organisations.
+</Callout>
+
+Schedule 2 does not give controllers a blanket right to refuse SARs. Each exemption is tightly scoped: some disapply only specific provisions of Article 15, others extend to other data-subject rights such as rectification or erasure, and a handful disapply the data-protection principles themselves. The practical consequence is that you must assess every exemption claim on a provision-by-provision, document-by-document basis — never in bulk.
+
+The ICO has been clear that misapplying Schedule 2 exemptions is one of the most common SAR-handling failures. Getting it wrong can expose the organisation to enforcement action, compensation claims, and reputational damage. It can also prejudice the very interests the exemption was designed to protect — for example, disclosing information that tips off a suspect about a fraud investigation.
+
+This guide walks through the exemptions that arise most often in practice, explains the partial-exemption subtlety that catches many practitioners, and gives you a decision framework you can apply to any SAR.
+
+## Part 1 — The Heavy Hitters
+
+Four exemptions in Part 1 of Schedule 2 account for the vast majority of real-world withholding decisions.
+
+### Paragraph 2 — Crime and Taxation
+
+<LegalCite provision="DPA 2018, Sch. 2, para. 2">Crime and taxation exemption</LegalCite>
+
+Paragraph 2 provides an exemption from the listed UK GDPR provisions to the extent that complying with them would be likely to prejudice the prevention or detection of crime, the apprehension or prosecution of offenders, or the assessment or collection of any tax or duty.
+
+The key legal test is **"would be likely to prejudice"**. This is not the same as "could possibly prejudice." Case law (including the House of Lords in *Baker v Secretary of State for the Home Department*) has established that "likely" in this context means a real and significant risk, not a mere possibility. You need to be able to articulate a specific, evidence-based prejudice — not just a vague concern.
+
+<Callout type="warning" title="Common Mistake">
+Organisations frequently cite paragraph 2 as a reason to refuse entire SARs where a fraud investigation is underway. This is almost always too broad. The exemption applies only to the specific personal data whose disclosure would prejudice the investigation. All other data must still be provided. Redact the prejudicial material; disclose the rest.
+</Callout>
+
+In practice, this exemption is most often relied upon by financial-services firms, HMRC, the DWP, and retailers with loss-prevention teams. The prejudice test must be applied at the time of the request — not at the time the data was collected.
+
+### Paragraph 19 — Legal Professional Privilege
+
+<LegalCite provision="DPA 2018, Sch. 2, para. 19">Legal professional privilege</LegalCite>
+
+Paragraph 19 exempts personal data from the subject-access provisions to the extent that the data consists of information in respect of which a claim to legal professional privilege (or, in Scotland, confidentiality of communications) could be maintained in legal proceedings.
+
+This covers both **legal advice privilege** (confidential communications between client and lawyer for the purpose of obtaining or giving legal advice) and **litigation privilege** (communications made for the dominant purpose of actual or contemplated litigation).
+
+The exemption is relatively straightforward compared to others, but note two practical points. First, the privilege belongs to the client, not the lawyer — so if the data subject is the client, the organisation cannot claim privilege against them for their own advice. Second, waiver of privilege over part of a document can waive privilege over the whole — so be very careful about partial redaction.
+
+### Paragraph 22 — Management Forecasts
+
+<LegalCite provision="DPA 2018, Sch. 2, para. 22">Management forecasts</LegalCite>
+
+Paragraph 22 exempts personal data processed for the purposes of management forecasting or management planning to the extent that complying with the subject-access provisions would be likely to prejudice the conduct of the business or activity concerned.
+
+This is narrower than it first appears. It does not protect all management information — only genuine forecasts or planning data, and only where disclosure would prejudice the business. A performance review is not a management forecast. A restructuring plan that names individuals who may be made redundant, assessed before the individual has been consulted, could qualify — but you must still demonstrate the prejudice.
+
+### Paragraph 24 — Negotiations
+
+<LegalCite provision="DPA 2018, Sch. 2, para. 24">Negotiations</LegalCite>
+
+Paragraph 24 exempts personal data that consists of a record of the controller's intentions in relation to negotiations with the data subject to the extent that providing access would be likely to prejudice those negotiations.
+
+This is commonly invoked in employment and commercial contexts — for example, a settlement negotiation where the employer has documented its maximum offer. The exemption protects the controller's negotiating position, not all data connected to the negotiation. Factual records of what was said in meetings, or the data subject's own statements, would not fall within this exemption.
+
+<Callout type="tip" title="Practitioner Tip">
+Paragraphs 22 and 24 are often confused. Ask yourself: does the data record a forecast or plan about the future of the business (paragraph 22), or does it record the controller's negotiating intentions toward this specific data subject (paragraph 24)? The distinction matters because the prejudice test and scope differ.
+</Callout>
+
+## Part 2 — Health, Education, Social Work, Child Abuse
+
+Part 2 of Schedule 2 addresses sensitive processing contexts where disclosure could cause serious harm.
+
+### Paragraph 3 — Health Data
+
+Personal data processed by a health professional (or processed in connection with a health professional's functions) is exempt from the subject-access provisions where disclosure would be likely to cause serious harm to the physical or mental health of the data subject or another individual.
+
+The critical point is that this exemption requires the involvement of a **health professional** in the decision. An HR officer cannot unilaterally decide that health data should be withheld under this exemption. The Data Protection (Subject Access Modification) (Health) Order 2000, which continues to have effect, requires that a suitable health professional is consulted before the exemption is applied.
+
+### Paragraph 4 — Education Data
+
+Similarly, education data held by schools, local education authorities, and other educational bodies can be withheld where disclosure would be likely to cause serious harm. The relevant secondary legislation is the Data Protection (Subject Access Modification) (Education) Order 2000.
+
+### Paragraph 5 — Social Work Data
+
+Social work data benefits from a broader set of exemptions under the Data Protection (Subject Access Modification) (Social Work) Order 2000. The key difference is that social work data can be withheld not only where serious harm would result but also where disclosure would prejudice the carrying out of social work by reason of the fact that serious harm to the data subject or another person would be likely.
+
+### Paragraph 6 — Child Abuse Data
+
+<LegalCite provision="DPA 2018, Sch. 2, para. 6">Child abuse data</LegalCite>
+
+Paragraph 6 provides a specific exemption from the subject-access provisions for data processed for the purposes of protecting children from abuse or the risk of abuse. This exemption is narrow: it applies only where compliance with a subject-access request would not be in the best interests of the child. The child's welfare is the paramount consideration.
+
+<Callout type="warning" title="Safeguarding First">
+When a SAR relates to child-protection data, always involve your safeguarding lead before making any disclosure decision. Disclosure could endanger a child. At the same time, withholding data from a parent without proper justification can itself be challenged. This is one area where you should never make the call alone.
+</Callout>
+
+## Part 3 — Regulatory Functions
+
+Part 3 of Schedule 2 provides exemptions for personal data processed for the purposes of discharging regulatory functions. This covers a wide range of public bodies and functions.
+
+<LegalCite provision="DPA 2018, Sch. 2, para. 7">Regulatory activity</LegalCite>
+
+Paragraph 7 exempts personal data processed for the purposes of discharging functions designed to protect members of the public against dishonesty, malpractice, incompetence, or mismanagement in the provision of services, banking, insurance, or investment. It also covers functions relating to health and safety, and the protection of charities.
+
+The exemption requires that compliance with the relevant UK GDPR provisions would be likely to prejudice the proper discharge of those functions. Regulators such as the FCA, the PRA, the Charity Commission, the HSE, and professional bodies such as the SRA and GMC regularly rely on this provision.
+
+In practice, the prejudice test here is applied in a similar way to paragraph 2. The regulator must be able to point to a specific, evidence-based risk — for example, that disclosure of particular data would alert a firm under investigation to the scope of the regulator's inquiry, enabling it to destroy evidence or alter its conduct.
+
+Paragraph 7 does not exempt all data held by a regulator. It exempts only data processed for the relevant regulatory function and only to the extent that disclosure would prejudice that function. A regulator's HR records about its own staff, for example, are not covered.
+
+## Part 4 — Journalism, Academia, Art, Literature
+
+<LegalCite provision="DPA 2018, Sch. 2, Part 5 (via s.26 DPA 2018)">Special purposes exemption</LegalCite>
+
+The special-purposes exemption is technically found in Section 26 of the DPA 2018 rather than in Schedule 2 itself, but it is closely linked and often discussed alongside Schedule 2 in practice. It exempts personal data processed for the purposes of journalism, academia, art, or literature from most of the UK GDPR provisions (including subject access) where three conditions are met:
+
+1. The processing is being carried out with a view to the publication of journalistic, academic, artistic, or literary material.
+2. The controller reasonably believes that publication would be in the public interest, having regard to the special importance of freedom of expression and information.
+3. Compliance with the relevant UK GDPR provision is incompatible with the special purposes.
+
+This exemption is broader than the others discussed above. It can disapply not just subject-access rights but also the data-protection principles, the rights to rectification and erasure, and other provisions. It is the principal mechanism through which investigative journalism is protected from data-protection claims designed to suppress publication.
+
+The reasonable-belief test is an objective one: the question is not whether the journalist subjectively believed publication was in the public interest, but whether a reasonable person in the journalist's position would have held that belief.
+
+## The Partial Exemption Subtlety
+
+This is the point that separates competent SAR handling from truly proficient practice.
+
+Most Schedule 2 exemptions do not switch off the entire data-protection regime. They disapply only specific provisions. Understanding exactly which provisions are disapplied by each exemption is essential.
+
+Consider paragraph 2 (crime and taxation). It exempts personal data from the following provisions **only**:
+
+- The data-protection principles under Article 5(1)(a) UK GDPR (lawfulness, fairness, transparency) — but only the transparency element
+- The right of access under Article 15 UK GDPR
+- The right to rectification under Article 16
+- The right to restriction of processing under Article 18
+- The right to object under Article 21
+- The right not to be subject to automated decision-making under Article 22
+
+It does **not** disapply the right to erasure under Article 17, the right to data portability under Article 20, or the other data-protection principles (purpose limitation, data minimisation, accuracy, storage limitation, integrity and confidentiality). This means that even where you lawfully withhold data from a SAR under paragraph 2, the data subject can still exercise their right to erasure — and you would need a separate basis to refuse it.
+
+By contrast, the legal-professional-privilege exemption in paragraph 19 has a narrower scope: it disapplies only the subject-access provisions and the provisions relating to the right to rectification, the right to restriction, and the right to data portability. It does not disapply the erasure right or the data-protection principles.
+
+<Callout type="tip" title="Build a Matrix">
+Create a matrix mapping each Schedule 2 exemption to the specific UK GDPR provisions it disapplies. Keep this on your desk or in your SAR-handling toolkit. It prevents the common error of assuming that an exemption from Article 15 also exempts you from Articles 16 through 22. The ICO has penalised controllers for exactly this mistake.
+</Callout>
+
+The practical consequence is significant. When you decide to withhold data under an exemption, you must still comply with every UK GDPR provision that the exemption does not cover. This includes, in many cases, the obligation to inform the data subject that an exemption has been applied (although you need not identify the specific data withheld, as that would defeat the purpose). The ICO's Subject Access Code of Practice recommends that controllers tell data subjects that an exemption has been relied upon, name the exemption, and explain its legal basis — unless doing so would itself prejudice the purpose of the exemption.
+
+## Worked Examples
+
+### Example 1 — Fraud Investigation (Paragraph 2)
+
+A bank receives a SAR from a customer whose account is under internal investigation for suspected money laundering. The SAR requests all personal data held.
+
+**Analysis:** The bank holds transactional records, customer-service call logs, marketing preferences, identity-verification documents, and an internal suspicious-activity report (SAR — confusingly, the same acronym). The bank applies paragraph 2 to withhold the suspicious-activity report and internal investigation notes, because disclosing them would be likely to prejudice the detection of crime and could constitute a "tipping off" offence under the Proceeds of Crime Act 2002.
+
+**However**, the bank must still disclose the transactional records, call logs, marketing preferences, and identity-verification documents. Those data items do not fall within the exemption — their disclosure would not prejudice the investigation. The bank should inform the customer that some data has been withheld under an exemption, without specifying which data or the nature of the investigation.
+
+**Key lesson:** Apply the exemption to specific data items. Do not refuse the entire SAR.
+
+### Example 2 — Employee Grievance (Paragraphs 22 and 24)
+
+An employee submits a SAR during a grievance process. The employer holds: the employee's personnel file, emails between the employee and their manager, internal HR notes about a potential settlement offer (the employer has authorised up to a specific amount but has not yet communicated an offer), and a draft restructuring plan that identifies the employee's role as potentially redundant.
+
+**Analysis:** The personnel file and emails must be disclosed (subject to any third-party data considerations under Article 15(4)). The internal HR notes recording the maximum settlement offer can be withheld under paragraph 24 (negotiations) because disclosure would prejudice the employer's negotiating position. The draft restructuring plan could potentially be withheld under paragraph 22 (management forecasts) if the employer can demonstrate that disclosure would prejudice the conduct of the business — for example, by causing premature alarm among the workforce. However, once the restructuring has been announced, the prejudice argument falls away.
+
+**Key lesson:** The exemptions are time-sensitive. Reassess if circumstances change before you respond.
+
+### Example 3 — Health Data (Part 2, Paragraph 3)
+
+A patient submits a SAR to their GP surgery requesting their complete medical record. The record includes clinical notes by the GP, referral letters, test results, and a note from a psychiatrist expressing concern that full disclosure of a particular diagnosis could cause the patient serious psychological harm at this stage in their treatment.
+
+**Analysis:** The GP practice must consult the psychiatrist (or another appropriate health professional) about the specific data flagged as potentially harmful. If the health professional confirms that disclosure would be likely to cause serious harm to the patient's mental health, that specific data can be withheld under paragraph 3. All other medical records must be disclosed. The practice should inform the patient that some data has been withheld and explain the exemption relied upon. Critically, the practice should review the withholding at a later date — the exemption is not permanent, and the patient's clinical circumstances may change.
+
+**Key lesson:** A health professional must be involved in the decision. The exemption must be reviewed periodically.
+
+## Decision Framework
+
+When a SAR arrives and you believe an exemption may apply, work through the following steps:
+
+1. **Identify the specific data.** Never apply an exemption to an entire SAR. Go through the data item by item (or category by category) and identify exactly which data you believe falls within the exemption.
+
+2. **Identify the specific exemption.** Match the data to a specific paragraph of Schedule 2. Do not rely on general assertions like "it's sensitive" or "it could cause harm." If you cannot point to a specific paragraph, you do not have an exemption.
+
+3. **Apply the legal test.** Most exemptions require you to show that disclosure "would be likely to prejudice" a specified interest. Some (health, education) require a "serious harm" test. Apply the correct test for the exemption you are relying on. Document your reasoning.
+
+4. **Check which provisions are disapplied.** Consult your exemption matrix. Confirm that the provision you are seeking to disapply (usually Article 15) is actually covered by the exemption. Remember that partial exemptions leave other rights intact.
+
+5. **Consider proportionality.** Even where an exemption technically applies, consider whether a less restrictive approach would meet the same objective. Could you redact rather than withhold? Could you provide a summary? Could you delay disclosure rather than refuse it entirely?
+
+6. **Document everything.** Record your reasoning at the time you make the decision. If challenged by the ICO or in court, you will need to demonstrate that you assessed the exemption properly.
+
+7. **Communicate appropriately.** Tell the data subject that an exemption has been applied, name the exemption (unless doing so would defeat its purpose), and explain their right to complain to the ICO.
+
+8. **Set a review date.** Many exemptions are time-limited in practice. A fraud investigation will conclude. Negotiations will end. A patient's clinical condition will evolve. Diarise a review and reassess.
+
+## Quiz
+
+<Quiz guideSlug="schedule-2-exemptions" questions={[
+  {
+    question: "What legal test does paragraph 2 of Schedule 2 DPA 2018 (crime and taxation) require before data can be withheld from a SAR?",
+    options: [
+      "Disclosure would cause serious harm to the data subject",
+      "Disclosure would be likely to prejudice the prevention or detection of crime",
+      "Disclosure is incompatible with the purposes of processing",
+      "Disclosure would breach confidentiality obligations"
+    ],
+    correctIndex: 1,
+    explanation: "Paragraph 2 applies the 'would be likely to prejudice' test specifically in relation to the prevention or detection of crime, the apprehension or prosecution of offenders, or the assessment or collection of tax or duty."
+  },
+  {
+    question: "Under paragraph 19 (legal professional privilege), can an organisation withhold privileged legal advice from the client who sought that advice?",
+    options: [
+      "Yes, privilege always allows withholding from the data subject",
+      "No, because privilege belongs to the client — it cannot be asserted against them",
+      "Only if a court order is obtained",
+      "Only if the advice relates to litigation"
+    ],
+    correctIndex: 1,
+    explanation: "Legal professional privilege belongs to the client. The organisation cannot use paragraph 19 to withhold legal advice from the person who is the client in the privileged relationship, because no claim to privilege could be maintained against them."
+  },
+  {
+    question: "When relying on the health-data exemption in Part 2 of Schedule 2, who must be consulted before data is withheld?",
+    options: [
+      "The organisation's Data Protection Officer",
+      "An appropriate health professional",
+      "The data subject's next of kin",
+      "The Information Commissioner's Office"
+    ],
+    correctIndex: 1,
+    explanation: "The health-data exemption requires that an appropriate health professional is consulted before data is withheld on the grounds that disclosure would be likely to cause serious harm to the physical or mental health of the data subject or another individual."
+  },
+  {
+    question: "Paragraph 24 (negotiations) exempts data recording the controller's intentions in negotiations. Does it also exempt factual records of what the data subject said during those negotiations?",
+    options: [
+      "Yes, all negotiation-related data is covered",
+      "Yes, but only if both parties consent to withholding",
+      "No, paragraph 24 covers only the controller's intentions, not factual records of the data subject's own statements",
+      "No, paragraph 24 has been repealed"
+    ],
+    correctIndex: 2,
+    explanation: "Paragraph 24 is narrowly scoped. It protects records of the controller's negotiating intentions — for example, a maximum settlement figure. Factual records of what was discussed, including the data subject's own statements, fall outside the exemption."
+  },
+  {
+    question: "Which of the following best describes the 'partial exemption' issue in Schedule 2?",
+    options: [
+      "Exemptions apply to only part of the personal data held",
+      "Most exemptions disapply only specific UK GDPR provisions, not the entire regime — so other rights remain intact",
+      "Exemptions can be applied partially at the controller's discretion",
+      "The ICO can grant partial exemptions on a case-by-case basis"
+    ],
+    correctIndex: 1,
+    explanation: "Each Schedule 2 exemption disapplies a specified list of UK GDPR provisions. For example, paragraph 2 disapplies the right of access but not the right to erasure. Other rights not listed in the exemption remain fully enforceable."
+  },
+  {
+    question: "A regulator receives a SAR from a firm under investigation. Under paragraph 7 (regulatory functions), which data can be withheld?",
+    options: [
+      "All personal data held by the regulator about the firm",
+      "Only data processed for the regulatory function, and only to the extent disclosure would prejudice that function",
+      "Any data that the regulator considers sensitive",
+      "Data relating to the investigation and all associated correspondence"
+    ],
+    correctIndex: 1,
+    explanation: "Paragraph 7 applies only to data processed for the relevant regulatory function and only where disclosure would be likely to prejudice the proper discharge of that function. Other data held by the regulator, such as HR records about its own staff, is not covered."
+  },
+  {
+    question: "Under the special-purposes exemption (journalism, academia, art, literature), what standard is applied to the 'public interest' belief?",
+    options: [
+      "The controller must prove actual public interest on the balance of probabilities",
+      "The ICO must pre-approve the public-interest claim",
+      "The controller must reasonably believe publication would be in the public interest — an objective test",
+      "A subjective belief by the journalist is sufficient"
+    ],
+    correctIndex: 2,
+    explanation: "The test is whether the controller reasonably believes publication would be in the public interest. This is an objective standard: would a reasonable person in the controller's position have held that belief? A purely subjective belief is not enough."
+  },
+  {
+    question: "An employer withholds data from an employee's SAR under paragraph 22 (management forecasts) because a restructuring plan names the employee. Two months later, the restructuring is publicly announced. What should the employer do?",
+    options: [
+      "Nothing — the exemption was validly applied at the time",
+      "Reassess and disclose the data, because the prejudice to the business no longer applies",
+      "Wait for the employee to submit a new SAR",
+      "Notify the ICO that the exemption has expired"
+    ],
+    correctIndex: 1,
+    explanation: "Schedule 2 exemptions are assessed at the time of the request, but controllers should review withheld data when circumstances change. Once the restructuring is public, the prejudice argument falls away and the data should be disclosed proactively or upon the next request."
+  }
+]} />

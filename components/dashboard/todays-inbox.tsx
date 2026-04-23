@@ -95,21 +95,21 @@ function ScenarioCard({
         {scenario.preview}
       </p>
 
-      <div className="flex flex-wrap items-center gap-2 pt-1">
+      <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5 pt-1">
         <Badge
           variant="outline"
-          className={cn("text-[10px]", TIER_STYLES[scenario.tier])}
+          className={cn("shrink-0 text-[10px]", TIER_STYLES[scenario.tier])}
         >
           {TIER_LABEL[scenario.tier]}
         </Badge>
-        <Badge variant="secondary" className="text-[10px]">
+        <Badge variant="secondary" className="shrink-0 text-[10px]">
           {scenario.skillLabel}
         </Badge>
-        <span className="ml-auto flex items-center gap-1 text-[11px] text-muted-foreground">
+        <span className="flex shrink-0 items-center gap-1 text-[11px] text-muted-foreground">
           <Clock className="h-3 w-3" />
           {scenario.deadlineLabel}
         </span>
-        <span className="text-[11px] font-semibold tabular-nums text-foreground">
+        <span className="ml-auto shrink-0 text-[11px] font-semibold tabular-nums text-foreground">
           +{scenario.xpReward} XP
         </span>
       </div>

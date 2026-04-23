@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { ScenarioHeader } from "./scenario-header";
@@ -49,9 +50,9 @@ export function ScenarioWorkspace({
 
   const handleSubmit = async (html: string, text: string) => {
     if (text.length > MAX_RESPONSE_CHARS) {
-      setError(
-        `Response is over the ${MAX_RESPONSE_CHARS.toLocaleString()}-character limit — trim it down and resubmit.`,
-      );
+      const msg = `Response is over the ${MAX_RESPONSE_CHARS.toLocaleString()}-character limit — trim it down and resubmit.`;
+      setError(msg);
+      toast.error(msg, { duration: 8000 });
       return;
     }
     setSubmitting(true);
@@ -86,7 +87,9 @@ export function ScenarioWorkspace({
       setReview(payload);
       fireToastQueue(payload);
     } catch (err) {
-      setError((err as Error).message);
+      const message = (err as Error).message;
+      setError(message);
+      toast.error(`Submission failed: ${message}`, { duration: 10000 });
       setTimerRunning(true);
     } finally {
       setSubmitting(false);
@@ -103,8 +106,19 @@ export function ScenarioWorkspace({
       />
 
       {error ? (
-        <div className="border-b border-destructive/30 bg-destructive/10 px-6 py-2 text-sm text-destructive">
-          {error}
+        <div
+          role="alert"
+          className="sticky top-14 z-20 flex items-start justify-between gap-3 border-b border-destructive/40 bg-destructive/15 px-6 py-2.5 text-sm text-destructive shadow-sm"
+        >
+          <span className="flex-1">{error}</span>
+          <button
+            type="button"
+            onClick={() => setError(null)}
+            className="shrink-0 rounded px-2 text-xs font-medium text-destructive/80 hover:text-destructive"
+            aria-label="Dismiss error"
+          >
+            Dismiss
+          </button>
         </div>
       ) : null}
 

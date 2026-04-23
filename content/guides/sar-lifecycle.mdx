@@ -1,0 +1,236 @@
+---
+title: "The SAR Lifecycle — A Practitioner's Guide"
+description: "End-to-end walkthrough of handling a subject access request, from receipt to response."
+skill: "sar_handling"
+readingTimeMinutes: 10
+quizXp: 50
+relatedScenarios: ["scenario_001", "scenario_008", "scenario_010"]
+studyTracks: ["bcs", "cippuk"]
+order: 1
+---
+
+Subject access requests are one of the most operationally demanding obligations in UK data protection law. They touch every part of an organisation — IT, HR, legal, customer services — and getting them wrong exposes you to ICO enforcement, reputational damage, and civil claims. This guide walks through the full lifecycle of a SAR, from the moment it lands to the moment the response goes out.
+
+## What a SAR Actually Is
+
+A subject access request is the exercise of the right of access under <LegalCite provision="Article 15 UK GDPR">Right of access by the data subject</LegalCite>. It entitles an individual to confirmation of whether their personal data is being processed and, if so, access to that data along with supplementary information about the processing.
+
+There is no magic form of words. A SAR does not need to mention "subject access request," "Article 15," or "UK GDPR." If someone asks for their data — in an email, a letter, a phone call, a social media message, or even verbally — that can constitute a valid SAR. The ICO has been clear on this point: organisations cannot refuse to act simply because a request was not made on a preferred template.
+
+Crucially, a SAR is free. You cannot charge a fee unless the request is "manifestly unfounded or excessive," and the threshold for that is high. In most cases, you process the request at no cost to the individual.
+
+<Callout type="info" title="Key point">
+A SAR can arrive in any format and through any channel. Train all customer-facing staff to recognise one when they see it — not just your DPO or privacy team.
+</Callout>
+
+The right of access also includes the right to receive information about the purposes of processing, the categories of data held, the recipients or categories of recipients, the retention period, the existence of other rights (rectification, erasure, restriction, objection), the right to lodge a complaint with the ICO, and the source of the data where it was not collected directly from the individual.
+
+## Verification and Identity
+
+Before you disclose personal data, you need reasonable confidence that the requester is who they claim to be. Disclosing data to the wrong person would itself be a data breach — so identity verification is not optional.
+
+However, verification must be proportionate. The ICO does not expect you to demand a passport copy for every request. If the individual is already authenticated — for example, they are writing from a verified account, or they are a current employee emailing from their work address — additional ID checks may be unnecessary.
+
+Where you do need to verify identity, consider:
+
+- Asking the individual to confirm details only they would know (account numbers, dates of birth, recent transactions)
+- Requesting a copy of photographic ID only where the risk of disclosure to the wrong person is genuinely high
+- Using existing authentication mechanisms (e.g. logged-in customer portals)
+
+<Callout type="warning" title="Watch out">
+Do not use identity verification as a gatekeeping tactic. The ICO takes a dim view of organisations that impose disproportionate ID requirements to discourage SARs. If you already know who the requester is, get on with it.
+</Callout>
+
+Where a SAR is made by a third party on behalf of the data subject — for example, a solicitor or a family member — you need to be satisfied that the third party is authorised to act. This usually means obtaining written authority from the data subject, though again, proportionality applies.
+
+The clock for responding does not start until you have the information reasonably required to confirm identity. But you must request that information promptly — you cannot sit on a SAR for three weeks and then ask for ID.
+
+## Scope and Clarification
+
+Not every SAR is straightforward. An individual might ask for "all my data," which in a large organisation could mean searching dozens of systems, thousands of emails, and years of records. <LegalCite provision="Article 15 UK GDPR">Right of access</LegalCite> does not limit the scope of a request, but the ICO recognises that organisations can seek clarification to focus the search.
+
+You are allowed to ask the requester to narrow their request — for example, to a particular time period, department, or type of data. But you cannot insist on it. If the individual says "I want everything," you must search for everything.
+
+<Callout type="tip" title="Practitioner tip">
+When clarifying scope, frame it as helping the individual get what they actually need, not as an obstacle. "To make sure we find the most relevant information quickly, could you let us know which services you used with us?" is better than "Your request is too broad; please narrow it down."
+</Callout>
+
+If you do seek clarification, the response clock pauses until the individual replies. Document when you asked and when the clarification was received. If no clarification comes after a reasonable period, proceed with a reasonable interpretation of the request.
+
+## Search and Collation
+
+This is where the real work happens. You need to conduct a reasonable and proportionate search across all relevant systems where the individual's personal data may be held.
+
+That typically includes:
+
+- Core databases and CRM systems
+- Email (including archived mailboxes)
+- Shared drives and document management systems
+- HR systems (for employee SARs)
+- CCTV footage
+- Paper records
+- Backup systems (where reasonably accessible)
+- Third-party processors who hold data on your behalf
+
+A common failure point is treating this as a single-team exercise. In practice, you may need to coordinate across IT, HR, legal, marketing, finance, and operations. Establish a clear internal workflow: who searches what, by when, and who consolidates the results.
+
+Keep a record of every system searched, the search terms used, and the results. If the individual later complains to the ICO, you will need to demonstrate that your search was reasonable.
+
+<Callout type="tip" title="Practitioner tip">
+Build and maintain a data inventory or record of processing activities (ROPA) that maps personal data to systems. When a SAR arrives, your ROPA should tell you exactly where to look — rather than scrambling to work it out under time pressure.
+</Callout>
+
+Do not overlook metadata. File properties, email headers, timestamps, and system logs can all constitute personal data. Similarly, handwritten notes, Post-it annotations on files, and informal records are in scope if they form part of a filing system or are processed by automated means.
+
+## Review and Redaction
+
+Once you have collated the data, you need to review it before disclosure. The two main reasons for withholding or redacting data are:
+
+1. **Third-party data.** Where disclosing the data would involve revealing personal data about another identifiable individual, you must consider whether it is reasonable to disclose without consent. Under <LegalCite provision="s.15 DPA 2018">Obligations of the controller</LegalCite>, you are not obliged to comply with a SAR if doing so would mean disclosing information relating to another individual who can be identified from that information — unless the other individual consents, or it is reasonable in all the circumstances to comply without consent.
+
+2. **Exemptions.** Schedule 2 of the DPA 2018 contains a range of exemptions that may apply, allowing you to withhold certain data. More on these below.
+
+Redaction must be done carefully. Use proper redaction tools — not just highlighting text in black, which can be removed from PDFs. Every redaction should be justified, recorded, and defensible. The ICO may ask you to explain why specific information was withheld.
+
+Where mixed data exists (e.g. an email containing both the requester's data and a third party's data), disclose the requester's data and redact only the third-party information. Do not withhold the entire document simply because part of it relates to someone else.
+
+## The Response Itself
+
+Your response must be provided in a "concise, transparent, intelligible and easily accessible form, using clear and plain language." In practice, that means:
+
+- **Format:** Provide the data in a commonly used electronic format unless the individual requests otherwise. If the request was made electronically, the response should generally be electronic too.
+- **Structure:** Organise the data logically. Do not dump thousands of pages on the individual without explanation. A cover letter or index helps.
+- **Supplementary information:** Alongside the data itself, provide the supplementary information required by Article 15(1) — the purposes of processing, categories of data, recipients, retention periods, and so on.
+- **Explanations:** Where raw data would be unintelligible without context (e.g. internal codes, system-generated fields), provide explanations.
+
+Where data has been redacted or withheld, explain that redactions have been applied and the general basis for them. You do not need to identify the specific exemption relied on for each individual redaction, but a blanket "some data has been withheld" with no further detail is unlikely to satisfy the ICO.
+
+<Callout type="info" title="Key point">
+The response is not just about handing over data. It is about enabling the individual to understand what data you hold, why you hold it, and what you do with it. That is the purpose of the right of access.
+</Callout>
+
+## Exemptions Overview
+
+<LegalCite provision="Schedule 2 DPA 2018">Exemptions to the UK GDPR</LegalCite> sets out a range of exemptions that may restrict the obligation to disclose data in response to a SAR. The most commonly encountered include:
+
+- **Legal professional privilege (Paragraph 19).** Data covered by legal privilege — whether litigation privilege or legal advice privilege — is exempt from disclosure under a SAR. This is one of the most frequently relied-upon exemptions.
+- **Management forecasting (Paragraph 22).** Data processed for management planning purposes is exempt to the extent that disclosure would prejudice those purposes. Typically relevant where an organisation is considering restructuring, redundancy, or promotion decisions.
+- **Negotiations (Paragraph 23).** Data consisting of a record of the controller's intentions in negotiations with the data subject is exempt where disclosure would prejudice those negotiations.
+- **Confidential references (Paragraph 24).** References given (not received) in confidence for the purposes of education, employment, or the provision of services are exempt.
+- **Crime and taxation (Paragraph 2).** Data processed for the prevention or detection of crime, or the assessment or collection of tax, is exempt where disclosure would prejudice those purposes.
+
+Exemptions must be applied on a case-by-case basis. You cannot apply a blanket exemption to an entire category of data. Each piece of information must be individually assessed against the relevant exemption conditions.
+
+## Timelines and Extensions
+
+The default deadline for responding to a SAR is one calendar month from receipt. "Receipt" means the date the valid request arrives — or, if identity verification or clarification was needed, the date on which you received the necessary information.
+
+The one-month deadline can be extended by a further two months where the request is "complex or numerous." If you extend, you must inform the individual within the first month, explaining why the extension is necessary. Simply being busy or under-resourced does not justify an extension. The complexity must relate to the request itself — for example, the volume of data involved, the need to apply multiple exemptions, or the involvement of third parties.
+
+<Callout type="warning" title="Watch out">
+Calendar months, not working days. A SAR received on 15 January is due by 15 February — regardless of bank holidays, staff absences, or system downtime. Plan accordingly.
+</Callout>
+
+Where the deadline falls on a weekend or bank holiday, best practice is to respond by the last working day before the deadline, though the legal deadline remains the calendar date.
+
+If you genuinely cannot respond in time, communicate proactively. An individual who receives a transparent explanation of a short delay is far less likely to complain to the ICO than one who is left in silence.
+
+## ICO Complaints
+
+If an individual is dissatisfied with your response — or your failure to respond — they can complain to the Information Commissioner's Office. The ICO will typically assess the complaint and may contact you for further information.
+
+In practice, the ICO's approach is often conciliatory. They will ask whether you have responded, whether you have addressed the individual's specific concerns, and whether there are any outstanding issues. Many complaints are resolved at this stage without formal enforcement.
+
+However, if the ICO finds that you have failed to comply with Article 15, it has a range of enforcement powers, including:
+
+- **Assessment notices** — requiring you to take specific steps
+- **Enforcement notices** — ordering compliance within a specified period
+- **Penalty notices** — fines of up to GBP 17.5 million or 4% of annual worldwide turnover
+
+The ICO also publishes decision notices and reprimands, which can cause significant reputational harm regardless of any financial penalty.
+
+To defend against a complaint effectively, you need a clear audit trail: when the SAR was received, what steps you took, what searches were conducted, what exemptions were applied, and why. This is why documentation throughout the SAR lifecycle is not optional — it is your evidence.
+
+## Common Mistakes
+
+Having dealt with the lifecycle end to end, here are the mistakes that trip up practitioners most often:
+
+1. **Failing to recognise a SAR.** If a customer emails saying "I'd like to know what information you have about me," that is a SAR. Train your teams.
+
+2. **Over-verifying identity.** Demanding a passport, a utility bill, and a signed declaration from someone who is already logged into their account is disproportionate and will frustrate the individual and the ICO.
+
+3. **Treating clarification as compulsory.** You can ask the individual to narrow their request, but you cannot refuse to act if they decline. If they want everything, search for everything.
+
+4. **Inadequate search.** Only checking the CRM and ignoring email, shared drives, paper files, and third-party processors. A reasonable search means looking everywhere personal data might be held.
+
+5. **Poor redaction.** Using black highlighting in Word or PDF that can be stripped out, leaving third-party data visible. Use proper redaction tools and check the output.
+
+6. **Missing the deadline.** One calendar month goes quickly, especially when multiple departments need to contribute. Start the process immediately — not three weeks into the clock.
+
+7. **No audit trail.** If you cannot show the ICO what you searched, when, and why you applied an exemption, you are on the back foot from the start.
+
+8. **Confusing SARs with other rights.** A SAR is not a freedom of information request, a data portability request, or a complaint. Each right has different rules, and mixing them up leads to errors.
+
+9. **Blanket exemption claims.** Asserting legal professional privilege over an entire mailbox rather than assessing each document individually. Exemptions are applied per item, not per category.
+
+10. **Ignoring the supplementary information.** Disclosing the raw data but not the Article 15(1) information about processing purposes, recipients, retention periods, and rights. The supplementary information is a legal requirement, not a nice-to-have.
+
+Getting SARs right is not glamorous work, but it is essential. A well-handled SAR builds trust with individuals, demonstrates compliance maturity to regulators, and protects the organisation from enforcement risk. A badly handled one does the opposite.
+
+<Quiz guideSlug="sar-lifecycle" questions={[
+  {
+    question: "Under UK GDPR, what is the default time limit for responding to a subject access request?",
+    options: [
+      "One calendar month from receipt of the valid request",
+      "30 working days from receipt of the request",
+      "40 calendar days from receipt of the request",
+      "28 days from receipt of the request"
+    ],
+    correctIndex: 0,
+    explanation: "Article 12(3) UK GDPR requires controllers to respond to a SAR without undue delay and in any event within one calendar month of receipt. This is measured in calendar months, not working days."
+  },
+  {
+    question: "A customer sends an email saying 'Can you tell me what data you hold on me?' but does not mention Article 15, UK GDPR, or 'subject access request.' Is this a valid SAR?",
+    options: [
+      "Yes — a SAR does not need to use specific legal terminology to be valid",
+      "No — the individual must explicitly reference Article 15 UK GDPR",
+      "No — the individual must use the organisation's SAR form",
+      "Only if the individual follows up with a formal written request"
+    ],
+    correctIndex: 0,
+    explanation: "A SAR can be made in any form and does not need to reference specific legislation. If a person asks for their personal data, that constitutes a valid SAR regardless of the language used."
+  },
+  {
+    question: "Which of the following is a valid reason to extend the SAR response deadline by an additional two months?",
+    options: [
+      "The request is complex due to the volume of data and the need to apply multiple exemptions",
+      "The DPO is on annual leave during the response period",
+      "The organisation is experiencing a high volume of customer service queries",
+      "The organisation's IT team is working on a system migration"
+    ],
+    correctIndex: 0,
+    explanation: "Under Article 12(3) UK GDPR, the deadline may be extended by two further months where requests are complex or numerous. The complexity must relate to the request itself — staffing issues or operational pressures do not justify an extension."
+  },
+  {
+    question: "An email found during a SAR search contains the requester's personal data and personal data about a third party. What should you do?",
+    options: [
+      "Disclose the requester's data and redact only the third party's identifiable information",
+      "Withhold the entire email because it contains third-party data",
+      "Disclose the entire email including the third party's data",
+      "Ask the third party for consent before taking any action"
+    ],
+    correctIndex: 0,
+    explanation: "Where a document contains mixed data, you should disclose the requester's personal data and redact only the information that would identify the third party. You should not withhold an entire document simply because part of it relates to someone else."
+  },
+  {
+    question: "Under Schedule 2 of the DPA 2018, which type of reference is exempt from disclosure in response to a SAR?",
+    options: [
+      "Confidential references given by the controller",
+      "All employment references, whether given or received",
+      "Confidential references received by the controller",
+      "References given by the controller that are more than six months old"
+    ],
+    correctIndex: 0,
+    explanation: "Paragraph 24 of Schedule 2 DPA 2018 exempts confidential references given (not received) by the controller for the purposes of education, employment, or the provision of services. References received by the controller are not covered by this exemption."
+  }
+]} />

@@ -55,9 +55,10 @@ model User {
   sessions Session[]
 
   // App relations
-  completions ScenarioCompletion[]
-  responses   Response[]
-  coachUsage  CoachUsage[]
+  completions    ScenarioCompletion[]
+  responses      Response[]
+  coachUsage     CoachUsage[]
+  guideProgress  GuideProgress[]
 }
 
 model Account {
@@ -147,5 +148,19 @@ model CoachUsage {
   user User @relation(fields: [userId], references: [id])
 
   @@unique([userId, date])
+  @@index([userId])
+}
+
+// Sprint 3b: tracks guide reading and quiz completion per user.
+model GuideProgress {
+  id          String   @id @default(cuid())
+  userId      String
+  guideSlug   String
+  completedAt DateTime @default(now())
+  quizScore   Int?
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@unique([userId, guideSlug])
   @@index([userId])
 }

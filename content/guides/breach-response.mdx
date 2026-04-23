@@ -1,0 +1,242 @@
+---
+title: "Breach Response — The 72-Hour Playbook"
+description: "The 72-hour clock, risk assessment framework, notification decisions, and three case studies."
+skill: "breach_response"
+readingTimeMinutes: 9
+quizXp: 50
+relatedScenarios: ["scenario_005", "scenario_012", "scenario_017"]
+studyTracks: ["bcs", "cippuk"]
+order: 4
+---
+
+Personal data breaches are inevitable. What separates competent organisations from negligent ones is not whether breaches occur, but how quickly and effectively they respond. This guide walks you through the UK GDPR breach-response lifecycle: from the moment you become aware of a breach, through risk assessment and notification decisions, to post-incident review.
+
+## The 72-Hour Clock
+
+Article 33(1) of the UK GDPR requires controllers to notify the Information Commissioner's Office (ICO) of a personal data breach "without undue delay and, where feasible, not later than 72 hours after having become aware of it." Understanding when that clock starts — and what it does not mean — is essential.
+
+<LegalCite article="33(1)" legislation="UK GDPR">
+In the case of a personal data breach, the controller shall without undue delay and, where feasible, not later than 72 hours after having become aware of it, notify the personal data breach to the Commissioner.
+</LegalCite>
+
+**When does "awareness" begin?** The clock starts when your organisation has a reasonable degree of certainty that a security incident has compromised personal data. A vague suspicion that something might have gone wrong does not trigger the deadline. However, once your IT team confirms that personal data has been exposed, exfiltrated, lost, or altered, the 72 hours begin — regardless of whether management has been formally briefed.
+
+**What the 72 hours does not mean:**
+
+- It does not mean you must complete your investigation within 72 hours. Article 33(4) explicitly allows you to provide information in phases if you cannot supply everything at once.
+- It does not mean every breach must be reported. The obligation to notify only arises where the breach is "likely to result in a risk to the rights and freedoms of natural persons." Low-risk breaches must still be documented internally but need not be reported to the ICO.
+- It does not mean processors have 72 hours. Processors must notify controllers "without undue delay" after becoming aware — there is no specific hour limit, but the ICO expects this to happen quickly so the controller can meet its own deadline.
+
+<Callout type="warning">
+The 72-hour window includes weekends and bank holidays. If you discover a breach at 4pm on Friday, the deadline is 4pm on Monday — not the next working day. Build your incident-response rota accordingly.
+</Callout>
+
+If notification cannot be made within 72 hours, you must provide reasons for the delay when you do report. The ICO has indicated it will consider the reasons pragmatically, but unexplained or unjustified delays attract regulatory scrutiny.
+
+## Risk Assessment Framework
+
+Not every breach requires notification. The deciding factor is risk to individuals, assessed at the point of awareness using the information available. The ICO recommends a structured approach:
+
+**Step 1 — Identify the breach type.** Breaches fall into three categories:
+
+- **Confidentiality breach** — unauthorised or accidental disclosure of, or access to, personal data.
+- **Integrity breach** — unauthorised or accidental alteration of personal data.
+- **Availability breach** — accidental or unauthorised loss of access to, or destruction of, personal data.
+
+A single incident can involve more than one type.
+
+**Step 2 — Assess the nature, sensitivity, and volume of data.** Special category data (health, ethnicity, biometric, political opinions) and criminal offence data carry inherently higher risk. Financial data, credentials, and data relating to children also elevate the severity. A breach involving 10,000 names and email addresses is different in character from one involving 50 medical records, even though the former is larger.
+
+**Step 3 — Assess ease of identification.** Can the data be linked to specific individuals without additional information? Pseudonymised data where the key has not been compromised is lower risk than plaintext names and addresses.
+
+**Step 4 — Assess severity of consequences.** Consider what could realistically happen to affected individuals: identity theft, financial loss, discrimination, reputational damage, emotional distress, or physical harm. The ICO's guidance groups these consequences by likelihood and severity.
+
+**Step 5 — Assess special characteristics.** Are the affected individuals vulnerable — children, patients, employees in sensitive roles? Vulnerability increases the risk rating.
+
+**Step 6 — Reach a conclusion.** Combine the factors above into an overall risk rating: unlikely to result in risk, likely to result in risk, or likely to result in high risk. This rating drives your notification obligations.
+
+<Callout type="tip">
+Document your risk assessment in writing at the time you make it. If the ICO later investigates, contemporaneous reasoning is far more persuasive than a retrospective justification.
+</Callout>
+
+## When to Notify the ICO (Article 33)
+
+You must notify the ICO when a breach is **likely to result in a risk** to the rights and freedoms of individuals. The threshold is not "high risk" — any meaningful risk triggers the obligation.
+
+<LegalCite article="33" legislation="UK GDPR">
+The notification shall at least contain: (a) the nature of the breach including categories and approximate number of data subjects and records; (b) the name and contact details of the DPO; (c) the likely consequences; (d) measures taken or proposed to address the breach.
+</LegalCite>
+
+**How to notify.** The ICO provides an online breach reporting tool at ico.org.uk. You can submit an initial report with partial information and supplement it later. The ICO assigns a case reference number upon submission.
+
+**What to include.** At minimum: a description of the breach, categories and approximate numbers of data subjects and records affected, the name and contact details of your Data Protection Officer (or other contact point), the likely consequences, and the measures you have taken or propose to take to mitigate adverse effects.
+
+**Late notifications.** If you notify after 72 hours, you must explain the delay. The ICO treats unjustified late notification as a compliance failure in its own right, separate from the breach itself.
+
+## When to Notify Data Subjects (Article 34)
+
+The threshold for notifying data subjects is higher: you must communicate the breach to affected individuals when it is **likely to result in a high risk** to their rights and freedoms.
+
+<LegalCite article="34(1)" legislation="UK GDPR">
+When the personal data breach is likely to result in a high risk to the rights and freedoms of natural persons, the controller shall communicate the personal data breach to the data subject without undue delay.
+</LegalCite>
+
+The communication must be in clear, plain language. It must describe the nature of the breach, provide the DPO's contact details, describe the likely consequences, and set out the measures taken or proposed. You should also include practical advice — for example, recommending that individuals change passwords or monitor bank statements.
+
+**Exceptions to individual notification.** Article 34(3) provides three situations where you do not need to contact data subjects directly, even where high risk exists:
+
+1. You had appropriate technical and organisational measures in place that render the data unintelligible (for example, strong encryption where the key was not compromised).
+2. You have taken subsequent measures that ensure the high risk is no longer likely to materialise.
+3. It would involve disproportionate effort — in which case you must make a public communication or similar measure that informs data subjects equally effectively.
+
+## When to Notify Neither
+
+Many breaches do not meet the threshold for ICO notification, let alone individual notification. Examples include:
+
+- A misdirected internal email containing non-sensitive personal data (such as a work phone number) sent to a colleague who deletes it immediately.
+- Brief, accidental unavailability of a system containing personal data, where no data was accessed or lost and service was restored promptly.
+- Loss of data that was already encrypted with a robust algorithm, where the encryption key remains secure.
+
+In every case, even where no notification is required, you must still record the breach in your internal breach register under Article 33(5). This record should include the facts of the breach, its effects, and the remedial action taken. The ICO can request access to this register at any time.
+
+<Callout type="info">
+Maintaining a thorough breach register is not optional — it is a legal requirement under Article 33(5) UK GDPR. Failure to keep one is a compliance finding in its own right, regardless of whether any individual breach was notifiable.
+</Callout>
+
+## Documentation Requirements
+
+Article 33(5) requires you to document all personal data breaches, including those that do not require notification. Your breach register should contain, for each incident:
+
+- **Date and time of awareness** — when the organisation first became aware.
+- **Description of the breach** — what happened, the type of breach (confidentiality, integrity, availability), and how it was discovered.
+- **Categories of data and data subjects** — what personal data was affected and who it relates to.
+- **Approximate numbers** — of data subjects and of personal data records.
+- **Likely consequences** — your assessment of the potential impact on individuals.
+- **Measures taken** — both immediate containment steps and longer-term remediation.
+- **Notification decisions** — whether you notified the ICO and/or data subjects, and your reasoning. If you decided not to notify, record why.
+- **Timeline** — a chronological record of discovery, escalation, containment, assessment, and notification.
+
+This register serves two purposes: regulatory compliance and organisational learning. Patterns in the register (for example, repeated misdirected emails from the same department) should feed into your training and process-improvement programmes.
+
+## Case Studies
+
+The following three scenarios illustrate how the risk assessment framework applies in practice. Each is based on patterns the ICO encounters regularly.
+
+### Case Study 1 — The Lost USB Drive
+
+**Facts.** A social worker leaves an unencrypted USB drive on a train. The drive contains case notes for 35 vulnerable families, including children's names, addresses, details of safeguarding concerns, and medical information.
+
+**Risk assessment.** The data is special category (health) and relates to vulnerable individuals including children. It is in plaintext on an unencrypted device. If found by a third party, the data could lead to discrimination, emotional distress, or even physical risk if addresses of individuals fleeing domestic abuse are exposed. This is clearly **high risk**.
+
+**Decision.** Notify the ICO within 72 hours (Article 33). Notify all 35 families individually without undue delay (Article 34). Provide practical guidance — advise affected individuals to be alert to any unusual contact and to report concerns to their social worker. Remotely wiping the device is not possible as it was a basic USB stick, reinforcing the need for encryption policies.
+
+**Lessons.** Portable media containing special category data should always be encrypted. The organisation should review whether USB drives are necessary at all, or whether secure cloud access would be safer.
+
+### Case Study 2 — The Misdirected Email
+
+**Facts.** An HR administrator sends a spreadsheet listing 120 employees' names, departments, and annual salaries to an external recruitment agency by mistake, intending to send a different file. The recruitment agency confirms receipt and deletes the email within two hours of being contacted.
+
+**Risk assessment.** The data includes names and salary information — not special category, but financially sensitive. However, the recipient is a professional organisation bound by its own confidentiality obligations, and has confirmed deletion. The data was not published or made widely available. The exposure was brief and contained.
+
+**Decision.** Notify the ICO — although the risk is moderate, salary data for 120 employees is sensitive enough that a risk to individuals exists (potential for workplace disputes, distress, or targeted phishing if the data were retained). Article 33 notification is prudent. Individual notification under Article 34 is not required — the risk does not reach the **high risk** threshold, especially given the swift containment. Record in the breach register with full reasoning.
+
+**Lessons.** Implement email safeguards such as delayed sending, external-recipient warnings, and Data Loss Prevention (DLP) rules that flag attachments containing structured personal data.
+
+### Case Study 3 — The Ransomware Attack
+
+**Facts.** A mid-sized medical practice suffers a ransomware attack. Patient records for approximately 8,000 individuals — including diagnoses, prescriptions, and NHS numbers — are encrypted by the attacker. The practice's backup system restores data within 18 hours, but forensic analysis reveals that the attacker exfiltrated a subset of records (estimated 1,200 patients) before encrypting them.
+
+**Risk assessment.** This is both an availability breach (18 hours of inaccessible records) and a confidentiality breach (exfiltration of 1,200 patient records). The data is special category (health). The affected individuals include vulnerable patients. Exfiltrated health data could be used for fraud, extortion, or could cause significant distress if published. This is **high risk** for the 1,200 exfiltration victims. The remaining 6,800 patients experienced an availability breach — their data was restored within 18 hours with no evidence of access, so the risk to them is lower but still worth reporting given the medical context.
+
+**Decision.** Notify the ICO immediately (Article 33) — do not wait for forensic analysis to complete; provide initial details and supplement later under Article 33(4). Notify the 1,200 patients whose data was exfiltrated individually (Article 34) — advise them to be vigilant for phishing, to monitor for misuse of their NHS number, and to contact Action Fraud if they suspect identity theft. For the broader group of 8,000, individual notification is not strictly required under Article 34, but the practice may choose to communicate proactively to maintain trust. Record all decisions and reasoning.
+
+<Callout type="warning">
+In ransomware cases, never assume the attacker only encrypted data. Modern ransomware operators routinely exfiltrate data before deploying encryption, creating a confidentiality breach alongside the availability breach. Always investigate both vectors.
+</Callout>
+
+**Lessons.** Ensure endpoint detection and response (EDR) tooling is deployed. Segment networks to limit lateral movement. Test backup restoration regularly. Have a pre-agreed relationship with a forensic incident-response provider so you are not searching for one mid-crisis.
+
+## Post-Breach Actions
+
+Responding to a breach does not end with notification. Effective post-breach practice includes:
+
+**Immediate containment.** Stop the breach from continuing. This might mean disabling a compromised account, isolating a server, or recalling a misdirected communication.
+
+**Recovery.** Restore systems and data to normal operation. Verify the integrity of restored data.
+
+**Root cause analysis.** Determine why the breach happened. Was it a technical failure, a process failure, a human error, or a deliberate attack? Distinguish between the proximate cause and any underlying systemic issues.
+
+**Remediation.** Address the root cause. This may involve patching software, changing access controls, updating procedures, retraining staff, or implementing new technical measures such as encryption or DLP.
+
+**Review and update.** Revisit your data protection impact assessments (DPIAs), policies, and training materials in light of the breach. Update your incident-response plan based on what worked and what did not.
+
+**Report to leadership.** Ensure senior management and the board (where applicable) receive a post-incident report. The ICO expects breach management to be a board-level concern, not solely an IT or DPO matter.
+
+**Regulatory follow-up.** If you notified the ICO, respond promptly to any follow-up questions. The ICO may request additional information, suggest remedial measures, or in serious cases, open a formal investigation. Cooperation and transparency work in your favour.
+
+---
+
+## Quiz
+
+<Quiz guideSlug="breach-response" questions={[
+  {
+    id: "br-q1",
+    question: "Under Article 33 UK GDPR, when does the 72-hour notification clock start?",
+    options: [
+      "When the ICO is first contacted",
+      "When the controller becomes aware of the breach",
+      "When the data subjects are informed",
+      "When the DPO files an internal report"
+    ],
+    correctIndex: 1,
+    explanation: "Article 33(1) states the 72-hour period begins when the controller becomes aware of the personal data breach — that is, when the organisation has a reasonable degree of certainty that personal data has been compromised."
+  },
+  {
+    id: "br-q2",
+    question: "What is the threshold for notifying data subjects under Article 34 UK GDPR?",
+    options: [
+      "Any personal data breach, regardless of risk",
+      "A breach likely to result in a risk to rights and freedoms",
+      "A breach likely to result in a high risk to rights and freedoms",
+      "Only breaches involving special category data"
+    ],
+    correctIndex: 2,
+    explanation: "Article 34(1) requires communication to data subjects only when the breach is likely to result in a high risk to their rights and freedoms — a higher threshold than the ICO notification requirement under Article 33."
+  },
+  {
+    id: "br-q3",
+    question: "A controller discovers a breach but cannot gather all the facts within 72 hours. What should they do?",
+    options: [
+      "Wait until the investigation is complete before notifying the ICO",
+      "Notify the ICO with available information and provide further details in phases",
+      "Notify data subjects first and the ICO later",
+      "Request a formal extension from the ICO before the deadline"
+    ],
+    correctIndex: 1,
+    explanation: "Article 33(4) explicitly allows controllers to provide information in phases. The initial notification should be made within 72 hours with whatever information is available, and supplemented as the investigation progresses."
+  },
+  {
+    id: "br-q4",
+    question: "Which of the following breaches would most likely NOT require ICO notification?",
+    options: [
+      "A ransomware attack encrypting 5,000 patient records",
+      "An employee accidentally emailing a colleague's work phone number to another colleague, who deletes it immediately",
+      "Loss of an unencrypted laptop containing customer financial data",
+      "Exfiltration of 500 employee records by an external attacker"
+    ],
+    correctIndex: 1,
+    explanation: "A single non-sensitive data point (a work phone number) disclosed to an internal colleague who immediately deletes it is unlikely to result in a risk to the individual's rights and freedoms. It should still be recorded in the breach register, but ICO notification is not required."
+  },
+  {
+    id: "br-q5",
+    question: "Under Article 33(5), what must a controller do with breaches that do not meet the notification threshold?",
+    options: [
+      "Nothing — if notification is not required, no action is needed",
+      "Inform the data subjects but not the ICO",
+      "Document the breach, its effects, and remedial action in an internal breach register",
+      "Report the breach to the ICO within 30 days instead of 72 hours"
+    ],
+    correctIndex: 2,
+    explanation: "Article 33(5) requires controllers to document all personal data breaches regardless of whether they are notifiable. The record must include the facts, effects, and remedial action taken, and the ICO can inspect this register at any time."
+  }
+]} />

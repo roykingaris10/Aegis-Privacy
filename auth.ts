@@ -40,6 +40,31 @@ function buildAdapter(): Adapter {
         image: created.image,
       } satisfies AdapterUser;
     },
+    // Override: @auth/core passes `identifier` from `?email=` in the
+    // callback URL, but the official Prisma adapter's default lookup
+    // requires both identifier and token. When the email query param
+    // is missing (or Auth.js's internal request parsing drops it),
+    // Prisma errors. The token itself is already a hashed secret, so
+    // looking it up by token alone is safe — we still verify the
+    // identifier matches and check expiry per Auth.js conventions.
+    // The official Prisma adapter's useVerificationToken looks up by the
+    // compound `identifier_token` key, but Auth.js v5 sometimes loses the
+    // identifier query param in transit — leaving Prisma with a half-
+    // populated compound key and a PrismaClientValidationError. Look up
+    // by token alone (the token is already a per-link random+hashed
+    // secret, so this is safe), and enforce the identifier match in
+    // code when it is supplied.
+    useVerificationToken: async ({ identifier, token }) => {
+      const found = await prisma.verificationToken.findFirst({
+        where: { token },
+      });
+      if (!found) return null;
+      if (identifier && found.identifier !== identifier) return null;
+      await prisma.verificationToken
+        .deleteMany({ where: { token } })
+        .catch(() => undefined);
+      return found;
+    },
   };
 }
 

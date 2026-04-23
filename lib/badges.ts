@@ -37,8 +37,16 @@ export type UserStats = {
   skillLevels: Partial<Record<SkillKey, number>>;
   skillsCompleted: Set<SkillKey>;
   completions: CompletionSummary[];
-  /** Any guide viewed yet? Sprint 3b will flip this based on GuideProgress. */
+  /** Any guide viewed yet? Flipped based on GuideProgress. */
   viewedAnyGuide: boolean;
+  /** Total guides completed (read or quizzed). */
+  guidesCompleted: number;
+  /** Skills covered by completed guides. */
+  guideSkills: Set<SkillKey>;
+  /** Whether the user got 100% on any quiz. */
+  perfectQuiz: boolean;
+  /** Whether the user completed all guides in any study track. */
+  completedAnyTrack: boolean;
 };
 
 // The 15 seed badges.
@@ -184,6 +192,48 @@ export const BADGES: ReadonlyArray<Badge> = [
       );
       return values.length >= 10 && values.every((l) => l >= 5);
     },
+  },
+
+  // Learning badges (Sprint 3b)
+  {
+    id: "well_read",
+    name: "Well Read",
+    description: "Complete your first guide.",
+    icon: "BookOpen",
+    rarity: "common",
+    criteria: (s) => s.guidesCompleted >= 1,
+  },
+  {
+    id: "scholar",
+    name: "Scholar",
+    description: "Complete 5 guides.",
+    icon: "Library",
+    rarity: "uncommon",
+    criteria: (s) => s.guidesCompleted >= 5,
+  },
+  {
+    id: "perfect_recall",
+    name: "Perfect Recall",
+    description: "Get 100% on any guide quiz.",
+    icon: "Brain",
+    rarity: "uncommon",
+    criteria: (s) => s.perfectQuiz,
+  },
+  {
+    id: "cross_trained",
+    name: "Cross-Trained",
+    description: "Complete guides covering 3 or more skills.",
+    icon: "Waypoints",
+    rarity: "uncommon",
+    criteria: (s) => s.guideSkills.size >= 3,
+  },
+  {
+    id: "study_tracker",
+    name: "Study Tracker",
+    description: "Complete all guides in any study track.",
+    icon: "Route",
+    rarity: "rare",
+    criteria: (s) => s.completedAnyTrack,
   },
 ];
 

@@ -1,0 +1,273 @@
+---
+title: "Writing a DPIA That Actually Protects Anyone"
+description: "When a DPIA is legally required, how to structure one that people will actually read, and the pitfalls that make most DPIAs useless."
+skill: "dpia_authoring"
+readingTimeMinutes: 10
+quizXp: 60
+relatedScenarios: ["scenario_003", "scenario_011"]
+studyTracks: ["bcs", "cippe", "cippuk"]
+order: 3
+---
+
+## What a DPIA Is (And What It Isn't)
+
+A Data Protection Impact Assessment is a structured process for identifying and minimising the data protection risks of a project or system. That sentence already contains the word most people skip over: **process**. A DPIA is not a form. It is not a PDF that sits in a SharePoint folder gathering digital dust. It is not a compliance tick-box that someone fills in after the system has already been built and deployed.
+
+Under the UK GDPR, a DPIA is a living risk analysis. Its purpose is to force you to think carefully about what personal data you are processing, why you need it, whether you actually need all of it, what could go wrong, and what you are going to do about the things that could go wrong. It is supposed to happen **before** you start processing, not after.
+
+<LegalCite article="35(1)" legislation="UK GDPR">
+Where a type of processing, in particular using new technologies, is likely to result in a high risk to the rights and freedoms of natural persons, the controller shall, prior to the processing, carry out an assessment of the impact of the envisaged processing operations on the protection of personal data.
+</LegalCite>
+
+The phrase "prior to the processing" is doing a lot of heavy lifting. A DPIA produced after launch is not a DPIA. It is a retroactive justification dressed up as a risk assessment. The ICO has been increasingly clear about this: timing matters, and a late DPIA is evidence that you did not take your obligations seriously.
+
+A DPIA is also not a security assessment, although security will feature in it. It is not a business case document. It is not a privacy notice. It examines the risks **to the individuals whose data you are processing**, not the risks to your organisation. This distinction matters more than most practitioners realise. The question is not "what happens to us if there is a breach?" The question is "what happens to the people whose data we hold if something goes wrong?"
+
+## When a DPIA Is Legally Required (Article 35 Triggers)
+
+Article 35(3) of the UK GDPR sets out three specific situations where a DPIA is mandatory:
+
+1. **Systematic and extensive profiling with significant effects.** If you are making automated decisions about people that produce legal effects or similarly significant effects, you must carry out a DPIA. This covers credit scoring, automated recruitment filtering, insurance risk pricing, and similar processing.
+
+2. **Large-scale processing of special category data or criminal offence data.** Health records across an NHS trust, biometric data for access control across a large employer, criminal records checks at scale — all of these trigger the requirement.
+
+3. **Systematic monitoring of a publicly accessible area on a large scale.** CCTV across a town centre, body-worn cameras deployed by a local authority, or Wi-Fi tracking in a shopping centre all fall here.
+
+<LegalCite article="35(3)" legislation="UK GDPR">
+A data protection impact assessment referred to in paragraph 1 shall in particular be required in the case of: (a) a systematic and extensive evaluation of personal aspects... (b) processing on a large scale of special categories of data... (c) a systematic monitoring of a publicly accessible area on a large scale.
+</LegalCite>
+
+But Article 35(3) is not exhaustive. The ICO has published its own list of processing operations that require a DPIA, as permitted under Article 35(4). Beyond the statutory triggers, the European Data Protection Board (now referenced in UK practice through retained guidance) identified nine criteria in its Guidelines on DPIAs (WP 248 rev.01). If your processing meets **two or more** of these criteria, a DPIA is almost certainly required:
+
+- Evaluation or scoring
+- Automated decision-making with legal or similar significant effect
+- Systematic monitoring
+- Sensitive data or data of a highly personal nature
+- Data processed on a large scale
+- Matching or combining datasets
+- Data concerning vulnerable data subjects (children, employees, patients)
+- Innovative use or applying new technological or organisational solutions
+- Processing that prevents data subjects from exercising a right or using a service or contract
+
+<Callout type="warning">
+The two-or-more test from the EDPB guidelines is a practical threshold, not a legal safe harbour. Meeting only one criterion does not automatically mean a DPIA is unnecessary. If you are in any doubt, do one anyway. The ICO will never criticise you for conducting a DPIA you did not strictly need. They will absolutely criticise you for failing to conduct one you did.
+</Callout>
+
+## When a DPIA Is Recommended But Not Required
+
+Even when none of the Article 35 triggers apply, a DPIA is often sensible. The ICO's own guidance encourages organisations to adopt DPIAs as a default practice for any new project involving personal data, regardless of whether the legal threshold is met.
+
+Situations where a DPIA is not legally mandatory but strongly recommended include:
+
+- **New data sharing arrangements**, even with a small number of records. If you are sharing data with a new third party or across organisational boundaries for the first time, the risks deserve structured analysis even if the volume is low.
+
+- **Changes to existing processing.** Migrating a system to a new cloud provider, adding a new analytics tool, or expanding the geographic scope of processing all warrant a fresh or updated DPIA.
+
+- **Processing involving children's data at any scale.** The ICO's Age Appropriate Design Code sets a high bar for children's data. Even processing that does not hit "large scale" thresholds should be assessed.
+
+- **Any processing where a breach would cause significant distress.** Think about domestic abuse referral systems, mental health records, addiction treatment data, or immigration status information. Volume is irrelevant when the sensitivity per record is extreme.
+
+The practical advice is simple: if you are asking "do I need a DPIA?", the answer is almost always "yes, just do one." A lightweight DPIA for low-risk processing takes a few hours. The cost of not doing one, if the ICO comes asking, is measured in months.
+
+## The DPIA Structure
+
+The UK GDPR does not prescribe a rigid format, but Article 35(7) sets out the minimum content:
+
+<LegalCite article="35(7)" legislation="UK GDPR">
+The assessment shall contain at least: (a) a systematic description of the envisaged processing operations and the purposes... (b) an assessment of the necessity and proportionality... (c) an assessment of the risks to the rights and freedoms of data subjects... (d) the measures envisaged to address the risks.
+</LegalCite>
+
+In practice, a good DPIA follows this structure:
+
+### 1. Description of the Processing
+
+What data are you collecting? From whom? How? Where will it be stored? Who will have access? How long will you keep it? What is the lawful basis? If you are relying on legitimate interests, where is your balancing test?
+
+This section should be written so that someone unfamiliar with the project can understand the full data lifecycle in five minutes. Use a data flow diagram if the processing is complex. Name the systems, the suppliers, and the transfer mechanisms. Vagueness here undermines everything that follows.
+
+### 2. Purpose, Necessity, and Proportionality
+
+Why are you doing this? Could you achieve the same purpose with less data, fewer recipients, or a shorter retention period? Is this processing genuinely necessary, or is it convenient?
+
+This is where most DPIAs fail. The necessity assessment is not "we need this data to do the thing we want to do." It is "we have considered alternatives and this is the least intrusive way to achieve a legitimate purpose." If you cannot articulate why you need every field you are collecting, you are collecting too much.
+
+### 3. Risk Assessment
+
+Identify the risks to the individuals. Not the risks to the business. Think about:
+
+- **Confidentiality risks**: unauthorised access, accidental disclosure, data breaches
+- **Integrity risks**: inaccurate data leading to wrong decisions about people
+- **Availability risks**: people unable to access their own data or exercise their rights
+- **Rights and freedoms risks**: chilling effects on free expression, discrimination, financial harm, reputational damage, physical safety
+
+For each risk, assess the **likelihood** (how probable is this?) and the **severity** (how bad would it be for the affected individuals?). Be honest. "Low likelihood" is not a magic word that makes a risk disappear. A low-probability, high-severity risk still needs mitigation.
+
+### 4. Mitigations
+
+For every risk you have identified, describe what you are doing to reduce it. Be specific. "We will implement appropriate security measures" is not a mitigation. "All data at rest is encrypted with AES-256, access is restricted to four named individuals via role-based access control, and access logs are reviewed monthly by the DPO" is a mitigation.
+
+If a risk cannot be fully mitigated, say so. The DPIA should document **residual risk** — the risk that remains after all mitigations are in place.
+
+### 5. Sign-Off and Accountability
+
+The DPIA must record who was consulted, who made the decisions, and who approved the final assessment. Under Article 35(2), the controller must seek the advice of the DPO where one has been designated. The DPO's advice, and whether it was followed, should be recorded.
+
+<LegalCite article="35(2)" legislation="UK GDPR">
+The controller shall seek the advice of the data protection officer, where designated, when carrying out a data protection impact assessment.
+</LegalCite>
+
+If the residual risk remains high after mitigations, Article 36 requires the controller to consult the ICO before proceeding. This is the prior consultation mechanism, and it is not optional.
+
+## How to Write One People Will Actually Read
+
+Most DPIAs are unreadable. They are forty-page documents filled with jargon, boilerplate, and copy-pasted legal text that nobody — including the person who wrote it — will ever read again. This defeats the entire purpose. A DPIA that nobody reads is a DPIA that does not protect anyone.
+
+**Write in plain English.** The audience for a DPIA is not a data protection lawyer. It is the project manager, the software developer, the senior leader who needs to approve the budget, and the DPO who needs to understand the risks across fifty projects. If your DPIA requires a law degree to understand, it will be ignored.
+
+**Lead with the risks.** Put the risk assessment and mitigations early. The description of processing is necessary context, but the value of the DPIA is in the risk analysis. Busy readers will skip to what matters. Make sure what matters is easy to find.
+
+**Use tables for risk assessments.** A table with columns for risk, likelihood, severity, mitigation, residual risk, and owner is infinitely more useful than paragraphs of prose. People can scan a table in seconds. They will not scan six pages of narrative.
+
+**Be honest about what you do not know.** If you are unsure whether a third-party processor has adequate security controls, say so and document the steps you are taking to find out. Uncertainty is not a failure. Pretending uncertainty does not exist is.
+
+<Callout type="tip">
+A practical test: hand your DPIA to someone who was not involved in the project and ask them to explain the top three risks and their mitigations back to you. If they cannot do it in two minutes, rewrite it.
+</Callout>
+
+**Keep it short.** A DPIA for a straightforward processing activity should be three to five pages. A DPIA for a complex, high-risk system might be ten to fifteen. If your DPIA is longer than fifteen pages, you are probably including material that belongs in other documents (security assessments, data sharing agreements, records of processing activities). Reference those documents; do not duplicate them.
+
+## Common Pitfalls
+
+### Copying Templates Without Thinking
+
+The ICO publishes a DPIA template. Many law firms and consultancies publish their own. These are starting points, not finished products. A DPIA that reads like a template with blanks filled in is a DPIA that has not involved any actual thinking. The template gives you the structure. You supply the analysis.
+
+The worst version of this is the "find and replace" DPIA, where someone takes a previous DPIA for a different project, changes the project name, and submits it. The ICO has seen enough of these to recognise them instantly. Do not do this.
+
+### Hand-Waving Risk
+
+"The risk of a data breach is low because we take security seriously." This sentence, or something like it, appears in approximately ninety percent of DPIAs. It is meaningless. Low compared to what? Based on what evidence? What does "take security seriously" mean in operational terms?
+
+Every risk assessment must be specific. What is the threat? What is the vulnerability? What is the impact on the individual? What controls are in place? Are those controls tested? How recently?
+
+<Callout type="warning">
+If every risk in your DPIA is rated "low likelihood, low severity," your DPIA is almost certainly wrong. Either you have not thought hard enough about the risks, or the processing genuinely is low-risk and you probably did not need a DPIA in the first place. One of those two things is true.
+</Callout>
+
+### Ignoring the Human Element
+
+Data breaches caused by sophisticated cyber attacks make the news. Data breaches caused by someone emailing a spreadsheet to the wrong person happen every day. Your risk assessment should account for human error, social engineering, inadequate training, and staff turnover. The most common data protection failures are mundane, not dramatic.
+
+### Treating the DPIA as a One-Off
+
+A DPIA completed at the start of a project and never revisited is a snapshot of risks that no longer exist in a system that has changed beyond recognition. If you are not reviewing your DPIAs when the processing changes, you are not complying with the spirit of the requirement.
+
+## The Consultation Requirement
+
+Article 35(9) requires controllers to seek the views of data subjects or their representatives "where appropriate." This is one of the most frequently ignored provisions in the entire UK GDPR.
+
+Consultation does not mean sending a privacy notice and hoping for the best. It means genuinely engaging with the people whose data you will be processing. This could take the form of user research, focus groups, public consultations, or engagement with representative bodies such as trade unions or patient groups.
+
+For public authorities, consultation is particularly important. If a local council is deploying facial recognition in a town centre, the residents of that town have a legitimate expectation of being consulted. "We published a notice on our website" is not meaningful consultation.
+
+There are legitimate reasons to limit or defer consultation — for example, where consulting data subjects would compromise the purpose of the processing (such as fraud detection). But the decision not to consult must be documented and justified.
+
+<Callout type="info">
+The ICO's DPIA guidance explicitly states that controllers should document their reasons if they decide not to seek the views of data subjects. "We did not think of it" is not a documented reason.
+</Callout>
+
+Where the DPO has been designated, their involvement is mandatory, not advisory. The DPO must be consulted, and their advice must be recorded. If the controller decides not to follow the DPO's advice, the reasons must be documented. This creates an accountability trail that the ICO can and does examine during investigations.
+
+## After the DPIA — Living Document or Filing Cabinet
+
+A DPIA does not end when someone signs it off. Article 35(11) requires controllers to review the DPIA when the nature of the risk changes.
+
+In practice, this means your DPIA should be reviewed:
+
+- **When the processing changes.** New data fields, new recipients, new retention periods, new technologies, new purposes — any of these should trigger a review.
+- **When the risk environment changes.** A new type of cyber attack, a regulatory enforcement action against similar processing, or a data breach in your sector should prompt you to revisit your assumptions.
+- **On a regular schedule.** Even if nothing obvious has changed, an annual review is good practice. It forces you to confirm that the mitigations you described are still in place and still effective.
+- **When the law changes.** Post-Brexit divergence between UK and EU data protection law is ongoing. Changes to ICO guidance, new codes of practice, or amendments to the Data Protection Act 2018 may affect your risk assessment.
+
+The practical challenge is ownership. A DPIA written by someone who has since left the organisation is a DPIA that nobody feels responsible for. Assign a named owner for every DPIA, ensure handover when people move on, and include DPIA reviews in your regular data protection governance cycle.
+
+The best organisations treat DPIAs as part of their project management lifecycle. The DPIA is initiated at the design phase, updated during development, finalised before go-live, and reviewed at defined intervals. It is a living document that reflects how the processing actually works, not how someone imagined it might work eighteen months ago.
+
+If you have conducted a DPIA and the residual risk remains high despite all reasonable mitigations, you have two options: redesign the processing to reduce the risk, or consult the ICO under Article 36 before proceeding. The ICO can provide a written opinion within eight weeks (extendable to fourteen), and may direct you to change or stop the processing. Prior consultation is not an admission of failure. It is evidence that you are taking your obligations seriously. The ICO would far rather hear from you before something goes wrong than investigate after it has.
+
+---
+
+<Quiz guideSlug="writing-a-dpia" questions={[
+  {
+    id: "dpia-q1",
+    question: "Under Article 35 UK GDPR, at what point in the processing lifecycle must a DPIA be carried out?",
+    options: [
+      "Within 72 hours of commencing processing",
+      "Prior to the processing",
+      "Within the first year of processing",
+      "Before the annual review date"
+    ],
+    correctIndex: 1,
+    explanation: "Article 35(1) explicitly requires the DPIA to be carried out 'prior to the processing.' A DPIA conducted after processing has begun does not satisfy the legal requirement."
+  },
+  {
+    id: "dpia-q2",
+    question: "According to the EDPB guidelines, how many of the nine criteria should your processing meet before a DPIA is almost certainly required?",
+    options: [
+      "One",
+      "Two or more",
+      "Five or more",
+      "All nine"
+    ],
+    correctIndex: 1,
+    explanation: "The EDPB guidelines (WP 248 rev.01) state that processing meeting two or more of the nine identified criteria will in most cases require a DPIA. Meeting only one criterion does not automatically exempt you."
+  },
+  {
+    id: "dpia-q3",
+    question: "What is the minimum content required by Article 35(7) UK GDPR in a DPIA?",
+    options: [
+      "A data flow diagram, a privacy notice, and a record of consent",
+      "A systematic description of processing, necessity and proportionality assessment, risk assessment, and measures to address the risks",
+      "A risk register, a security audit, and a data sharing agreement",
+      "A privacy impact statement, a lawful basis assessment, and a breach notification plan"
+    ],
+    correctIndex: 1,
+    explanation: "Article 35(7) requires at minimum: a systematic description of the processing and purposes, an assessment of necessity and proportionality, an assessment of risks to rights and freedoms, and the measures envisaged to address those risks."
+  },
+  {
+    id: "dpia-q4",
+    question: "When must a controller consult the ICO under the prior consultation mechanism?",
+    options: [
+      "Before conducting any DPIA",
+      "When the residual risk remains high despite mitigations",
+      "Whenever special category data is processed",
+      "Only when a data breach has occurred"
+    ],
+    correctIndex: 1,
+    explanation: "Article 36 requires prior consultation with the supervisory authority (the ICO in the UK) when the DPIA indicates that the processing would result in a high risk in the absence of measures taken by the controller to mitigate the risk — that is, when residual risk remains high after all reasonable mitigations."
+  },
+  {
+    id: "dpia-q5",
+    question: "Article 35(9) requires controllers to seek the views of which group 'where appropriate'?",
+    options: [
+      "The board of directors",
+      "The information security team",
+      "Data subjects or their representatives",
+      "The ICO's enforcement division"
+    ],
+    correctIndex: 2,
+    explanation: "Article 35(9) requires the controller to seek the views of data subjects or their representatives where appropriate. This consultation requirement is one of the most frequently overlooked provisions in DPIA practice."
+  },
+  {
+    id: "dpia-q6",
+    question: "Which of the following is a valid reason to review and update an existing DPIA?",
+    options: [
+      "Only when the ICO requests it during an investigation",
+      "When the processing changes, the risk environment changes, or on a regular schedule",
+      "Only when a data breach occurs",
+      "Only at the end of the data retention period"
+    ],
+    correctIndex: 1,
+    explanation: "Article 35(11) requires controllers to review the DPIA when the nature of the risk represented by processing operations changes. In practice, this means reviewing when processing changes, when the risk environment shifts, on a regular schedule, and when the law changes."
+  }
+]} />

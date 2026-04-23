@@ -1,0 +1,326 @@
+id: scenario_016
+tier: 2
+client: polaris_edtech
+skill: ai_governance
+difficulty: complex
+title: Automated essay marking in schools — Article 22 and fairness concerns
+timeLimitMinutes: 35
+xpBase: 100
+
+briefing:
+  requestType: >-
+    An EdTech company wants to deploy automated marking for student
+    essays using a large language model. The marks will feed directly
+    into termly progress reports. This engages Article 22 (automated
+    decision-making with significant effects), fairness and accuracy
+    concerns for AI-generated marks, transparency obligations, the
+    ICO's guidance on AI and data protection, and the children's data
+    dimension.
+  whatUserNeedsToKnow: >-
+    Article 22(1) gives data subjects the right not to be subject to
+    a decision based solely on automated processing which produces
+    legal effects or "similarly significantly affects" them. A mark
+    on a school progress report that influences teacher assessments,
+    set placements, and parental perceptions of a child's ability is
+    arguably a "similarly significant" effect. The key defences are:
+    (a) the processing is not "solely" automated — but nominal human
+    review (teacher glances at the mark and clicks approve) does not
+    defeat Article 22 if the teacher has no realistic ability to
+    override or does not exercise independent judgement; (b) the
+    decision is necessary for a contract — difficult to argue for
+    school-age children; or (c) explicit consent — from a parent,
+    given the children are under 13/16. The ICO's AI guidance
+    emphasises that controllers must be able to explain the basis
+    for individual decisions and must test for bias. For children's
+    data, the AADC requires that automated processes affecting
+    children are designed with their best interests as a primary
+    consideration.
+  commonPitfalls: |
+    - Assuming that teacher approval of the mark automatically
+      defeats Article 22 without examining whether the teacher
+      exercises genuine independent judgement.
+    - Treating AI marking accuracy in aggregate ("92% correlation
+      with human markers") as sufficient without examining per-
+      pupil accuracy, bias across demographics, and edge cases.
+    - Ignoring the transparency obligation — children and parents
+      have a right to know that marks are AI-generated.
+    - Failing to conduct a DPIA for automated processing with
+      significant effects on children.
+    - Not considering the fairness implications of different
+      outcomes for children with learning difficulties, EAL
+      (English as an additional language), or non-standard
+      expression.
+
+emailSender:
+  name: Niamh Gallagher
+  role: Head of Engineering, Polaris EdTech Ltd
+  email: niamh@polaris-edtech.co.uk
+emailSubject: "AutoMark feature — ready for beta launch next half-term"
+emailBody: |
+  Hi Aegis,
+
+  Last one from me this sprint, I promise. This is the feature I'm
+  most excited about and I'd like your green light before we ship
+  the beta.
+
+  We've built a feature called AutoMark. It uses a fine-tuned large
+  language model to mark student essays — specifically Key Stage 2
+  and Key Stage 3 English writing assessments. The teacher sets the
+  assignment, the student writes their essay in our platform, and
+  AutoMark produces:
+
+  - A numerical mark out of 40 (mapped to the school's assessment
+    framework)
+  - A written comment highlighting strengths and areas for
+    improvement
+  - A "confidence score" (how sure the model is of its mark)
+
+  The marks feed into our termly progress dashboard, which teachers
+  use for progress reports to parents and for setting decisions
+  (which maths/English group a child is placed in next term).
+
+  We've tested it extensively. Key stats:
+
+  - 92% correlation with human marker scores on our benchmark set
+    (1,200 essays, three independent human markers)
+  - Mean absolute error: 2.1 marks out of 40
+  - Tested on essays from 14 schools across five local authorities
+
+  The teacher always sees the mark before it goes live — they can
+  override it with one click. In our pilot, teachers overrode about
+  8% of marks. Our product team thinks that number will drop as
+  teachers learn to trust the model.
+
+  My questions:
+
+  1. Is this an Article 22 issue? The teacher reviews every mark
+     and can override, so it's not "solely automated" — right?
+
+  2. Do we need to tell parents that marks are AI-generated? Our
+     marketing team is worried that parents will react badly if we
+     lead with "your child's essay was marked by a robot". Can we
+     just say the marks are "assisted by technology"?
+
+  3. We haven't specifically tested the model on essays by children
+     with SEN, EAL, or dyslexia. Our data scientist says the
+     training set was "representative" but we don't have a
+     breakdown. Is that a problem?
+
+  4. One of our pilot school heads asked what happens if a parent
+     challenges a mark — who is responsible, us or the school?
+
+  5. Do we need a DPIA? We've already done one for the main
+     platform.
+
+  We're planning to launch the beta to 30 schools next half-term.
+  The commercial case is strong — AutoMark is the feature that will
+  differentiate us from competitors and it's the centrepiece of our
+  Series A pitch.
+
+  Thanks,
+
+  Niamh
+
+supportingDocuments:
+  - name: "AutoMark — accuracy report (summary).pdf"
+    type: document
+    excerpt: >-
+      Four-page summary. 92% correlation with human markers on a
+      benchmark of 1,200 essays. Mean absolute error 2.1/40. No
+      demographic breakdown of accuracy. The benchmark set is described
+      as "drawn from partner schools" but no detail on SEN, EAL, or
+      FSM representation. A footnote notes that "essays below 50 words
+      were excluded from the benchmark as the model performs less
+      reliably on very short submissions" — no data on how many were
+      excluded or what marks they received.
+  - name: "AutoMark — teacher override data (pilot).pdf"
+    type: document
+    excerpt: >-
+      Override analysis from six pilot schools over one term. Teachers
+      overrode 8% of marks. Of overrides, 73% were upward (teacher
+      gave a higher mark than the model). Override rate varied
+      significantly by teacher: one teacher overrode 22% of marks,
+      three teachers overrode fewer than 3%. No analysis of whether
+      overrides correlated with pupil demographics.
+
+userTask: >-
+  Draft an advice memo to Niamh. Address her five questions directly,
+  walk through the Article 22 analysis in detail, explain the
+  transparency obligations, flag the bias and fairness testing gaps,
+  and give a clear recommendation on whether AutoMark is ready for
+  beta launch.
+
+rubric:
+  - criterion: Article 22 analysis — is this solely automated decision-making?
+    maxPoints: 20
+    description: >-
+      Examines whether teacher review defeats Article 22. Identifies
+      that a one-click override with an 8% override rate (declining)
+      may not constitute "meaningful human involvement" — particularly
+      where three teachers override fewer than 3% of marks. References
+      the ICO's guidance that human involvement must be more than a
+      rubber stamp: the person must have the authority, competence, and
+      genuine freedom to override. Notes that the marks feeding into
+      set placement decisions strengthens the "similarly significant
+      effect" argument.
+  - criterion: Transparency obligations — children and parents
+    maxPoints: 15
+    description: >-
+      Applies Article 13/14 transparency requirements and the AADC.
+      Concludes that parents and children must be told clearly that
+      marks are AI-generated — "assisted by technology" is misleading
+      and insufficient. Recommends transparent disclosure with
+      explanation of how the system works, the teacher override
+      mechanism, and how to challenge a mark.
+  - criterion: Bias and fairness testing gaps
+    maxPoints: 20
+    description: >-
+      Identifies the absence of demographic-specific accuracy testing
+      as a critical gap. Notes that excluding essays below 50 words
+      from the benchmark disproportionately affects children with SEN,
+      EAL, or dyslexia who may write shorter essays. Requires testing
+      across protected characteristics before launch and ongoing
+      monitoring post-launch.
+  - criterion: DPIA requirement — separate from main platform
+    maxPoints: 15
+    description: >-
+      Confirms that a separate DPIA is required for AutoMark — the
+      existing platform DPIA does not cover automated decision-making
+      about children's educational progress. Article 35 is triggered
+      by automated processing with significant effects and processing
+      of children's data. The DPIA should address all the issues
+      raised in this advice.
+  - criterion: Accountability — controller vs processor for marking decisions
+    maxPoints: 15
+    description: >-
+      Addresses the "who is responsible" question. In most deployment
+      models, the school is the data controller and Polaris is the
+      processor — but if Polaris determines how the model marks (the
+      means and purpose of the automated processing), it may be a
+      controller or joint controller for the marking decision. This
+      must be resolved contractually before beta launch.
+  - criterion: Launch recommendation — proceed, conditions, or defer
+    maxPoints: 15
+    description: >-
+      Gives a clear recommendation on the beta launch. Identifies
+      specific conditions that must be met (fairness testing, DPIA,
+      transparency materials, controller determination) and whether
+      these can realistically be completed before next half-term.
+      Balances the commercial imperative with the legal and ethical
+      risks.
+
+exemplarResponse: |
+  Hi Niamh,
+
+  I share your excitement about AutoMark — it is a genuinely
+  impressive feature. But it is not ready for beta in its current
+  form, and launching it prematurely would create legal exposure
+  that could undermine the Series A pitch far more than a six-week
+  delay would. Here is the analysis.
+
+  **1. Article 22 — yes, this is a live issue, and teacher review
+  does not automatically resolve it.** The question is not whether
+  a teacher *can* override the mark — it is whether teachers
+  *actually exercise independent judgement*. Your pilot data tells
+  a story: three out of six teachers overrode fewer than 3% of
+  marks. That is rubber-stamping, not meaningful human involvement.
+  The ICO's guidance on automated decision-making is explicit:
+  human involvement must be "more than just a token gesture" — the
+  person must have genuine authority, the competence to assess the
+  decision, and the ability to reach a different conclusion. A
+  single click to approve a mark they did not independently assess
+  does not meet that bar.
+
+  The "similarly significant effect" limb is also engaged. These
+  marks feed into progress reports to parents and into set
+  placement decisions — which group a child is in for English and
+  maths next term. A child incorrectly placed in a lower set
+  because of an AI marking error has been materially affected by
+  an automated decision.
+
+  To defeat Article 22, you need to demonstrate that teachers
+  genuinely review each mark before it is recorded — not as a
+  default-approve workflow, but as an independent assessment where
+  the teacher's own professional judgement is the deciding factor.
+  That may require redesigning the UX: show the essay and the
+  rubric first, let the teacher form a view, then show the AI
+  mark as a comparison — not the other way around.
+
+  **2. Transparency — you must tell parents clearly.** "Assisted
+  by technology" is not adequate. Articles 13 and 14 require you
+  to inform data subjects about the existence of automated
+  decision-making, the logic involved, and the significance and
+  envisaged consequences. The AADC adds that information provided
+  to children must be age-appropriate. Parents have a right to
+  know that their child's essay mark was produced by an AI model
+  and that the mark influences progress reports and set placements.
+
+  Recommended approach: a clear, one-page parent information sheet
+  explaining (a) that AutoMark is used, (b) how it works in plain
+  language, (c) that the teacher reviews every mark and can
+  override, (d) how to challenge a mark, and (e) the option to
+  opt out of automated marking for their child. Yes, opt-out will
+  be operationally difficult — but it may be necessary to defeat
+  an Article 22 challenge.
+
+  **3. The fairness testing gap is a critical blocker.** You have
+  not tested the model's accuracy on essays by children with SEN,
+  EAL, or dyslexia. Your benchmark excluded essays below 50 words
+  — which disproportionately affects exactly the children who are
+  most vulnerable to AI marking errors. A model that works well
+  for neurotypical, fluent-English writers and poorly for everyone
+  else is not just a product gap — it is a potential discrimination
+  issue under the Equality Act 2010 if schools rely on it for set
+  placements.
+
+  Before beta: run the benchmark specifically on SEN, EAL, and
+  dyslexic pupils' essays. Publish the accuracy breakdown. If the
+  model underperforms for these groups, either improve it or
+  exclude those pupils from automated marking with clear disclosure.
+
+  **4. Controller question — this must be resolved now.** In the
+  standard model, the school is the controller and Polaris is the
+  processor. But AutoMark blurs this: Polaris built the model,
+  determines the marking criteria, and produces the mark — the
+  school's only role is to approve or override. If Polaris is
+  determining the purpose and means of the automated processing,
+  it may be a controller or joint controller for the marking
+  decision. This has real consequences: if a parent challenges a
+  mark under Article 22, who responds — the school or Polaris?
+  Resolve this in the DPA with each school before launch.
+
+  **5. Yes, a separate DPIA is required.** The existing platform
+  DPIA covers the core learning tool. AutoMark introduces
+  automated decision-making about children's educational progress
+  — that is a new, high-risk processing activity that triggers
+  Article 35 independently. The DPIA should address Article 22
+  compliance, fairness and bias testing, transparency, the
+  controller determination, and the specific risks to children
+  with SEN/EAL.
+
+  **Recommendation: defer the beta by one half-term.** Use the
+  time to:
+
+  1. Complete the fairness testing across SEN, EAL, and FSM
+     cohorts. Non-negotiable.
+  2. Draft and complete the AutoMark-specific DPIA.
+  3. Redesign the teacher review UX to support genuine independent
+     judgement — show-then-compare, not approve-by-default.
+  4. Produce parent transparency materials.
+  5. Resolve the controller/processor determination in the school
+     DPA.
+  6. Build the opt-out mechanism for parents who do not consent to
+     automated marking.
+
+  I know this is not what you or the Series A investors want to
+  hear. But launching a product that makes automated decisions
+  about children's educational progress without fairness testing,
+  without a DPIA, and without parental transparency is the kind of
+  story that ends up in the Guardian — and that is a much bigger
+  risk to the Series A than a six-week delay.
+
+  Let me know when you want to start on the DPIA — I can turn it
+  around in a week if you can get me the fairness data.
+
+  Kind regards,
+  Aegis Privacy Partners

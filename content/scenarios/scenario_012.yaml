@@ -1,0 +1,318 @@
+id: scenario_012
+tier: 2
+client: silverbrook_care
+skill: breach_response
+difficulty: complex
+title: Misdirected email with medication list — breach assessment
+timeLimitMinutes: 25
+xpBase: 100
+
+briefing:
+  requestType: >-
+    A personal data breach involving health data sent to the wrong
+    recipient by email. The breach was spotted quickly and the wrong
+    recipient says they have deleted the email, but the data was
+    accessed before deletion. The scenario tests the risk assessment
+    framework for special category data, the reliability of
+    "confirmed deletion" as a mitigating factor, and the additional
+    reporting obligations that apply in a care setting (CQC).
+  whatUserNeedsToKnow: >-
+    This breach involves special category data (health data under
+    Article 9) about a vulnerable individual (elderly care home
+    resident). The risk assessment must account for the nature of
+    the data (medication list including psychiatric drugs, which can
+    reveal mental health conditions), the identifiability of the
+    data subject (full name, DOB, NHS number), the vulnerability of
+    the individual, and the containment effectiveness. "Confirmed
+    deletion" by the wrong recipient is a mitigating factor but is
+    not a complete remedy — the data was seen, may have been copied
+    or forwarded, and the sender has no way to verify genuine
+    deletion from email servers, backups, or memory. The ICO's
+    position is that a breach involving health data about a
+    vulnerable individual will usually cross the Article 33
+    notification threshold even where containment is swift. Article
+    34 notification to the data subject is a separate, higher
+    threshold ("high risk") — the key question is whether the wrong
+    recipient (a GP surgery) is a trusted professional setting that
+    reduces the realistic risk to the individual.
+  commonPitfalls: |
+    - Treating "they deleted it" as the end of the risk assessment
+      without considering residual risk.
+    - Downplaying the severity because the wrong recipient was a
+      professional healthcare setting — the breach still occurred,
+      and the GP surgery staff saw the data without authorisation.
+    - Failing to consider CQC notification obligations in addition
+      to ICO obligations.
+    - Assuming the 72-hour clock starts from when the error was
+      spotted rather than when the organisation became aware.
+    - Not investigating root cause — was this a one-off or a
+      systemic issue with how emails are addressed?
+
+emailSender:
+  name: Karen Whittle
+  role: Registered Manager, Silverbrook Care Group — Meadow House
+  email: k.whittle@silverbrookcare.co.uk
+emailSubject: "Data breach — wrong medication list sent to wrong GP surgery"
+emailBody: |
+  Dear Aegis,
+
+  I have an incident I need to report to you and I want to know
+  what our obligations are. I am trying not to panic.
+
+  This morning at about 10:15, one of our nurses — Hannah — was
+  emailing a medication review request to Parkside Medical Centre,
+  which is the registered GP surgery for one of our residents, Mrs
+  Ada Okonkwo (age 87). The email included Mrs Okonkwo's full name,
+  date of birth, NHS number, and a list of her 14 current
+  medications. Some of those medications include sertraline,
+  quetiapine, and memantine, which I understand are prescribed for
+  depression, psychotic symptoms, and dementia respectively.
+
+  Hannah sent the email to the wrong surgery. Instead of
+  Parkside Medical Centre (parkside.medical@nhs.net), she sent it
+  to Parklands Surgery (parklands.surgery@nhs.net) — a completely
+  different practice about eight miles away. She realised within
+  about twenty minutes when she noticed the sent-item address
+  didn't look right.
+
+  What happened next:
+
+  - Hannah called Parklands Surgery immediately. The receptionist
+    confirmed that the email had arrived and had been opened by one
+    of their admin staff who was triaging incoming clinical
+    correspondence. The receptionist said she would "delete it
+    straight away".
+  - Hannah asked for written confirmation of deletion. The practice
+    manager at Parklands emailed back an hour later saying "the
+    email and any attachments have been deleted from our inbox and
+    deleted items folder. None of the clinical team saw it."
+  - Hannah then sent the correct email to Parkside Medical Centre
+    and came to tell me what had happened.
+
+  My questions:
+
+  1. Is this a notifiable breach? The data was health data and
+     included an NHS number, but it only went to another GP surgery
+     — surely they understand confidentiality?
+
+  2. Do I need to tell Mrs Okonkwo or her family? She has mild
+     dementia but is not lacking capacity. I really don't want to
+     distress her unnecessarily.
+
+  3. Do I need to report this to CQC? We had an inspection last
+     month and I don't want them to think we have a systemic
+     problem.
+
+  4. "Deleted from inbox and deleted items" — is that actually
+     deleted? Our IT person says emails can sit on servers for
+     months even after you delete them from Outlook.
+
+  5. What should I be doing about root cause? Hannah is a good
+     nurse and she's mortified. Email auto-complete is the culprit
+     — she typed "park" and it filled in the wrong address.
+
+  Please advise urgently — I want to be on the right side of this.
+
+  Karen Whittle
+  Registered Manager
+  Silverbrook Care Group — Meadow House
+
+supportingDocuments:
+  - name: "Deletion confirmation email from Parklands Surgery.pdf"
+    type: email
+    excerpt: >-
+      Email from Parklands Surgery practice manager: "I can confirm
+      the email received this morning regarding a patient not
+      registered at this practice has been deleted from our inbox and
+      deleted items folder. The email was opened by a member of our
+      admin team during routine triage but was not forwarded, printed,
+      or shared with any clinical staff. We treat all misdirected
+      clinical correspondence as confidential."
+
+userTask: >-
+  Draft an advice email to Karen answering her five questions. Walk her
+  through a structured risk assessment, give clear recommendations on
+  ICO and CQC notification, address the "confirmed deletion"
+  limitation honestly, and recommend practical root-cause measures.
+
+rubric:
+  - criterion: Risk assessment — special category data and vulnerable individual
+    maxPoints: 20
+    description: >-
+      Applies a structured risk assessment that accounts for the nature
+      of the data (health data including psychiatric medications, which
+      reveals mental health conditions — Article 9 special category),
+      identifiability (name, DOB, NHS number), vulnerability of the
+      data subject (elderly, dementia), and the context of the
+      disclosure (to another healthcare setting under professional
+      confidentiality obligations).
+  - criterion: Containment effectiveness — "confirmed deletion" limitations
+    maxPoints: 15
+    description: >-
+      Honestly assesses the limitations of the Parklands deletion
+      confirmation. Notes that "deleted from inbox and deleted items"
+      does not guarantee deletion from email server backups, journaling
+      systems, or the admin staff member's memory. Acknowledges it as
+      a significant mitigating factor (the wrong recipient is a
+      professional healthcare setting with its own confidentiality
+      obligations) without treating it as a complete remedy.
+  - criterion: ICO notification threshold — Article 33
+    maxPoints: 20
+    description: >-
+      Applies the Article 33 test and concludes that this breach likely
+      crosses the notification threshold despite swift containment. The
+      ICO's position is that breaches involving health data about
+      vulnerable individuals should generally be notified. Recommends
+      notification with a clear, factual report that includes the
+      mitigation measures taken.
+  - criterion: Data subject notification — Article 34
+    maxPoints: 15
+    description: >-
+      Applies the higher "high risk" threshold for Article 34. Considers
+      whether the fact that the wrong recipient is a GP surgery (bound
+      by professional confidentiality) reduces the realistic risk to
+      Mrs Okonkwo below the "high risk" level. Reaches a reasoned
+      conclusion — notification is likely not required but should be
+      documented either way.
+  - criterion: CQC and safeguarding reporting obligations
+    maxPoints: 15
+    description: >-
+      Identifies that CQC statutory notifications may apply for
+      incidents involving the personal data of service users. Notes
+      that a single misdirected email is unlikely to constitute a
+      "systemic" failing but should be logged in the home's incident
+      management system and referenced in the next CQC engagement.
+      Addresses Karen's concern about the recent inspection context.
+  - criterion: Root-cause analysis and practical prevention
+    maxPoints: 15
+    description: >-
+      Addresses the email auto-complete root cause directly with
+      practical measures: NHS Mail address-book verification,
+      mandatory recipient confirmation for emails containing clinical
+      data, staff training update, and consideration of secure
+      clinical messaging systems (e.g. NHS Mail encryption, MESH)
+      rather than open email for medication data.
+
+exemplarResponse: |
+  Dear Karen,
+
+  You have handled the immediate response well — Hannah did the
+  right thing by calling Parklands straight away and getting
+  written confirmation. Let me walk through your questions with a
+  proper risk assessment.
+
+  **Risk assessment.** I need to be honest with you: even though
+  containment was swift, the data involved is serious. Mrs
+  Okonkwo's medication list includes psychiatric medications that
+  reveal mental health conditions — that is special category data
+  under Article 9 of the UK GDPR. Combined with her full name,
+  DOB, and NHS number, the data is fully identifiable. She is a
+  vulnerable individual in a care setting. The data was accessed
+  by an unauthorised person (the Parklands admin staff member)
+  before deletion. These factors push the risk assessment upward.
+
+  Working in the other direction: the wrong recipient is a GP
+  surgery, bound by professional confidentiality, with its own
+  data protection obligations. The practice manager's confirmation
+  is credible and specific. The data was not forwarded, printed,
+  or shared with clinical staff. This significantly reduces the
+  realistic risk of harm to Mrs Okonkwo — nobody outside a
+  professional healthcare setting saw her data.
+
+  **1. ICO notification — yes, I recommend notifying.** The ICO's
+  guidance is clear that breaches involving health data about
+  vulnerable individuals should generally be reported under Article
+  33, even where containment has been effective. The threshold is
+  whether the breach is "unlikely to result in a risk to the rights
+  and freedoms" of the individual — and with special category data,
+  a full identifier set, and confirmed unauthorised access, that
+  bar is not met. I know that feels disproportionate given the
+  circumstances, but notification is protective for you: it
+  demonstrates good practice, costs you nothing, and the ICO is
+  very unlikely to take any action beyond logging it. The
+  alternative — not notifying and then having the ICO find out via
+  a different route — is much worse.
+
+  The 72-hour clock started when you became aware, which is this
+  morning. You have until Friday morning. Use the ICO's online
+  reporting tool — it takes about 20 minutes and you can file a
+  preliminary report now and update it later.
+
+  **2. Patient notification — probably not required, but document
+  the decision.** Article 34 requires notification to the data
+  subject where the breach is likely to result in a "high risk" to
+  their rights and freedoms. Given that the wrong recipient is a
+  professional healthcare setting bound by confidentiality, the
+  data has been confirmed deleted, and there is no realistic
+  prospect of the information being misused, I do not think the
+  "high risk" threshold is met. You do not need to tell Mrs
+  Okonkwo or her family — but you must document this decision and
+  the reasoning in your breach log. If the ICO disagrees after
+  reviewing your notification, they will tell you.
+
+  **3. CQC — log it, but a formal statutory notification is
+  probably not required.** A single misdirected email is not a
+  "systemic" failing. However, log it in your incident management
+  system, note the root cause and remedial actions, and be prepared
+  to reference it if CQC asks about data security at your next
+  engagement. If you are unsure about the CQC notification
+  threshold, the pragmatic course is to mention it to your CQC
+  relationship manager informally — transparency is always better
+  than a surprise.
+
+  **4. "Deleted" is not the same as "gone".** Your IT person is
+  right. Deleting an email from an inbox and deleted-items folder
+  removes it from the user's view, but it may persist on the mail
+  server, in backup tapes, in journaling or archiving systems, and
+  in the admin staff member's memory. For NHS Mail, retention
+  policies typically mean the data will be purged from backups
+  within 30-90 days. Parklands cannot guarantee total deletion and
+  you should not rely on it as a complete remedy. What it does give
+  you is a credible, documented confirmation that the data was
+  contained quickly and handled appropriately by a professional
+  organisation — which is a strong mitigating factor even if it is
+  not a guarantee.
+
+  **5. Root cause — fix the system, not the nurse.** Hannah is not
+  the problem. Email auto-complete choosing "Parklands" over
+  "Parkside" is a predictable system failure that will happen again
+  if you do not change the process. Practical measures:
+
+  - Remove Parklands Surgery from the Meadow House auto-complete /
+    address book (if it is there because of a previous resident).
+  - Implement a "confirm recipient" step for any email containing
+    clinical data — a one-line protocol: "Before sending, check
+    the recipient address character by character against the
+    resident's GP record."
+  - Consider whether open email is the right channel for
+    medication data. NHS Mail encrypted, or the MESH messaging
+    system, are designed for clinical data transfer and reduce the
+    risk of misdirection.
+  - Brief all nursing staff — not as a reprimand, but as a
+    learning exercise. Hannah should present the incident
+    anonymously at the next team meeting so everyone learns from
+    it.
+
+  **Breach log entry:**
+
+  > **Date:** [today]
+  > **Nature:** Misdirected email containing resident medication
+  > list (special category health data) sent to wrong GP surgery.
+  > **Data subjects:** 1 (Mrs Ada Okonkwo, resident).
+  > **Data categories:** Name, DOB, NHS number, 14 medications
+  > including psychiatric drugs.
+  > **Root cause:** Email auto-complete populated incorrect
+  > address.
+  > **Containment:** Wrong recipient confirmed deletion within
+  > 1 hour. Data accessed by admin staff only, not forwarded or
+  > printed.
+  > **ICO notification:** Submitted [date], reference [number].
+  > **Data subject notification:** Not required — high-risk
+  > threshold not met. Documented reasoning above.
+  > **Remedial actions:** [list as above].
+
+  Call me if you need help with the ICO form — I can walk you
+  through it over the phone.
+
+  Kind regards,
+  Aegis Privacy Partners

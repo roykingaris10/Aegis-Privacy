@@ -18,6 +18,10 @@ const baseStats = (overrides: Partial<UserStats> = {}): UserStats => ({
   skillsCompleted: new Set(),
   completions: [],
   viewedAnyGuide: false,
+  guidesCompleted: 0,
+  guideSkills: new Set(),
+  perfectQuiz: false,
+  completedAnyTrack: false,
   ...overrides,
 });
 
@@ -37,8 +41,8 @@ const completion = (
 });
 
 describe("badge registry shape", () => {
-  it("has 15 badges", () => {
-    expect(BADGES).toHaveLength(15);
+  it("has 20 badges", () => {
+    expect(BADGES).toHaveLength(20);
   });
   it("has unique ids", () => {
     const ids = BADGES.map((b) => b.id);
@@ -205,6 +209,64 @@ describe("criteria: trigger on match, not on non-match", () => {
     expect(qualifyingBadges(baseStats({ currentStreak: 30 }))).toContain(
       "streak_master",
     );
+  });
+
+  // Learning badges (Sprint 3b)
+  it("well_read triggers after completing 1 guide", () => {
+    expect(qualifyingBadges(baseStats({ guidesCompleted: 0 }))).not.toContain(
+      "well_read",
+    );
+    expect(qualifyingBadges(baseStats({ guidesCompleted: 1 }))).toContain(
+      "well_read",
+    );
+  });
+
+  it("scholar triggers after completing 5 guides", () => {
+    expect(qualifyingBadges(baseStats({ guidesCompleted: 4 }))).not.toContain(
+      "scholar",
+    );
+    expect(qualifyingBadges(baseStats({ guidesCompleted: 5 }))).toContain(
+      "scholar",
+    );
+  });
+
+  it("perfect_recall triggers on a 100% quiz", () => {
+    expect(qualifyingBadges(baseStats({ perfectQuiz: false }))).not.toContain(
+      "perfect_recall",
+    );
+    expect(qualifyingBadges(baseStats({ perfectQuiz: true }))).toContain(
+      "perfect_recall",
+    );
+  });
+
+  it("cross_trained requires guides covering 3+ skills", () => {
+    expect(
+      qualifyingBadges(
+        baseStats({
+          guideSkills: new Set<SkillKey>(["sar_handling", "foi_decisions"]),
+        }),
+      ),
+    ).not.toContain("cross_trained");
+    expect(
+      qualifyingBadges(
+        baseStats({
+          guideSkills: new Set<SkillKey>([
+            "sar_handling",
+            "foi_decisions",
+            "breach_response",
+          ]),
+        }),
+      ),
+    ).toContain("cross_trained");
+  });
+
+  it("study_tracker requires completing all guides in any track", () => {
+    expect(
+      qualifyingBadges(baseStats({ completedAnyTrack: false })),
+    ).not.toContain("study_tracker");
+    expect(
+      qualifyingBadges(baseStats({ completedAnyTrack: true })),
+    ).toContain("study_tracker");
   });
 
   it("polymath requires Level 5+ in all 10 skills", () => {

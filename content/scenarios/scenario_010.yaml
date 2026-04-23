@@ -1,0 +1,352 @@
+id: scenario_010
+tier: 2
+client: silverbrook_care
+skill: sar_handling
+difficulty: complex
+title: SAR via lasting power of attorney — former resident with dementia
+timeLimitMinutes: 30
+xpBase: 100
+
+briefing:
+  requestType: >-
+    A third-party subject access request. The data subject is a former
+    resident with dementia; the requester is her adult daughter holding
+    a lasting power of attorney for health and welfare. This engages
+    the standard SAR framework plus Schedule 3 Part 5 exemptions for
+    health data and social work records, the serious-harm test, third-
+    party redaction in shared care environments, and the question of
+    what authority an LPA for health and welfare actually grants in the
+    context of data access.
+  whatUserNeedsToKnow: >-
+    An LPA for health and welfare authorises the attorney to make
+    decisions about the donor's health and personal welfare — but it
+    does not automatically confer the right to exercise the donor's
+    data protection rights. The ICO's guidance is that an attorney
+    under a registered health and welfare LPA can make a SAR on the
+    donor's behalf where the donor lacks capacity to make the request
+    themselves and the request falls within the scope of the LPA.
+    Verification requires sight of the registered LPA document and
+    a capacity assessment (or reasonable evidence that the donor lacks
+    capacity). Schedule 3 Part 5 of the DPA 2018 provides exemptions
+    for health data and social work data where disclosure would be
+    likely to cause serious harm to the data subject or another
+    person. In a care setting, daily notes and safeguarding records
+    often reference other residents, staff observations, and family
+    dynamics — all requiring careful redaction. The health professional
+    consultation requirement under Schedule 3 Part 5 paragraph 4
+    applies to health records: the data controller must consult the
+    appropriate health professional before disclosing health data
+    unless they have already considered the serious-harm test.
+  commonPitfalls: |
+    - Accepting the daughter's claim to hold LPA without verifying
+      the registered document and the donor's lack of capacity.
+    - Treating health-and-welfare LPA as automatically covering data
+      access — the scope question is more nuanced than most care
+      homes assume.
+    - Applying the serious-harm exemption as a blanket withholding
+      of safeguarding records rather than item-by-item assessment.
+    - Releasing daily care notes in full without checking for
+      references to other residents (in a shared-room environment
+      or communal activity logs, other residents are routinely named).
+    - Forgetting the health professional consultation requirement
+      before disclosing health data.
+    - Missing the practical point that the mother may die during the
+      SAR process — different rules apply to deceased persons' data.
+
+emailSender:
+  name: Karen Whittle
+  role: Registered Manager, Silverbrook Care Group — Meadow House
+  email: k.whittle@silverbrookcare.co.uk
+emailSubject: "Records request from a former resident's daughter — she has power of attorney"
+emailBody: |
+  Dear Aegis,
+
+  I need some guidance on a records request that came in yesterday.
+  I want to get this right because the family relationship is
+  difficult and I can see this going to a complaint if we get it
+  wrong.
+
+  Mrs Edith Chambers was a resident at Meadow House for four years
+  until last November, when her daughter Leanne moved her to a care
+  home closer to where she lives in Bristol. Mrs Chambers has
+  moderate-to-advanced dementia — she was assessed as lacking
+  capacity for most decisions about two years ago. Leanne holds a
+  registered lasting power of attorney for health and welfare.
+
+  Leanne has emailed us (below) asking for copies of every record
+  we hold about her mother. She says she wants to see "how Mum was
+  really being looked after" and has mentioned several times that
+  she was unhappy with aspects of the care. She specifically wants
+  to see daily care notes, medication records, any incident or
+  accident reports, and safeguarding entries.
+
+  Here is what makes this complicated:
+
+  - We had a safeguarding concern logged about Mrs Chambers in
+    March last year. Her son Andrew (Leanne's brother) visited one
+    afternoon and a carer overheard him speaking aggressively to
+    his mother. We raised it with the local authority safeguarding
+    team, who investigated and closed the case with no further
+    action, but the CPOMS records are detailed and include
+    observations about Andrew's behaviour and Leanne's response
+    when she was informed.
+
+  - The daily care notes for a resident in a shared room inevitably
+    mention the other resident. Mrs Chambers shared a room with
+    another lady for the last 18 months, and the notes regularly
+    reference both of them together.
+
+  - Two of the medication records include clinical opinions from
+    our visiting GP about Mrs Chambers's capacity and behaviour,
+    cross-referencing observations from care staff.
+
+  - Mrs Chambers's condition has deteriorated significantly since
+    the move. Leanne mentioned in her email that she is "not sure
+    how much longer Mum has". I don't know what happens to this
+    request if Mrs Chambers dies before we respond.
+
+  I want to be helpful — Leanne is clearly anxious and I
+  understand why she wants the records — but I also need to protect
+  the other people mentioned in these files and make sure I'm
+  handling the safeguarding records properly.
+
+  Can you walk me through what I need to do?
+
+  Many thanks,
+
+  Karen Whittle
+  Registered Manager
+  Silverbrook Care Group — Meadow House
+
+  ---
+
+  From: leanne.chambers@example.com
+  To: manager@meadowhouse-silverbrook.co.uk
+  Subject: Request for my mother's care records
+
+  Dear Mrs Whittle,
+
+  I am writing to request copies of all records you hold about my
+  mother, Edith Chambers (DOB 15 September 1941), who was a
+  resident at Meadow House from November 2022 to November 2026.
+
+  I hold a lasting power of attorney for health and welfare for my
+  mother, who lacks capacity to make this request herself. I can
+  provide a copy of the registered LPA if needed.
+
+  I would like to receive copies of:
+  - All daily care notes and observation records
+  - Medication administration records
+  - Any incident, accident, or safeguarding reports
+  - Correspondence between the home and external agencies about
+    my mother
+  - Any assessments or care plans
+
+  Please confirm receipt and let me know when I can expect the
+  records.
+
+  Leanne Chambers
+
+supportingDocuments:
+  - name: "Safeguarding referral summary — Mrs Chambers (March 2026).pdf"
+    type: document
+    excerpt: >-
+      CPOMS safeguarding entry. Records the carer's observation of
+      Andrew Chambers speaking aggressively to Mrs Chambers during a
+      visit, the referral to the local authority safeguarding team,
+      the team's investigation, and the closure decision. Includes
+      direct quotes from the carer, Karen Whittle's assessment, and
+      a note that Leanne Chambers was "upset but not surprised" when
+      informed. Names both Andrew and Leanne Chambers by name. Also
+      references a previous concern about a bruise noted six months
+      earlier that was assessed as non-suspicious.
+  - name: "Daily care notes — sample week (shared room entries).pdf"
+    type: document
+    excerpt: >-
+      Sample of daily care notes from a week in September 2026.
+      Mrs Chambers shared a room with Mrs Joan Pritchard. Entries
+      regularly reference both residents: "Mrs Chambers and Mrs
+      Pritchard both settled after supper", "Mrs P was unsettled
+      overnight which disturbed Mrs C". Some entries contain
+      observations specific to Mrs Pritchard's continence care.
+
+userTask: >-
+  Draft an advice email to Karen. Walk her through the verification
+  requirements, the scope of the search, the serious-harm exemption
+  analysis for the safeguarding records, the third-party redaction
+  approach for the shared-room notes, the health professional
+  consultation requirement, and what happens if Mrs Chambers dies
+  during the process. Give a practical step-by-step she can follow.
+
+rubric:
+  - criterion: LPA verification and scope of authority
+    maxPoints: 20
+    description: >-
+      Advises Karen to obtain and verify the registered LPA document
+      (check it is registered with the Office of the Public Guardian,
+      covers health and welfare, and is not subject to restrictions
+      relevant to information access). Addresses the capacity point —
+      the LPA for health and welfare is only exercisable when the donor
+      lacks capacity, so evidence of the capacity assessment is needed.
+      Notes the nuance that an LPA does not automatically confer SAR
+      rights but the ICO's position supports it where the request falls
+      within the LPA's scope.
+  - criterion: Schedule 3 Part 5 serious-harm exemption analysis
+    maxPoints: 20
+    description: >-
+      Applies the serious-harm test to the safeguarding records on an
+      item-by-item basis rather than as a blanket withholding. Considers
+      whether disclosing the carer's observations, the referral details,
+      and the closure decision would be likely to cause serious harm to
+      Mrs Chambers or to another person (Andrew). Arrives at a reasoned
+      conclusion on each element.
+  - criterion: Third-party redaction — other residents in shared notes
+    maxPoints: 15
+    description: >-
+      Identifies that daily care notes referencing Mrs Pritchard contain
+      her personal data and must be redacted before disclosure. Applies
+      the proportionality test for third-party disclosure and concludes
+      that incidental references ("Mrs P was unsettled") are not
+      reasonable to disclose without Mrs Pritchard's consent, particularly
+      entries about her continence care.
+  - criterion: Health professional consultation requirement
+    maxPoints: 15
+    description: >-
+      Identifies the requirement under Schedule 3 Part 5 paragraph 4 to
+      consult the appropriate health professional (the visiting GP or the
+      home's clinical lead) before disclosing health data, unless the
+      serious-harm test has already been applied. Notes that the GP's
+      clinical opinions in the medication records are the patient's data
+      but may require consultation before release.
+  - criterion: Statutory timeline and practical search scope
+    maxPoints: 15
+    description: >-
+      States the one-month deadline with possible two-month extension for
+      complexity. Identifies all data sources to search (care management
+      system, CPOMS, medication records, paper files, correspondence,
+      care plans). Notes that four years of records for a complex
+      resident is likely to justify the extension.
+  - criterion: Deceased data subject contingency
+    maxPoints: 15
+    description: >-
+      Addresses what happens if Mrs Chambers dies during the SAR process.
+      Notes that the UK GDPR does not apply to deceased persons' data,
+      but the Access to Health Records Act 1990 provides a right of
+      access to deceased patients' health records for personal
+      representatives and those with a claim arising from the death.
+      Advises completing the SAR promptly to avoid the issue, and
+      explains the alternative route if it arises.
+
+exemplarResponse: |
+  Dear Karen,
+
+  This is a sensitive one but very manageable if we take it step by
+  step. I will walk through each issue and then give you a checklist.
+
+  **Verification — do this first.** Ask Leanne for a certified copy
+  of the registered LPA (health and welfare). Check three things:
+  (a) it is registered with the Office of the Public Guardian — an
+  unregistered LPA has no legal effect; (b) it covers health and
+  welfare (not just property and financial affairs); and (c) there
+  are no restrictions in the LPA that would limit Leanne's ability
+  to access information. You also need reasonable evidence that Mrs
+  Chambers currently lacks capacity — the capacity assessment from
+  two years ago is likely sufficient, but if Leanne can provide a
+  more recent one from her current care home, so much the better.
+
+  The ICO's position is that a health-and-welfare attorney can make
+  a SAR on the donor's behalf where the donor lacks capacity and the
+  request falls within the scope of the LPA. This request clearly
+  does — Leanne is asking for care records to understand her
+  mother's welfare. Once verified, treat this as a valid SAR.
+
+  **Safeguarding records — item-by-item, not blanket.** Do not
+  withhold the safeguarding entry as a block. Apply the Schedule 3
+  Part 5 "serious harm" test to each element individually:
+
+  - The carer's factual observation of what happened during
+    Andrew's visit: this is Mrs Chambers's personal data (it is
+    about what happened to her). Disclosable unless disclosure
+    would be likely to cause serious harm to her or Andrew.
+  - The referral to the local authority and the closure decision:
+    factual record of an official process. Generally disclosable.
+  - Andrew's behaviour and the carer's direct quotes: Andrew is a
+    third party. Apply the section 15(3) balancing test — is it
+    reasonable to disclose information identifying Andrew without
+    his consent? Given that the information directly concerns his
+    conduct towards the data subject, disclosure is likely
+    reasonable, but consider whether Andrew could be at risk if
+    Leanne acts on the information.
+  - Leanne's own reaction ("upset but not surprised"): this is
+    Leanne's personal data as well as her mother's. Leanne already
+    knows this — disclose.
+  - The earlier bruise concern: factual record, closed as non-
+    suspicious. Disclosable.
+
+  If in doubt on any item, err towards disclosure — the bar is
+  "likely to cause serious harm", not "might cause discomfort".
+
+  **Other residents — redact.** The shared-room notes that name
+  Mrs Pritchard must be redacted before disclosure. Remove Mrs
+  Pritchard's name and any information that relates to her care
+  (continence, medication, mood) rather than Mrs Chambers's. Where
+  the note is genuinely shared ("both settled after supper"), you
+  can disclose the note with Mrs Pritchard's name replaced by
+  "[another resident]". Where the note is primarily about Mrs
+  Pritchard, redact the entire entry and provide Mrs Chambers's
+  entries only. Do not contact Mrs Pritchard to ask for consent —
+  that itself would reveal that a SAR has been made.
+
+  **Health professional consultation.** Before you release the
+  medication records that include the GP's clinical opinions, you
+  must consult the appropriate health professional — in this case,
+  the visiting GP or their practice. The consultation is about
+  whether disclosure would be likely to cause serious harm to Mrs
+  Chambers's physical or mental health, not whether the GP is
+  comfortable with the content. If the GP cannot identify a
+  serious-harm risk, release the records.
+
+  **Timing.** The statutory deadline is one calendar month from the
+  date you verify Leanne's identity and LPA. Four years of daily
+  care notes, medication records, safeguarding entries, and
+  correspondence for a complex resident will take real work. If you
+  cannot complete the search, review, and redaction within one
+  month, you may extend by up to two further months — but you must
+  inform Leanne within the first month that you are doing so and
+  explain why. I would recommend starting the search immediately
+  and notifying her now that you expect to use the extension.
+
+  **If Mrs Chambers dies before completion.** The UK GDPR ceases to
+  apply to her data at the point of death — you are no longer
+  legally obliged to complete the SAR. However, the Access to
+  Health Records Act 1990 gives Leanne (as a potential personal
+  representative or someone with a claim) a right of access to her
+  mother's health records after death. The pragmatic course is to
+  complete the response promptly and avoid the question arising —
+  but if it does, do not destroy any records and contact me
+  immediately so we can assess the AHRA position.
+
+  **Checklist:**
+
+  1. Acknowledge Leanne's request today.
+  2. Request the registered LPA and capacity evidence.
+  3. Begin the search across all systems: care management,
+     CPOMS, medication records, GP correspondence, local
+     authority correspondence, care plans, paper files.
+  4. Identify and flag all records referencing other residents
+     (particularly Mrs Pritchard) for redaction.
+  5. Identify all safeguarding records and apply the serious-
+     harm test item by item — document your reasoning.
+  6. Consult the visiting GP on the health records before
+     disclosure.
+  7. If the one-month deadline is tight, notify Leanne of the
+     extension within the first month.
+  8. Compile, redact, and send with a cover letter explaining
+     what was searched, any exemptions applied, and Leanne's
+     right to complain to the ICO if dissatisfied.
+
+  Call me if you get stuck on any individual item — I am happy to
+  review the safeguarding records with you before release.
+
+  Kind regards,
+  Aegis Privacy Partners

@@ -1,0 +1,267 @@
+id: scenario_009
+tier: 1
+client: oakhaven_library
+skill: foi_decisions
+difficulty: straightforward
+title: FOI request to a charity — gateway refusal and voluntary disclosure
+timeLimitMinutes: 15
+xpBase: 50
+
+briefing:
+  requestType: >-
+    A charity has received a request citing the Freedom of Information
+    Act 2000. The charity is not a public authority and is therefore
+    not subject to FOIA. But the question is not as simple as a flat
+    refusal — the charity receives council funding, which may create
+    indirect transparency obligations, and the Environmental
+    Information Regulations 2004 can apply to information held on
+    behalf of a public authority regardless of who holds it.
+  whatUserNeedsToKnow: >-
+    FOIA section 3 defines "public authority" and Schedule 1 lists them.
+    Registered charities are not public authorities and are not subject
+    to FOIA, regardless of their funding sources. However, two nuances
+    apply. First, if the charity holds information on behalf of the
+    council under a contractual or funding arrangement, that information
+    may be subject to FOI requests made to the council. Second, the
+    Environmental Information Regulations 2004 (EIR) can apply to bodies
+    carrying out functions of public administration, which can in some
+    circumstances include charities delivering public services. Neither
+    is likely to apply to a community library's trustee expenses and
+    meeting minutes, but the analysis should be done rather than assumed.
+    Good governance suggests voluntary disclosure of basic governance
+    information regardless of the legal position.
+  commonPitfalls: |
+    - Saying "FOIA doesn't apply to us" without explaining why or
+      considering the nuances.
+    - Assuming council funding automatically makes the charity subject
+      to FOIA — it does not.
+    - Missing the EIR angle entirely.
+    - Refusing to share anything, when voluntary transparency would
+      serve the charity's interests and is good practice for a
+      publicly funded organisation.
+    - Being adversarial with the journalist when a constructive
+      response would be better for the charity's reputation.
+
+emailSender:
+  name: Wendy Farrell
+  role: Library Manager, Oakhaven Community Library Trust
+  email: wendy.farrell@oakhaven-library.org.uk
+emailSubject: "FOI request from a journalist — do we have to respond?"
+emailBody: |
+  Hello again,
+
+  Well, I've had an interesting week. A journalist from the Oakhaven
+  Herald called the library on Monday asking about how much our
+  trustees claim in expenses and whether they could see our board
+  meeting minutes. I told him I'd check and get back to him. He's
+  now followed up with a formal email (below) citing the Freedom of
+  Information Act.
+
+  I always thought FOI only applied to councils and the NHS and
+  that sort of thing, not to charities like us. But then our chair
+  said "we get £40,000 a year from the council, and the grant
+  agreement says something about transparency — maybe we DO have
+  to comply?" I had a look at the grant agreement and there is a
+  clause that says we will "maintain appropriate standards of
+  openness and accountability" but it doesn't specifically mention
+  FOI.
+
+  My questions:
+
+  1. Does the FOI Act actually apply to us? We're a registered
+     charity (number 1187234), not part of the council.
+
+  2. Does the council funding change the answer? The £40,000 is
+     about 30% of our annual income — the rest comes from
+     donations, book sales, and a small endowment.
+
+  3. If FOI doesn't apply, do I just tell the journalist to go
+     away? That feels a bit rude given we're a community
+     organisation and I'd quite like good press coverage for the
+     coding club launch.
+
+  4. Should we be sharing this information voluntarily anyway?
+     We've got nothing to hide — the trustee expenses are modest
+     and the minutes are pretty boring.
+
+  Any advice gratefully received — the journalist wants a response
+  by Friday.
+
+  Thanks,
+
+  Wendy
+
+  ---
+
+  From: s.okonkwo@oakhavenherald.co.uk
+  To: info@oakhaven-library.org.uk
+  Subject: Freedom of Information request — trustee expenses
+
+  Dear Library Manager,
+
+  Under the Freedom of Information Act 2000, I am requesting the
+  following information:
+
+  1. Total expenses claimed by each trustee of the Oakhaven
+     Community Library Trust for the financial years 2023-24 and
+     2024-25, broken down by category.
+  2. Minutes of all board meetings held between January 2024 and
+     the present date.
+
+  I look forward to your response within the statutory 20 working
+  days.
+
+  Sam Okonkwo
+  Reporter, Oakhaven Herald
+
+supportingDocuments:
+  - name: "Council grant agreement — transparency clause (extract).pdf"
+    type: document
+    excerpt: >-
+      Clause 12.4: "The Recipient shall maintain appropriate standards
+      of openness and accountability in the use of the Grant Funding
+      and shall comply with any reasonable request from the Council to
+      provide information relating to the use of the Grant." No
+      reference to FOIA or EIR. No requirement to respond to
+      third-party FOI requests directly.
+
+userTask: >-
+  Draft an advice email to Wendy answering her four questions. Explain
+  the FOIA position clearly, address the council-funding nuance, and
+  recommend a constructive response to the journalist that serves the
+  charity's interests. Include template wording for the reply to the
+  journalist.
+
+rubric:
+  - criterion: Correctly identifies Oakhaven is not a public authority under FOIA s.3
+    maxPoints: 25
+    description: >-
+      States clearly that FOIA applies to "public authorities" as
+      defined in section 3 and listed in Schedule 1, that registered
+      charities are not public authorities, and that Oakhaven is
+      therefore not subject to FOIA. Gets the legal basis right without
+      over-complicating it.
+  - criterion: Analyses whether council funding creates indirect obligations
+    maxPoints: 20
+    description: >-
+      Addresses the grant agreement clause and correctly concludes that
+      a contractual transparency obligation to the council is not the
+      same as being subject to FOIA from third parties. Notes that the
+      council itself might receive FOI requests for information it holds
+      about the grant, but that does not make the charity a public
+      authority.
+  - criterion: EIR consideration
+    maxPoints: 20
+    description: >-
+      Considers whether the Environmental Information Regulations 2004
+      could apply (they can reach bodies carrying out public
+      administration functions) and correctly concludes that trustee
+      expenses and board minutes are unlikely to be environmental
+      information, but notes the EIR angle for completeness.
+  - criterion: Voluntary disclosure recommendation with governance framing
+    maxPoints: 20
+    description: >-
+      Recommends that the charity voluntarily disclose the requested
+      information as a matter of good governance, not legal obligation.
+      Frames this positively: transparency builds public trust, the
+      Charity Commission expects published accounts, and the information
+      requested is low-risk. Notes the reputational benefit given the
+      upcoming coding club launch.
+  - criterion: Template response to the journalist
+    maxPoints: 15
+    description: >-
+      Provides template wording for Wendy's reply that is professional,
+      not defensive, explains the FOIA position briefly, and voluntarily
+      provides the information requested (or explains how to access it).
+      Avoids legalese that would read badly in a local newspaper.
+
+exemplarResponse: |
+  Hi Wendy,
+
+  Good instincts — let me clarify the position so you can respond to
+  the journalist confidently.
+
+  **1. No, the Freedom of Information Act does not apply to Oakhaven.**
+  FOIA applies to "public authorities" as defined in section 3 of the
+  Act — councils, NHS bodies, government departments, police forces,
+  schools maintained by a local authority, and so on. The full list is
+  in Schedule 1. Registered charities are not on that list. Oakhaven
+  Community Library Trust is a registered charity, not a public
+  authority, and is not subject to FOIA regardless of how it is funded.
+  The journalist's request cites FOIA, but the Act simply does not
+  apply to you.
+
+  **2. The council funding does not change the answer.** Receiving a
+  grant from the council does not make Oakhaven a public authority.
+  The grant agreement clause you found ("maintain appropriate standards
+  of openness and accountability") is a contractual obligation between
+  you and the council — it means the council can ask you for information
+  about how you used the grant, and you must provide it. It does not
+  mean that journalists or members of the public can use FOIA to demand
+  information from you. If the council itself holds information about
+  the grant — progress reports, financial returns you submitted to
+  them — that information could be subject to a FOI request made to
+  the council. But that is the council's problem, not yours.
+
+  One technical point for completeness: the Environmental Information
+  Regulations 2004 (EIR) can sometimes apply to bodies that carry out
+  functions of public administration, even if they are not public
+  authorities under FOIA. In theory, a charity running a service on
+  behalf of a council could fall within EIR for information relating
+  to that function. In practice, trustee expenses and board minutes are
+  not "environmental information" under the regulations, so EIR does
+  not bite here either.
+
+  **3. Don't tell the journalist to "go away".** You're right that it
+  would be rude, and it would be unnecessary. You have every right to
+  explain that FOIA does not apply, but the way you do it matters —
+  especially with the coding club launch coming up and a journalist
+  who covers your patch.
+
+  **4. Yes, share it voluntarily — you have nothing to lose.** The
+  Charity Commission already expects registered charities to publish
+  their annual accounts and trustees' report. Sharing board minutes
+  and expense breakdowns goes beyond the minimum but signals good
+  governance. For a community charity that depends on public trust
+  and local goodwill, transparency is an asset, not a risk. If the
+  expenses are modest and the minutes are boring, let the journalist
+  see that — it is a better story for you than "charity refuses to
+  answer press questions".
+
+  **Template reply to the journalist:**
+
+  > Dear Mr Okonkwo,
+  >
+  > Thank you for your email. As a registered charity, the Oakhaven
+  > Community Library Trust is not a public authority and is not
+  > subject to the Freedom of Information Act 2000. We are therefore
+  > not legally required to respond to FOI requests.
+  >
+  > However, we are committed to transparency and good governance,
+  > and we are happy to provide the information you have asked for
+  > on a voluntary basis:
+  >
+  > 1. Trustee expenses for 2023-24 and 2024-25 are set out in the
+  >    attached summary. [Attach a simple table.]
+  > 2. Minutes of board meetings from January 2024 onwards are
+  >    attached. [Attach redacted minutes — see note below.]
+  >
+  > If you would like any further information about the Trust or
+  > our work, please do get in touch. We would also be delighted
+  > to tell you about our new Saturday coding club for young
+  > people, launching in September thanks to a County Council
+  > digital inclusion grant.
+  >
+  > Kind regards,
+  > Wendy Farrell
+  > Library Manager
+
+  **One practical point on the minutes:** before you share them, skim
+  for any personal data that should not be published — discussions
+  about individual staff members, volunteer disciplinary matters, or
+  any safeguarding references. Redact those and note that you have
+  done so for data protection reasons. Everything else can go out
+  as-is.
+
+  Best wishes,
+  Aegis Privacy Partners

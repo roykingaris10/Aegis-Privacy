@@ -1,0 +1,230 @@
+id: scenario_007
+tier: 1
+client: oakhaven_library
+skill: contract_vendor
+difficulty: straightforward
+title: How long to keep lapsed member data — retention review
+timeLimitMinutes: 15
+xpBase: 50
+
+briefing:
+  requestType: >-
+    A data retention review triggered by an annual housekeeping
+    exercise. The charity has no formal retention schedule and is
+    asking whether it can keep all member records indefinitely. This
+    is a storage limitation principle question under Article 5(1)(e)
+    UK GDPR, intersecting with HMRC record-keeping requirements for
+    Gift Aid and enhanced protection for children's data.
+  whatUserNeedsToKnow: >-
+    The storage limitation principle requires that personal data is
+    kept in identifiable form no longer than is necessary for the
+    purposes for which it is processed. "In case they come back" is
+    not a lawful purpose — retention must be tied to a specific,
+    documented reason. However, retention is not all-or-nothing:
+    different categories of data within a member record may have
+    different retention needs. Gift Aid declarations must be retained
+    for six years after the end of the tax year in which the last
+    claim was made (HMRC requirement). Children's reading records
+    should be subject to shorter retention given the ICO's emphasis
+    on enhanced protection for children's data. A retention schedule
+    does not need to be complex — for a small charity, a one-page
+    document with clear categories and periods is proportionate.
+  commonPitfalls: |
+    - Keeping everything forever "just in case" — this is precisely
+      what the storage limitation principle prohibits.
+    - Deleting Gift Aid records prematurely — HMRC requires retention
+      for at least six years and will want evidence in an audit.
+    - Treating all member data identically when children's records
+      warrant shorter retention.
+    - Confusing anonymisation with deletion — properly anonymised
+      data (borrowing statistics without identifiers) can be kept
+      indefinitely for the charity's reporting purposes.
+    - Creating an elaborate retention schedule that nobody will
+      follow — proportionality matters.
+
+emailSender:
+  name: David Lam
+  role: Volunteer Trustee, Oakhaven Community Library Trust
+  email: david.lam@oakhaven-library.org.uk
+emailSubject: "Annual data review — can we keep old member records?"
+emailBody: |
+  Hello,
+
+  I'm one of the volunteer trustees at Oakhaven and Wendy has asked
+  me to handle our annual data review this year. I've been going
+  through the membership database over the weekend and I've got a
+  few questions I'd like your advice on before our next trustees'
+  meeting.
+
+  The numbers: we have 3,247 member records in total. About 2,400
+  are "active" — they've borrowed something or visited in the last
+  twelve months. The remaining ~800 are what I'd call "lapsed" —
+  no activity for anywhere between two and ten years. Some of these
+  go back to when we first computerised the records in 2014.
+
+  My instinct is to just leave them all in the system. People move
+  away, have babies, get busy — and then five years later they walk
+  back in with their kids and want to borrow again. If we've
+  deleted their record they'd have to re-register from scratch,
+  which feels unfriendly. The trustees generally agree — our chair
+  said "data is free to store, why delete it?"
+
+  But I know there are rules about this, and I'd rather get it
+  right than get a letter from the ICO. So:
+
+  1. Can we keep all 3,247 records indefinitely, or is there a
+     legal time limit?
+
+  2. Some of our lapsed members made donations and we claimed Gift
+     Aid on them. Does that change anything about how long we keep
+     their records?
+
+  3. About 400 of our member records are for children (under-16s
+     when they joined). Some are now adults, some are still
+     children. Does children's data have different rules?
+
+  4. If we do need to delete old records, is there a way to keep
+     the borrowing statistics without keeping people's names? The
+     trustees like to report on total loans per year to funders.
+
+  5. We don't have a formal "retention policy" or anything like
+     that. Do we need one, and if so, what does it look like for
+     a charity our size?
+
+  Happy to discuss on the phone if easier, but an email would be
+  great so I can circulate it to the other trustees.
+
+  Best regards,
+
+  David Lam
+  Trustee
+  Oakhaven Community Library Trust
+
+supportingDocuments: []
+
+userTask: >-
+  Draft an advice email to David answering his five questions. Include
+  recommended retention periods for each category of data the library
+  holds, explain the Gift Aid position clearly, address the children's
+  data point, and provide a proportionate retention schedule template
+  suitable for a small charity.
+
+rubric:
+  - criterion: Storage limitation principle applied to membership data
+    maxPoints: 25
+    description: >-
+      Explains Article 5(1)(e) in plain language, directly addresses the
+      "data is free to store" argument, and concludes that indefinite
+      retention without a specific purpose is not lawful. Recommends a
+      proportionate retention period for lapsed member records (typically
+      2-3 years of inactivity) with reasoning.
+  - criterion: Proportionate retention period recommendation
+    maxPoints: 20
+    description: >-
+      Recommends specific, justified retention periods for different
+      categories: active members (retain while active + grace period),
+      lapsed members (2-3 years then delete or anonymise), and explains
+      the reasoning. Does not over-engineer or under-specify.
+  - criterion: HMRC / Gift Aid retention obligations
+    maxPoints: 20
+    description: >-
+      Correctly identifies that Gift Aid declarations and related records
+      must be retained for at least six years after the end of the tax
+      year in which the last claim was made (HMRC requirement). Notes this
+      overrides the general retention period for those specific records.
+  - criterion: Children's data — enhanced protection and shorter retention
+    maxPoints: 20
+    description: >-
+      Identifies that children's data warrants enhanced protection under
+      the UK GDPR and ICO guidance, recommends shorter retention periods
+      for records created when the member was a child, and addresses the
+      transition when a child member reaches adulthood.
+  - criterion: Practical retention schedule structure
+    maxPoints: 15
+    description: >-
+      Provides or describes a proportionate retention schedule suitable
+      for a small charity — not a 40-page enterprise document, but a
+      clear one-page table with data categories, retention periods,
+      review triggers, and disposal methods. Addresses the anonymisation
+      question for borrowing statistics.
+
+exemplarResponse: |
+  Dear David,
+
+  Good questions, and well worth getting right before the trustees'
+  meeting. I'll take your five points in order.
+
+  **1. No, you cannot keep all records indefinitely.** The UK GDPR's
+  "storage limitation" principle (Article 5(1)(e)) says personal data
+  must not be kept in identifiable form longer than necessary for the
+  purpose you collected it. "They might come back one day" is not a
+  specific purpose — it is speculative, and the ICO has been clear
+  that this does not justify indefinite retention. Your chair's point
+  that "data is free to store" is understandable but misses the legal
+  point: the cost is not storage fees, it is the ongoing obligation
+  to protect data you no longer need and the risk of a complaint if a
+  former member discovers you have been holding their details for a
+  decade without contact.
+
+  I'd recommend a retention period of **two years from last activity**
+  for lapsed members. That gives a generous window for people to
+  return (covers maternity leave, a gap year, moving away
+  temporarily) without keeping records that are clearly stale. After
+  two years with no contact, the record should be either deleted or
+  anonymised.
+
+  **2. Gift Aid records — keep for six years.** If a lapsed member
+  made a donation and you claimed Gift Aid, HMRC requires you to
+  retain the Gift Aid declaration and supporting records for six
+  years after the end of the tax year in which the last claim was
+  made. This is a legal obligation that overrides the general
+  retention period. So for those specific members, keep the donation
+  and Gift Aid records for the HMRC period, but you can still delete
+  the wider membership record (borrowing history, contact preferences)
+  after two years of inactivity.
+
+  **3. Children's data — shorter retention, more care.** The ICO
+  expects organisations to give children's data enhanced protection.
+  For records created when the member was under 16, I would recommend
+  a shorter retention period — **one year from last activity** rather
+  than two. For children who are now adults: if they have been active
+  as adults, treat their current record as an adult record. If they
+  have not been active since childhood, apply the one-year rule. In
+  both cases, the borrowing history from when they were a child
+  should not be retained any longer than necessary — anonymise it
+  for your statistics and delete the identifiable record.
+
+  **4. Yes — anonymise for statistics, delete the rest.** This is
+  exactly the right instinct. If you strip out names, membership
+  numbers, and any other identifiers, what you have left is
+  anonymous statistical data: "142 loans in the children's fiction
+  category in 2019". Anonymous data is not personal data and can be
+  kept indefinitely. The key is genuine anonymisation — make sure
+  you cannot re-identify individuals from the remaining data
+  (unlikely for borrowing stats, but worth checking if loan records
+  include unusual titles or very small categories).
+
+  **5. You do need a retention schedule — but it does not need to be
+  elaborate.** For a charity your size, a one-page table is
+  proportionate. Here is a template you can take to the trustees:
+
+  | Data category | Retention period | Basis | Disposal method |
+  |---|---|---|---|
+  | Active member records | While active + 2 years from last activity | Contractual/legitimate interest | Delete from database |
+  | Lapsed member records (adults) | 2 years from last activity | Storage limitation | Delete or anonymise |
+  | Lapsed member records (children) | 1 year from last activity | Enhanced protection | Delete or anonymise |
+  | Gift Aid declarations + donation records | 6 years from end of tax year of last claim | HMRC legal obligation | Secure destruction |
+  | Borrowing statistics (anonymised) | Indefinite | Not personal data | N/A |
+  | Volunteer records | Duration + 2 years | Legitimate interest | Delete |
+  | Trustee records | Duration + 6 years | Charities Act / legal obligation | Secure destruction |
+
+  Adopt this at the trustees' meeting, minute the decision, and
+  review annually — which is exactly what you are already doing.
+  For the ~800 lapsed records, run the retention periods above,
+  delete or anonymise accordingly, and you are in good shape.
+
+  Happy to join the trustees' meeting by phone if they would like
+  to discuss.
+
+  Best regards,
+  Aegis Privacy Partners

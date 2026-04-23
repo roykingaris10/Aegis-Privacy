@@ -1,0 +1,233 @@
+id: scenario_004
+tier: 1
+client: oakhaven_library
+skill: pecr_marketing
+difficulty: straightforward
+title: Email marketing for library events — PECR consent analysis
+timeLimitMinutes: 20
+xpBase: 50
+
+briefing:
+  requestType: >-
+    The library wants to start emailing members about events and
+    programmes. This is a PECR (Privacy and Electronic Communications
+    Regulations 2003) question, not just a UK GDPR one. The key issue
+    is whether the "soft opt-in" exception in regulation 22(3) applies
+    — it does not, because Oakhaven is a charity, not a commercial
+    organisation selling goods or services. That means prior consent
+    is required for every recipient.
+  whatUserNeedsToKnow: >-
+    PECR regulation 22 prohibits unsolicited direct marketing by
+    electronic means unless the recipient has consented. The "soft
+    opt-in" in reg 22(3) only applies where an existing customer
+    relationship arose in the course of a sale or negotiation for a
+    sale — a charity membership is not a sale. Pre-GDPR consent
+    clauses that bundled marketing with membership terms are unlikely
+    to meet the UK GDPR's standard for valid consent (freely given,
+    specific, informed, unambiguous). Lapsed members who have had no
+    contact for over two years raise additional questions under the
+    storage limitation principle. The fact that the library has never
+    previously done email marketing is relevant — recipients have no
+    reasonable expectation of receiving it.
+  commonPitfalls: |
+    - Assuming the soft opt-in applies to charities — it does not.
+    - Treating old membership sign-up forms as valid consent for a
+      new processing purpose (email marketing) never previously done.
+    - Keeping lapsed members on a mailing list indefinitely without
+      re-consent, on the basis that "they might come back".
+    - Confusing an unsubscribe link (a PECR requirement for lawful
+      marketing) with a substitute for prior consent.
+    - Sending a "do you consent?" email to gather consent — that
+      email is itself an unsolicited marketing communication.
+
+emailSender:
+  name: Wendy Farrell
+  role: Library Manager, Oakhaven Community Library Trust
+  email: wendy.farrell@oakhaven-library.org.uk
+emailSubject: "Quick question — can we email members about our new Saturday coding club?"
+emailBody: |
+  Hi there,
+
+  Hope you're well! We've got some exciting news — we've been awarded
+  a small grant from the County Council digital inclusion fund to run
+  a Saturday morning coding club for 8-14 year olds, starting in
+  September. We're also putting together a proper autumn events
+  programme for the first time: author visits, a local history talk
+  series, and a crafting group for older members.
+
+  I'd like to email our members about all of this. We have about
+  4,100 email addresses in the membership database — everyone who's
+  signed up for a library card since 2014 gave us their email. Our
+  membership form has always had a line at the bottom that says
+  "We may contact you from time to time about library services and
+  events" but we've honestly never actually emailed anyone marketing
+  before. It's always just been overdue-book reminders and renewal
+  notices through the library system.
+
+  A few things I'm not sure about:
+
+  1. Can I just send the email to everyone? One of our volunteers
+     used to work in marketing and says I need to add an unsubscribe
+     link and then it's fine. That doesn't sound right to me but I
+     don't know the actual rules.
+
+  2. About 800 of those email addresses belong to people who haven't
+     borrowed a book or visited in over two years. Some of them go
+     back to 2014. Should I include them or not?
+
+  3. The coding club is for children — does that make any difference
+     to how I advertise it? I'd be emailing the parents (whose
+     emails we have) not the children directly.
+
+  4. We do get some council funding, but we're a registered charity,
+     not part of the council. Does that matter for the rules?
+
+  I'd love to get this right without accidentally breaking the law.
+  We're a small team and I can't afford a fine!
+
+  Thanks so much,
+
+  Wendy Farrell
+  Library Manager
+  Oakhaven Community Library Trust
+
+supportingDocuments:
+  - name: "Membership form (current version, in use since 2018).pdf"
+    type: document
+    excerpt: >-
+      One-page form. Contact fields include email (mandatory). At the
+      bottom, a single pre-ticked checkbox reads: "We may contact you
+      from time to time about library services and events." No separate
+      marketing consent line. No distinction between operational and
+      promotional communications.
+
+userTask: >-
+  Draft an advice email to Wendy. Answer her four questions directly,
+  explain the PECR position clearly in non-legal language, and give her
+  a practical step-by-step plan for lawfully sending the emails she wants
+  to send — including what she needs to do about the old membership forms
+  and the lapsed members.
+
+rubric:
+  - criterion: PECR reg 22 analysis — soft opt-in does not apply to charities
+    maxPoints: 25
+    description: >-
+      Correctly identifies that PECR regulation 22 requires prior consent
+      for unsolicited electronic marketing, and that the "soft opt-in"
+      exception in reg 22(3) is unavailable because Oakhaven is a charity
+      and membership is not a sale of goods or services. Explains this
+      clearly enough for a non-lawyer to understand.
+  - criterion: Consent validity — pre-ticked box and bundled clause
+    maxPoints: 20
+    description: >-
+      Analyses the existing membership form and concludes that a pre-ticked
+      checkbox bundling operational and promotional communications does not
+      meet the UK GDPR standard for valid consent (freely given, specific,
+      informed, unambiguous). References the ICO's direct marketing
+      guidance on granularity.
+  - criterion: Lapsed members — retention and re-consent
+    maxPoints: 20
+    description: >-
+      Advises that emailing lapsed members (2+ years inactive) requires
+      particular care; addresses the storage limitation principle and
+      recommends either removing them from the marketing pool or obtaining
+      fresh consent through a non-electronic channel (e.g. letter, next
+      library visit). Notes that an email asking for consent is itself a
+      marketing communication.
+  - criterion: Practical lawful-send plan
+    maxPoints: 20
+    description: >-
+      Provides a concrete, numbered action plan: design a new consent
+      mechanism, collect fresh consent from active members, handle the
+      lapsed cohort separately, add a proper unsubscribe mechanism,
+      keep a consent log. Actionable for a small charity team.
+  - criterion: Children's advertising — parental communication
+    maxPoints: 15
+    description: >-
+      Confirms that emailing parents about a children's activity is
+      marketing about the library's services (not processing children's
+      data for marketing), but flags age-appropriate design code
+      considerations if the sign-up process for the coding club itself
+      will collect children's data.
+
+exemplarResponse: |
+  Hi Wendy,
+
+  Great news about the coding club and the autumn programme — let me
+  make sure the email side doesn't trip you up.
+
+  **1. No, you cannot just email everyone on the list.** The Privacy
+  and Electronic Communications Regulations 2003 (PECR) require you
+  to have prior consent before sending promotional emails. There is
+  an exception called the "soft opt-in" that lets businesses email
+  existing customers without fresh consent, but it only applies where
+  the contact details were collected during a sale or negotiation for
+  a sale. A library membership is not a sale — Oakhaven is a charity,
+  and signing up for a library card is not a commercial transaction.
+  So the soft opt-in does not help you here.
+
+  Your volunteer is half right about the unsubscribe link — you do
+  need one in every marketing email — but it is not a substitute for
+  getting consent in the first place. Think of it as: consent is the
+  key that lets you in, the unsubscribe link is the exit door.
+
+  **2. The existing membership form is not enough.** The pre-ticked
+  checkbox on your current form bundles operational messages (overdue
+  reminders) with promotional ones (events marketing) and does not
+  give members a genuine free choice. Under the UK GDPR, valid
+  consent must be freely given, specific, informed, and unambiguous
+  — a pre-ticked box does not meet that standard, and neither does
+  a blanket "we may contact you" line. You will need fresh,
+  specific marketing consent from anyone you want to email.
+
+  **3. Lapsed members — tread carefully.** The 800 members who have
+  not used the library in over two years are a separate problem.
+  Even if you had valid consent (which you do not), holding their
+  data without a clear purpose raises storage-limitation concerns.
+  More importantly, you cannot email them to ask for consent — that
+  email would itself be an unsolicited marketing communication.
+  Options: write to them by post, or catch them on their next visit.
+  For anyone you genuinely have no ongoing relationship with, the
+  cleanest step is to suppress their email from the marketing pool
+  entirely.
+
+  **4. Charity status matters — but not the way you think.** Being
+  a charity rather than a council department does not make the rules
+  stricter; it makes the soft opt-in unavailable. The council funding
+  does not turn Oakhaven into a public authority. But it does mean
+  you are not bound by FOI — which is a different conversation.
+
+  **Children's coding club.** Emailing parents about the club is
+  fine — you are marketing a library service to adults. But when
+  children actually sign up for the club, you will be collecting
+  their personal data directly, and at that point the ICO's
+  Age Appropriate Design Code and the DUAA come into play. We
+  should look at the sign-up form before you launch.
+
+  **Your action plan:**
+
+  1. **Redesign the consent mechanism.** Add a clear, unticked,
+     separate marketing-consent checkbox to the membership form:
+     "Yes, I'd like to receive emails about library events and
+     programmes." Keep it separate from operational communications.
+  2. **Collect fresh consent from active members.** At the front
+     desk, by poster, and via your website — not by email. You
+     could run a "sign up for our new events newsletter" campaign
+     in-branch over the summer. Target your ~3,300 active members.
+  3. **Suppress the lapsed cohort.** Do not email the 800 inactive
+     members. Consider a one-off posted letter inviting them to
+     re-join and opt in, but only if the cost is proportionate.
+  4. **Set up a proper mailing list tool** (Mailchimp free tier
+     or similar) with double opt-in, automatic unsubscribe
+     handling, and a consent log showing when and how each person
+     opted in.
+  5. **Update your privacy notice** on the website to include
+     direct marketing as a processing purpose, with PECR and
+     UK GDPR Article 6(1)(a) as the bases.
+
+  This is very doable for September if you start the in-branch
+  consent campaign now. Happy to review the new form wording
+  before you print it.
+
+  Best wishes,
+  Aegis Privacy Partners

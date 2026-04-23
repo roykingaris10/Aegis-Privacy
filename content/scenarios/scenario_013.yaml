@@ -1,0 +1,271 @@
+id: scenario_013
+tier: 2
+client: polaris_edtech
+skill: international_transfers
+difficulty: complex
+title: US feature team needs access to UK pupil database — transfer assessment
+timeLimitMinutes: 30
+xpBase: 100
+
+briefing:
+  requestType: >-
+    An intra-group international transfer of children's personal data.
+    A UK EdTech company's US-based engineering team wants read access
+    to the UK production database containing pupil data to build a
+    new analytics feature. The request is framed as "internal" but
+    Chapter V of the UK GDPR does not distinguish between intra-group
+    and external transfers — a restricted transfer is a restricted
+    transfer regardless of corporate structure.
+  whatUserNeedsToKnow: >-
+    Any transfer of personal data to a country without a UK adequacy
+    decision is a "restricted transfer" under UK GDPR Article 46.
+    The US has a partial adequacy route via the UK-US Data Bridge
+    (the UK extension of the EU-US Data Privacy Framework), but only
+    for transfers to organisations that are active participants on
+    the DPF list. If Polaris's US entity is not DPF-certified, the
+    fallback is the ICO's International Data Transfer Agreement
+    (IDTA) or the UK Addendum to the EU SCCs. Either route requires
+    a Transfer Risk Assessment (TRA) documenting the legal regime in
+    the recipient country and any supplementary measures. Children's
+    data heightens the due diligence requirement — the ICO expects
+    enhanced safeguards for transfers involving children. The "it's
+    all internal" argument does not remove the obligation; intra-group
+    transfers require the same transfer mechanism as transfers to an
+    unrelated third party. Practical access controls (pseudonymisation,
+    role-based access, VPN-only connections, no local copies) are
+    supplementary measures that strengthen the TRA position but do
+    not replace the transfer mechanism.
+  commonPitfalls: |
+    - Treating an intra-group transfer as exempt because it is
+      "internal" — there is no intra-group exemption in Chapter V.
+    - Assuming the US is "adequacy" without checking whether the
+      specific recipient is DPF-certified.
+    - Giving full production database access when the feature team
+      only needs a subset of fields.
+    - Ignoring the children's data dimension — the AADC and DUAA
+      apply to the processing, and the ICO expects enhanced
+      safeguards for transfers.
+    - Doing a TRA that says "the US has the Fourth Amendment" and
+      stopping there — FISA 702 and EO 12333 must be addressed
+      specifically.
+    - Allowing the US team to copy data locally rather than
+      accessing via remote, controlled connections.
+
+emailSender:
+  name: Niamh Gallagher
+  role: Head of Engineering, Polaris EdTech Ltd
+  email: niamh@polaris-edtech.co.uk
+emailSubject: "Austin team needs prod DB access for the analytics build — any blockers?"
+emailBody: |
+  Hi Aegis,
+
+  Quick one — hoping this is straightforward.
+
+  We're expanding the engineering team and our new Austin office
+  (Polaris EdTech Inc., our US subsidiary) has four developers
+  starting on Monday who'll be building the "Learning Insights"
+  dashboard. It's a great feature — it'll show teachers aggregate
+  and per-pupil engagement patterns so they can spot children who
+  are struggling before parents' evening.
+
+  To build it, the Austin team needs read access to the UK
+  production database. The relevant tables contain:
+
+  - Pupil first name, surname, school name, year group
+  - Session logs (which modules accessed, time spent, scores)
+  - Teacher-assigned groupings (e.g. "Mrs Chen's intervention
+    group")
+  - Flag fields: SEN status, free school meals eligibility
+
+  Dev and QA environments use synthetic data, but for the final
+  integration testing and the ML model training, they need real
+  data — the synthetic set doesn't capture the distribution
+  patterns properly.
+
+  I've set up a read-only Postgres replica that the Austin VPN
+  will connect to. Access is role-based — they can SELECT but not
+  INSERT, UPDATE, or DELETE. Logs are on. I think we're good?
+
+  My CTO is asking whether there's a data protection issue. I
+  don't see one — it's all internal, same company group, same
+  Postgres instance, same access controls as our London team. But
+  he wants your sign-off before we open the connection.
+
+  Can you confirm we're clear by Thursday? The team is onboarding
+  Monday.
+
+  Cheers,
+
+  Niamh Gallagher
+  Head of Engineering
+  Polaris EdTech Ltd
+
+supportingDocuments:
+  - name: "Polaris US subsidiary — corporate structure summary.pdf"
+    type: document
+    excerpt: >-
+      Polaris EdTech Inc. is a wholly-owned Delaware subsidiary of
+      Polaris EdTech Ltd (UK). Incorporated six months ago. Four
+      employees, all US-based. No independent DPF self-certification
+      — the subsidiary was not on the DPF participant list as of the
+      last check. Intra-group data sharing agreement exists for HR
+      data only; no data protection addendum covering product data.
+  - name: "Database schema — pupil tables (summary).pdf"
+    type: document
+    excerpt: >-
+      Schema shows five tables in scope: pupils (name, DOB, school_id,
+      year_group, sen_flag, fsm_flag), sessions (pupil_id, module_id,
+      start_time, duration_seconds, score), teacher_groups (pupil_id,
+      group_name, teacher_id), schools (school_id, name, la_code),
+      teachers (teacher_id, name, email). The sen_flag and fsm_flag
+      fields contain boolean values derived from school MIS imports.
+
+userTask: >-
+  Draft an advice email to Niamh. Explain clearly why "it's all
+  internal" does not resolve the data protection issue. Walk through
+  the transfer mechanism options, the TRA requirement, and the
+  children's data considerations. Give a practical path to enabling the
+  Austin team's work — don't just say no, say how.
+
+rubric:
+  - criterion: Identifies this as a restricted international transfer
+    maxPoints: 20
+    description: >-
+      Clearly explains that transferring personal data from a UK
+      controller to a US entity — even a wholly-owned subsidiary — is
+      a restricted transfer under UK GDPR Chapter V. Addresses the
+      "it's all internal" misconception directly and explains why the
+      corporate relationship does not create an exemption.
+  - criterion: Transfer mechanism analysis — Data Bridge vs IDTA
+    maxPoints: 20
+    description: >-
+      Checks whether Polaris EdTech Inc. is DPF-certified (it is not).
+      Explains the UK-US Data Bridge mechanism and why it is unavailable.
+      Recommends the IDTA (or UK Addendum to EU SCCs) as the fallback
+      and outlines what signing one involves for an intra-group transfer.
+  - criterion: Children's data — enhanced due diligence
+    maxPoints: 15
+    description: >-
+      Identifies that the data includes children's personal data
+      (pupil names, SEN flags, FSM eligibility, learning performance)
+      and that the ICO expects enhanced safeguards for international
+      transfers of children's data. Notes that SEN and FSM flags are
+      sensitive indicators even if not technically Article 9 data.
+  - criterion: TRA requirement — FISA 702 and US government access
+    maxPoints: 15
+    description: >-
+      Explains the Transfer Risk Assessment requirement and addresses
+      FISA 702 specifically. Notes that a US subsidiary could be
+      compelled to provide data to US authorities. Identifies
+      supplementary measures (encryption, access controls, contractual
+      commitments to challenge requests, notification obligations).
+  - criterion: Practical access controls and data minimisation
+    maxPoints: 15
+    description: >-
+      Recommends concrete data minimisation measures: pseudonymise
+      pupil names for the analytics build, exclude or mask SEN/FSM
+      flags, restrict to aggregate data where possible, prohibit local
+      copies, mandate VPN-only access with logging. Distinguishes
+      between what the team actually needs for the feature and what
+      they have asked for.
+  - criterion: Intra-group agreement vs DPA distinction
+    maxPoints: 15
+    description: >-
+      Notes that the existing intra-group data sharing agreement covers
+      HR data only and does not address product/customer data. Advises
+      either extending it or putting a separate Article 28 processor
+      agreement in place (if the US subsidiary is processing on behalf
+      of the UK entity) or a controller-to-controller agreement under
+      the IDTA.
+
+exemplarResponse: |
+  Hi Niamh,
+
+  I cannot sign this off by Thursday, and here is why — followed by
+  how we get there properly without blocking the Austin team for
+  longer than necessary.
+
+  **"It's all internal" does not help.** The UK GDPR does not
+  distinguish between intra-group and external transfers. When
+  personal data moves from Polaris EdTech Ltd (UK) to Polaris
+  EdTech Inc. (US), it is a "restricted transfer" under Chapter V
+  regardless of corporate ownership. The rules exist because once
+  data lands in a foreign jurisdiction, the protections of UK law
+  no longer apply — and that is true whether the recipient is your
+  subsidiary or an unrelated vendor.
+
+  **Transfer mechanism — you need one and don't have one.** The
+  cleanest route is the UK-US Data Bridge, but that only works if
+  the US recipient is actively self-certified under the Data
+  Privacy Framework. Polaris EdTech Inc. is not on the DPF
+  participant list. Until it is — and self-certification takes
+  time — the fallback is the ICO's International Data Transfer
+  Agreement (IDTA). That is a standard contract between the UK
+  exporter and the US importer. It is not onerous for an intra-
+  group transfer, but it must be signed and in place before data
+  flows. I can send you a template today.
+
+  **Transfer Risk Assessment.** Alongside the IDTA, you need a
+  documented TRA. This is where the US legal regime gets scrutinised.
+  The relevant risk is FISA Section 702 — US authorities can compel
+  a US entity to produce data held by or accessible to it, and the
+  data subjects (UK schoolchildren) would have no effective legal
+  remedy. For your fact pattern the risk is manageable but must be
+  documented:
+
+  - The data is accessed via VPN from a read-only replica, not
+    stored locally in the US — that limits the exposure window.
+  - Access logging lets you detect any unusual query patterns.
+  - Polaris EdTech Inc. should commit contractually to challenge
+    any government access request and notify the UK entity where
+    lawfully permitted.
+  - Encryption in transit (TLS) and at rest (the Postgres replica
+    should be encrypted) are supplementary measures.
+
+  **Children's data makes this higher stakes.** The database
+  contains children's names, school associations, learning
+  performance, SEN status, and FSM eligibility. SEN and FSM flags
+  are not technically Article 9 special category data, but they
+  are sensitive indicators — SEN reveals disability, FSM reveals
+  household income. The ICO expects enhanced due diligence for
+  transfers involving children's data, and the AADC requires data
+  minimisation as a default. The Austin team does not need all of
+  this to build a dashboard.
+
+  **What the Austin team actually needs vs what they've asked for.**
+  For integration testing: a pseudonymised copy of the production
+  data would work — replace pupil names with synthetic identifiers,
+  mask SEN and FSM flags, and retain the session/score distribution
+  that the synthetic set doesn't capture. For ML model training:
+  aggregate session data without pupil-level identifiers may be
+  sufficient — check with the data science lead. For the final
+  feature: the dashboard should be rendering in the UK environment,
+  querying the UK database, not pulling data to Austin.
+
+  **Path to unblocking — realistic timeline:**
+
+  1. **This week:** I send you the IDTA template. You and your US
+     legal contact execute it for intra-group product data.
+  2. **This week:** I draft the TRA. Niamh, I will need 30 minutes
+     with you to map the access architecture.
+  3. **This week:** Pseudonymise the replica for the Austin team's
+     immediate development needs. They can start building against
+     pseudonymised data on Monday as planned.
+  4. **Next week:** IDTA signed, TRA documented, data minimisation
+     measures confirmed. Open the read-only connection to the
+     production replica for integration testing only, with the
+     access controls you have described plus the additional
+     measures above.
+  5. **Before go-live:** DPF self-certification for Polaris EdTech
+     Inc. should be on the roadmap — it simplifies future transfers
+     and signals maturity to school customers.
+
+  This is not a "no" — it is a "yes, with guardrails that protect
+  Polaris and its school customers". The Austin team can start
+  work on Monday with pseudonymised data and have full access
+  within two weeks.
+
+  Let me know when you can do the 30-minute call.
+
+  Kind regards,
+  Aegis Privacy Partners
