@@ -75,6 +75,12 @@ export async function MdxRenderer({ source }: { source: string }) {
         source={source}
         components={components}
         options={{
+          // MDX here is repo-local and reviewed — enable JSX expression
+          // attributes (e.g. <Quiz questions={[...]} />). Without this,
+          // next-mdx-remote's default remark plugin strips the attributes
+          // and components receive `undefined` for prop expressions.
+          // blockDangerousJS stays on (its default) as a backstop.
+          blockJS: false,
           mdxOptions: {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             rehypePlugins: [rehypeSlug, rehypeShiki as any],

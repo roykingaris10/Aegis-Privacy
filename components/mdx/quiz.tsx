@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { CheckCircle2, XCircle, Trophy } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -15,21 +15,25 @@ export function Quiz({
   questions,
   guideSlug,
 }: {
-  questions: QuizQuestion[];
+  questions?: QuizQuestion[];
   guideSlug: string;
 }) {
+  const safeQuestions = useMemo<QuizQuestion[]>(
+    () => (Array.isArray(questions) ? questions : []),
+    [questions],
+  );
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
   const [answers, setAnswers] = useState<(number | null)[]>(
-    () => new Array(questions.length).fill(null),
+    () => new Array(safeQuestions.length).fill(null),
   );
   const [showReview, setShowReview] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [xpAwarded, setXpAwarded] = useState<number | null>(null);
 
-  const current = questions[currentIndex];
+  const current = safeQuestions[currentIndex];
   const isAnswered = answers[currentIndex] !== null;
-  const isLast = currentIndex === questions.length - 1;
+  const isLast = currentIndex === safeQuestions.length - 1;
 
   const handleSelect = useCallback(
     (optionIndex: number) => {
@@ -60,7 +64,7 @@ export function Quiz({
   const handleSubmit = useCallback(async () => {
     if (submitted) return;
     const score = answers.filter(
-      (a, i) => a === questions[i].correctIndex,
+      (a, i) => a === safeQuestions[i].correctIndex,
     ).length;
     const xp = score * 10;
 
@@ -68,7 +72,7 @@ export function Quiz({
       const res = await fetch("/api/guides/quiz", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ guideSlug, score, total: questions.length }),
+        body: JSON.stringify({ guideSlug, score, total: safeQuestions.length }),
       });
       if (res.ok) {
         const data = await res.json();
@@ -80,11 +84,19 @@ export function Quiz({
       setXpAwarded(xp);
     }
     setSubmitted(true);
-  }, [submitted, answers, questions, guideSlug]);
+  }, [submitted, answers, safeQuestions, guideSlug]);
 
   const totalCorrect = answers.filter(
-    (a, i) => a === questions[i].correctIndex,
+    (a, i) => a === safeQuestions[i].correctIndex,
   ).length;
+
+  if (safeQuestions.length === 0) {
+    return (
+      <div className="my-8 rounded-xl border border-amber-700/40 bg-amber-950/20 p-6 text-sm text-amber-200">
+        Quiz not yet loaded for this guide.
+      </div>
+    );
+  }
 
   if (showReview) {
     return (
@@ -92,7 +104,7 @@ export function Quiz({
         <div className="mb-6 flex items-center gap-3">
           <Trophy className="h-6 w-6 text-amber-400" />
           <h3 className="text-lg font-semibold text-slate-100">
-            Quiz Results: {totalCorrect} / {questions.length}
+            Quiz Results: {totalCorrect} / {safeQuestions.length}
           </h3>
         </div>
 
@@ -112,7 +124,7 @@ export function Quiz({
         )}
 
         <div className="space-y-4">
-          {questions.map((q, qi) => {
+          {safeQuestions.map((q, qi) => {
             const correct = answers[qi] === q.correctIndex;
             return (
               <div
@@ -161,7 +173,7 @@ export function Quiz({
       <div className="mb-4 flex items-center justify-between">
         <h3 className="text-lg font-semibold text-slate-100">Quiz</h3>
         <span className="text-xs text-slate-500">
-          {currentIndex + 1} / {questions.length}
+          {currentIndex + 1} / {safeQuestions.length}
         </span>
       </div>
 
